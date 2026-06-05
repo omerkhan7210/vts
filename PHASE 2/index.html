@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTS — Veterans Transition Support | Free Career Training for Veterans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colors — from VTS logo: deep navy + bright red */
+  --navy:        #1b3a6b;
+  --navy-deep:   #0f2447;
+  --navy-mid:    #1e4480;
+  --navy-light:  #e8edf6;
+  --red:         #c0202a;
+  --red-hover:   #a8181f;
+  --red-light:   #f9e5e6;
+  --white:       #ffffff;
+  --off-white:   #f5f6f8;
+  --border:      #dde1ea;
+  --gray-text:   #5a6072;
+  --text-dark:   #111827;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+/* ─── SOCIAL POPUP ─── */
+#social-popup {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(15,36,71,0.75);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(3px);
+  animation: fadeInBg 0.3s ease;
+}
+@keyframes fadeInBg { from { opacity: 0; } to { opacity: 1; } }
+.popup-box {
+  background: var(--white);
+  border-radius: 6px;
+  max-width: 520px; width: 92%;
+  overflow: hidden;
+  animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  position: relative;
+}
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.popup-top {
+  background: var(--navy-deep);
+  padding: 36px 36px 30px;
+  text-align: center;
+  position: relative;
+}
+.popup-top img { height: 52px; filter: brightness(0) invert(1); margin-bottom: 18px; display: block; margin-left: auto; margin-right: auto; }
+.popup-top h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px; font-weight: 800; text-transform: uppercase;
+  color: var(--white); line-height: 1.1; margin-bottom: 8px;
+}
+.popup-top p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+.popup-close {
+  position: absolute; top: 14px; right: 16px;
+  background: rgba(255,255,255,0.12); border: none; color: var(--white);
+  width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+  font-size: 16px; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.popup-close:hover { background: rgba(255,255,255,0.25); }
+.popup-body { padding: 28px 36px 32px; }
+.popup-social-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;
+}
+.popup-social-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; border-radius: 4px; text-decoration: none;
+  font-weight: 600; font-size: 14px; transition: opacity 0.2s; border: none; cursor: pointer;
+}
+.popup-social-btn:hover { opacity: 0.88; }
+.popup-social-btn.fb { background: #1877f2; color: white; }
+.popup-social-btn.ig { background: linear-gradient(135deg,#e1306c,#833ab4); color: white; }
+.popup-social-btn.li { background: #0a66c2; color: white; }
+.popup-social-btn.yt { background: #ff0000; color: white; }
+.popup-social-icon { font-size: 18px; font-weight: 900; width: 22px; text-align: center; }
+.popup-divider { text-align: center; font-size: 12px; color: var(--gray-text); margin: 18px 0; position: relative; }
+.popup-divider::before, .popup-divider::after {
+  content: ''; position: absolute; top: 50%; width: 38%; height: 1px; background: var(--border);
+}
+.popup-divider::before { left: 0; }
+.popup-divider::after { right: 0; }
+.popup-email-row { display: flex; gap: 8px; }
+.popup-email-row input {
+  flex: 1; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 4px;
+  font-family: 'Barlow', sans-serif; font-size: 14px; outline: none;
+}
+.popup-email-row input:focus { border-color: var(--navy); }
+.popup-skip { display: block; text-align: center; margin-top: 14px; font-size: 12px; color: var(--gray-text); cursor: pointer; text-decoration: underline; }
+
+/* ─── ANNOUNCEMENT BAR ─── */
+.ann-bar {
+  background: var(--red); color: var(--white);
+  text-align: center; padding: 9px 20px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.03em;
+}
+.ann-bar a { color: var(--white); }
+
+/* ─── NAV ─── */
+nav {
+  background: var(--navy-deep);
+  position: sticky; top: 0; z-index: 200;
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+  border-bottom: 3px solid var(--red);
+}
+.nav-logo img { height: 44px; filter: brightness(0) invert(1); }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.8); text-decoration: none;
+  font-size: 13.5px; font-weight: 500; padding: 6px 13px;
+  border-radius: 3px; transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+.nav-links .btn-red {
+  background: var(--red); color: white !important;
+  font-weight: 700; padding: 8px 20px;
+  border-radius: 3px; letter-spacing: 0.04em; margin-left: 8px;
+}
+.nav-links .btn-red:hover { background: var(--red-hover); }
+
+/* ─── BUTTONS ─── */
+.btn-red-solid {
+  background: var(--red); color: white;
+  font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 15px 30px; border: none; border-radius: 3px;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-red-solid:hover { background: var(--red-hover); transform: translateY(-1px); }
+
+.btn-navy-outline {
+  background: transparent; color: var(--white);
+  font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-navy-outline:hover { border-color: white; color: white; }
+
+.btn-navy-solid {
+  background: var(--navy); color: white;
+  font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 13px 24px; border: none; border-radius: 3px;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.2s;
+}
+.btn-navy-solid:hover { background: var(--navy-mid); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; min-height: 92vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--navy-deep); overflow: hidden;
+}
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 60px 80px 80px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(192,32,42,0.15); border: 1px solid rgba(192,32,42,0.4);
+  color: #f87171; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 2px; margin-bottom: 26px; width: fit-content;
+}
+.hero-eyebrow::before {
+  content: ''; display: inline-block; width: 6px; height: 6px;
+  background: var(--red); border-radius: 50%;
+}
+.hero-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 5.5vw, 74px); font-weight: 800;
+  line-height: 1.0; color: var(--white);
+  text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.hero-headline .red { color: var(--red); }
+.hero-headline .underline-red { position: relative; display: inline-block; }
+.hero-headline .underline-red::after {
+  content: ''; position: absolute; bottom: 3px; left: 0;
+  width: 100%; height: 4px; background: var(--red); border-radius: 2px;
+}
+.hero-sub {
+  font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.72);
+  margin: 22px 0 34px; max-width: 470px;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+.hero-trust {
+  display: flex; align-items: center; gap: 22px;
+  padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.trust-pill {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 500;
+}
+.trust-pill-dot {
+  width: 7px; height: 7px; background: var(--red);
+  border-radius: 50%; flex-shrink: 0;
+}
+.hero-right { position: relative; overflow: hidden; }
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top; display: block;
+}
+.hero-right::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--navy-deep) 0%, transparent 35%),
+              linear-gradient(to top, rgba(15,36,71,0.8) 0%, transparent 30%);
+}
+.hero-quote {
+  position: absolute; bottom: 40px; left: -20px; right: 24px;
+  z-index: 3; background: rgba(15,36,71,0.92);
+  border-left: 3px solid var(--red);
+  padding: 18px 22px; border-radius: 0 4px 4px 0;
+  max-width: 370px;
+}
+.hero-quote p {
+  font-family: 'Libre Baskerville', serif; font-style: italic;
+  font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 7px;
+}
+.hero-quote span {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #f87171;
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar { background: var(--navy); }
+.stats-inner {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  max-width: 1200px; margin: 0 auto;
+}
+.stat-item {
+  padding: 28px 30px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(255,255,255,0.04); }
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 800;
+  color: white; line-height: 1; letter-spacing: -0.02em;
+}
+.stat-sup { color: var(--red); font-size: 32px; }
+.stat-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-top: 5px;
+}
+
+/* ─── SECTION COMMONS ─── */
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px,4vw,52px); font-weight: 800;
+  text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.05;
+}
+.section-title.light { color: white; }
+.section-title.dark  { color: var(--navy-deep); }
+.section-sub { font-size: 16px; line-height: 1.7; color: var(--gray-text); margin-top: 14px; max-width: 580px; }
+.section-sub.light { color: rgba(255,255,255,0.62); }
+
+/* ─── COURSERA SPOTLIGHT (highest traffic page) ─── */
+.coursera-strip {
+  background: var(--red); padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 320px;
+}
+.coursera-left {
+  padding: 52px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.coursera-left .badge {
+  display: inline-block; background: rgba(255,255,255,0.2);
+  color: white; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 2px; margin-bottom: 16px; width: fit-content;
+}
+.coursera-left h2 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 800;
+  text-transform: uppercase; color: white; line-height: 1; margin-bottom: 12px;
+}
+.coursera-left p { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 24px; max-width: 420px; }
+.btn-white {
+  background: white; color: var(--red);
+  font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 13px 26px; border: none; border-radius: 3px;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.15s;
+}
+.btn-white:hover { background: rgba(255,255,255,0.9); }
+.coursera-right {
+  background: var(--navy-deep); position: relative; overflow: hidden;
+  display: flex; align-items: center; padding: 40px 48px;
+}
+.coursera-stats {
+  display: flex; flex-direction: column; gap: 20px; width: 100%;
+}
+.coursera-stat-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 4px;
+}
+.coursera-stat-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 800;
+  color: var(--red); line-height: 1; flex-shrink: 0; min-width: 100px;
+}
+.coursera-stat-label { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+.coursera-stat-label strong { color: white; display: block; font-size: 14px; }
+
+/* ─── PROGRAMS ─── */
+.programs-section { background: var(--off-white); padding: 90px 80px; }
+.programs-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 48px;
+}
+.programs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.program-card {
+  background: white; border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none; color: inherit; display: block;
+}
+.program-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(27,58,107,0.1); }
+.prog-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 2px;
+  display: inline-block; margin: 18px 18px 0;
+}
+.prog-badge.free    { background: #dcfce7; color: #166534; }
+.prog-badge.paid    { background: var(--navy-light); color: var(--navy); }
+.prog-badge.popular { background: #fef3c7; color: #92400e; }
+.program-card h3 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--navy-deep); padding: 10px 18px 6px; line-height: 1.2;
+}
+.program-card p {
+  font-size: 13.5px; line-height: 1.6; color: var(--gray-text); padding: 0 18px 18px;
+}
+.prog-footer {
+  padding: 12px 18px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 700; color: var(--red);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.prog-arrow { transition: transform 0.2s; }
+.program-card:hover .prog-arrow { transform: translateX(4px); }
+
+/* ─── ABOUT VTS ─── */
+.about-section {
+  background: var(--navy-deep); padding: 90px 80px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-img-wrap { position: relative; height: 480px; }
+.about-img-main {
+  position: absolute; top: 0; left: 0; width: 74%; height: 84%;
+  object-fit: cover; border-radius: 4px;
+}
+.about-img-sec {
+  position: absolute; bottom: 0; right: 0; width: 56%; height: 54%;
+  object-fit: cover; border-radius: 4px; border: 4px solid var(--navy-deep);
+}
+.about-badge {
+  position: absolute; top: 52%; left: 16%; z-index: 2;
+  background: var(--red); padding: 16px 20px; border-radius: 4px;
+}
+.about-badge strong {
+  display: block; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 34px; font-weight: 800; color: white; line-height: 1;
+}
+.about-badge span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); }
+.about-content .section-sub.light { margin-bottom: 28px; }
+.about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px; }
+.pillar {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 4px; padding: 16px;
+}
+.pillar-title {
+  font-size: 13px; font-weight: 700; color: white;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+}
+.pillar-sub { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.about-ctas { display: flex; gap: 12px; }
+
+/* ─── WHO WE SERVE ─── */
+.serve-section { background: var(--off-white); padding: 90px 80px; }
+.serve-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 50px; }
+.serve-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.serve-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 15.5px; color: var(--text-dark); font-weight: 500; line-height: 1.4;
+}
+.check-circle {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--red); flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+}
+.check-circle svg { width: 11px; height: 11px; }
+.serve-image { width: 100%; height: 380px; object-fit: cover; border-radius: 4px; display: block; }
+
+/* ─── EVENTS ─── */
+.events-section { background: var(--navy-deep); padding: 90px 80px; }
+.events-layout { display: grid; grid-template-columns: 1fr 1.35fr; gap: 56px; align-items: start; margin-top: 48px; }
+.event-item {
+  display: flex; gap: 18px; padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  text-decoration: none; color: inherit;
+}
+.event-item:last-of-type { border-bottom: none; }
+.event-date-box {
+  flex-shrink: 0; width: 58px; text-align: center;
+  background: rgba(192,32,42,0.12); border: 1px solid rgba(192,32,42,0.3);
+  border-radius: 4px; padding: 8px 4px;
+}
+.event-date-box .mo { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+.event-date-box .dy { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; color: white; line-height: 1; }
+.event-info h4 { font-size: 15px; font-weight: 600; color: white; margin-bottom: 6px; line-height: 1.3; }
+.event-info .meta { font-size: 12px; color: rgba(255,255,255,0.42); display: flex; gap: 10px; align-items: center; }
+.etag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 3px 7px; border-radius: 2px;
+}
+.etag.free { background: rgba(22,163,74,0.2); color: #86efac; }
+.etag.zoom { background: rgba(37,99,235,0.2); color: #93c5fd; }
+.etag.paid { background: rgba(192,32,42,0.2); color: #fca5a5; }
+.event-featured-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; }
+.event-featured-card img { width: 100%; height: 230px; object-fit: cover; display: block; opacity: 0.75; }
+.event-featured-info { padding: 26px; }
+.event-featured-info .etag.feature { background: var(--red); color: white; margin-bottom: 12px; display: inline-block; }
+.event-featured-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: white; line-height: 1.15; margin-bottom: 10px; }
+.event-featured-info p { font-size: 13.5px; color: rgba(255,255,255,0.58); line-height: 1.6; margin-bottom: 20px; }
+
+/* ─── INSTRUCTORS ─── */
+.instructors-section { background: white; padding: 90px 80px; }
+.instructors-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.instructors-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+.instructor-card { text-align: center; }
+.instructor-img-wrap {
+  width: 130px; height: 130px; border-radius: 50%; overflow: hidden;
+  margin: 0 auto 16px; border: 3px solid var(--border);
+  transition: border-color 0.2s;
+}
+.instructor-card:hover .instructor-img-wrap { border-color: var(--red); }
+.instructor-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.instructor-card h4 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700;
+  color: var(--navy-deep); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 4px;
+}
+.instructor-card .role { font-size: 12px; color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.instructor-card p { font-size: 13px; line-height: 1.6; color: var(--gray-text); }
+.instructor-branch {
+  display: inline-block; margin-top: 8px;
+  background: var(--navy-light); color: var(--navy);
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 3px 9px; border-radius: 2px;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-section { background: var(--off-white); padding: 90px 80px; }
+.testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.t-card {
+  background: white; border-radius: 4px; padding: 30px 26px;
+  border: 1px solid var(--border); position: relative; overflow: hidden;
+}
+.t-card::before {
+  content: '\201C'; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 100px; font-weight: 800; color: var(--red);
+  opacity: 0.12; position: absolute; top: 4px; left: 16px; line-height: 1;
+}
+.stars { color: var(--red); font-size: 13px; letter-spacing: 2px; margin-bottom: 10px; }
+.t-card blockquote { font-size: 14.5px; line-height: 1.7; color: var(--text-dark); padding-top: 6px; position: relative; z-index: 1; margin-bottom: 18px; }
+.t-card cite { font-style: normal; font-size: 13px; font-weight: 700; color: var(--navy-deep); text-transform: uppercase; letter-spacing: 0.06em; }
+.t-card .branch { font-size: 11px; color: var(--red); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+.trust-bar { display: flex; align-items: center; gap: 32px; margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.trust-bar span { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-text); flex-shrink: 0; }
+.trust-pill-item { background: var(--off-white); border: 1px solid var(--border); border-radius: 3px; padding: 9px 18px; font-size: 13px; font-weight: 600; color: var(--navy); }
+
+/* ─── DONATE / INVOLVED ─── */
+.involved-section { background: white; padding: 90px 80px; }
+.involved-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px; margin-top: 48px; }
+.donate-card {
+  background: var(--navy-deep); border-radius: 6px; padding: 48px;
+  position: relative; overflow: hidden;
+}
+.donate-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(192,32,42,0.18) 0%, transparent 70%);
+}
+.donate-card .section-title.light { font-size: 38px; margin-bottom: 14px; }
+.donate-card p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.62); margin-bottom: 26px; }
+.amount-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.amt-btn {
+  background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.18);
+  color: white; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px;
+  padding: 10px 18px; border-radius: 3px; cursor: pointer; transition: all 0.2s;
+}
+.amt-btn:hover, .amt-btn.active { background: var(--red); border-color: var(--red); color: white; }
+.volunteer-card {
+  background: white; border-radius: 6px; border: 1px solid var(--border);
+  padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.volunteer-card img { width: 100%; height: 170px; object-fit: cover; border-radius: 4px; margin-bottom: 22px; display: block; }
+.volunteer-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy-deep); text-transform: uppercase; margin-bottom: 8px; }
+.volunteer-card p { font-size: 13.5px; color: var(--gray-text); line-height: 1.6; margin-bottom: 22px; }
+
+/* ─── NEWSLETTER ─── */
+.newsletter-section {
+  background: var(--navy); padding: 60px 80px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.newsletter-text h2 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 800;
+  text-transform: uppercase; color: white; line-height: 1; margin-bottom: 6px;
+}
+.newsletter-text p { font-size: 15px; color: rgba(255,255,255,0.6); }
+.nl-form { display: flex; gap: 10px; }
+.nl-form input {
+  padding: 13px 18px; border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07); border-radius: 3px;
+  font-family: 'Barlow', sans-serif; font-size: 14.5px; color: white;
+  width: 280px; outline: none;
+}
+.nl-form input::placeholder { color: rgba(255,255,255,0.38); }
+.nl-form input:focus { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.35); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--navy-deep); padding: 70px 80px 28px; border-top: 3px solid var(--red); }
+.footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 48px; }
+.footer-logo img { height: 50px; filter: brightness(0) invert(1); margin-bottom: 16px; display: block; }
+.footer-logo p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.46); margin-bottom: 20px; }
+.social-row { display: flex; gap: 10px; }
+.soc-btn {
+  width: 34px; height: 34px; background: rgba(255,255,255,0.08); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 900;
+  text-decoration: none; transition: background 0.2s, color 0.2s;
+}
+.soc-btn:hover { background: var(--red); color: white; }
+.trust-imgs { display: flex; gap: 14px; margin-top: 18px; }
+.trust-imgs img { height: 46px; filter: brightness(0) invert(1); opacity: 0.42; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: white; }
+.footer-contact { font-size: 13px; color: rgba(255,255,255,0.5); display: flex; flex-direction: column; gap: 9px; }
+.footer-contact a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-contact a:hover { color: white; }
+.footer-contact .hl { color: var(--red) !important; font-weight: 600; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+
+/* ─── FADE-UP ─── */
+.fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up:nth-child(2) { transition-delay: 0.08s; }
+.fade-up:nth-child(3) { transition-delay: 0.16s; }
+.fade-up:nth-child(4) { transition-delay: 0.24s; }
+
+/* ─── MOCKUP NOTE ─── */
+.mockup-badge {
+  position: fixed; bottom: 18px; right: 18px;
+  background: var(--navy-deep); color: var(--red);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 9px 14px; border-radius: 4px;
+  border: 1px solid var(--red); z-index: 500;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── SOCIAL POPUP ─── -->
+<div id="social-popup">
+  <div class="popup-box">
+    <div class="popup-top">
+      <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/logo.png" alt="VTS Logo">
+      <h2>Stay connected with VTS</h2>
+      <p>Get free class updates, new programs, and veteran resources delivered to you.</p>
+      <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+    </div>
+    <div class="popup-body">
+      <div class="popup-social-row">
+        <a href="https://www.facebook.com/veteranstransitionsupport" class="popup-social-btn fb" target="_blank">
+          <span class="popup-social-icon">f</span> Follow on Facebook
+        </a>
+        <a href="https://www.instagram.com/veteranstransitionsupport/" class="popup-social-btn ig" target="_blank">
+          <span class="popup-social-icon">◉</span> Follow on Instagram
+        </a>
+        <a href="https://www.linkedin.com/company/veterans-transition-support/" class="popup-social-btn li" target="_blank">
+          <span class="popup-social-icon">in</span> Connect on LinkedIn
+        </a>
+        <a href="https://www.youtube.com/channel/UC9_dpSRs9FMZy5eQBemcrEA" class="popup-social-btn yt" target="_blank">
+          <span class="popup-social-icon">▶</span> Subscribe on YouTube
+        </a>
+      </div>
+      <div class="popup-divider">or get email updates</div>
+      <div class="popup-email-row">
+        <input type="email" placeholder="Your email address">
+        <button class="btn-navy-solid" onclick="closePopup()">Subscribe</button>
+      </div>
+      <span class="popup-skip" onclick="closePopup()">No thanks, maybe later</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ANNOUNCEMENT BAR ─── -->
+<div class="ann-bar">
+  🎖️ Free job training &amp; industry certifications for veterans — No cost, no catch. &nbsp;<a href="https://veteranstransitionsupport.org/events/"><strong>Register for the next class →</strong></a>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="https://veteranstransitionsupport.org/" class="nav-logo">
+    <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/logo.png" alt="VTS Logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Programs</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Success Stories</a></li>
+    <li><a href="#">Resources</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#" class="btn-red">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Free Programs · San Diego County · Since 2014</div>
+    <h1 class="hero-headline">
+      From <span class="red">service</span><br>
+      to <span class="underline-red">civilian</span><br>
+      career.
+    </h1>
+    <p class="hero-sub">Free job training, industry certifications, and career support for veterans, active duty, reservists, and military spouses. No cost. No catch.</p>
+    <div class="hero-ctas">
+      <a href="https://veteranstransitionsupport.org/events/" class="btn-red-solid">Register for free training</a>
+      <a href="https://veteranstransitionsupport.org/vts-programs/" class="btn-navy-outline">Browse all programs</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-pill"><div class="trust-pill-dot"></div>Top Rated Nonprofit 2024</div>
+      <div class="trust-pill"><div class="trust-pill-dot"></div>Guidestar Platinum</div>
+      <div class="trust-pill"><div class="trust-pill-dot"></div>501(c)(3) Verified</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/1-1.jpg" alt="LSSGB class with Russell Levy at VTS San Marcos">
+    <div class="hero-quote">
+      <p>"The job I have today is through the help of VTS. They made sure I was on my feet."</p>
+      <span>Edwin S. — Army Veteran</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num" data-target="12000">0<span class="stat-sup">+</span></div>
+      <div class="stat-label">Veterans Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="75000">0<span class="stat-sup">+</span></div>
+      <div class="stat-label">Coursera Licenses Issued</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="9">0</div>
+      <div class="stat-label">Free Programs Available</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years Serving San Diego</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── COURSERA SPOTLIGHT (highest traffic) ─── -->
+<div class="coursera-strip">
+  <div class="coursera-left">
+    <span class="badge">🔥 Most popular program</span>
+    <h2>FREE Coursera Certifications for Veterans</h2>
+    <p>Access to 20,000+ professional courses from Google, IBM, Meta, and Adobe — completely free for eligible veterans, active duty, and military spouses. Limited licenses available each year.</p>
+    <a href="https://veteranstransitionsupport.org/no-cost-coursera/" class="btn-white">Get your free access →</a>
+  </div>
+  <div class="coursera-right">
+    <div class="coursera-stats">
+      <div class="coursera-stat-row">
+        <div class="coursera-stat-num">75k</div>
+        <div class="coursera-stat-label">
+          <strong>Licenses issued to date</strong>
+          20,000 active each year — rotating to new veterans as they expire
+        </div>
+      </div>
+      <div class="coursera-stat-row">
+        <div class="coursera-stat-num">1yr</div>
+        <div class="coursera-stat-label">
+          <strong>Full year of access</strong>
+          Complete certifications at your own pace from Google, IBM, Meta &amp; more
+        </div>
+      </div>
+      <div class="coursera-stat-row">
+        <div class="coursera-stat-num">FREE</div>
+        <div class="coursera-stat-label">
+          <strong>100% no cost</strong>
+          Funded through a Coursera.org grant — no payment info required
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROGRAMS ─── -->
+<section class="programs-section">
+  <div class="programs-header">
+    <div>
+      <div class="section-eyebrow">What we offer</div>
+      <h2 class="section-title dark">Free &amp; low-cost programs<br>that get veterans hired</h2>
+    </div>
+    <a href="https://veteranstransitionsupport.org/vts-programs/" class="btn-red-solid">All programs →</a>
+  </div>
+  <div class="programs-grid">
+    <a href="https://veteranstransitionsupport.org/no-cost-osha-10-safety-training/" class="program-card fade-up">
+      <span class="prog-badge free">Free</span>
+      <h3>OSHA 10 Safety Training</h3>
+      <p>Live instructor-led. Earn your OSHA 10 card — a credential that employers in construction, manufacturing, and logistics actively seek out.</p>
+      <div class="prog-footer">Register now <span class="prog-arrow">→</span></div>
+    </a>
+    <a href="https://veteranstransitionsupport.org/osha-30-training-for-veterans/" class="program-card fade-up">
+      <span class="prog-badge paid">$250</span>
+      <h3>OSHA 30 Training</h3>
+      <p>In-person and Zoom. Weekday and weekend options. The 30-hour safety credential for supervisory and management-track roles.</p>
+      <div class="prog-footer">View schedule <span class="prog-arrow">→</span></div>
+    </a>
+    <a href="https://veteranstransitionsupport.org/no-cost-lean-six-sigma-yellow-belt-lssyb/" class="program-card fade-up">
+      <span class="prog-badge free">Free</span>
+      <h3>Lean Six Sigma Yellow Belt</h3>
+      <p>1-day certification course. Lean process improvement fundamentals — a recognized credential across manufacturing, logistics, and government.</p>
+      <div class="prog-footer">Register now <span class="prog-arrow">→</span></div>
+    </a>
+    <a href="https://veteranstransitionsupport.org/leansixsigmagreenbelt-for-veterans/" class="program-card fade-up">
+      <span class="prog-badge popular">5-Day Course</span>
+      <h3>Lean Six Sigma Green Belt</h3>
+      <p>Hands-on training in process improvement and quality assurance. Highly valued by Fortune 500 employers — opens management-level doors.</p>
+      <div class="prog-footer">Learn more <span class="prog-arrow">→</span></div>
+    </a>
+    <a href="https://veteranstransitionsupport.org/career-transition-program/" class="program-card fade-up">
+      <span class="prog-badge free">Free</span>
+      <h3>Career Transition Program</h3>
+      <p>Resume support, interview prep, LinkedIn coaching, VA benefits guidance, and mentorship — all designed around the military-to-civilian transition.</p>
+      <div class="prog-footer">Learn more <span class="prog-arrow">→</span></div>
+    </a>
+    <a href="https://veteranstransitionsupport.org/va-disability-filing/" class="program-card fade-up">
+      <span class="prog-badge free">Free</span>
+      <h3>VA Disability Filing Help</h3>
+      <p>Guidance on filing VA disability claims. Understand what you're entitled to — many veterans leave benefits on the table that they've already earned.</p>
+      <div class="prog-footer">Learn more <span class="prog-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── ABOUT VTS ─── -->
+<section class="about-section">
+  <div class="about-img-wrap">
+    <img class="about-img-main" src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/1-1.jpg" alt="Russell Levy teaching LSSGB at VTS">
+    <img class="about-img-sec" src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/barbequecookout-scaled-1024x858.jpeg" alt="VTS volunteers at Camp Pendleton event">
+    <div class="about-badge">
+      <strong>Since<br>2014</strong>
+      <span>San Diego</span>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-eyebrow">About VTS</div>
+    <h2 class="section-title light">We exist for one reason — veterans succeed</h2>
+    <p class="section-sub light">Veterans Transition Support is a 100% all-volunteer nonprofit based in San Diego County. Founded in 2014 by Russell Levy J.D., VTS bridges the gap between military service and civilian career success — through free training, mentorship, and real-world certification programs that employers recognize and value.</p>
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-title">100% Volunteer-run</div>
+        <div class="pillar-sub">Every dollar donated funds programs directly</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">All branches welcome</div>
+        <div class="pillar-sub">Army, Navy, USMC, Air Force, Coast Guard</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">Guidestar Platinum</div>
+        <div class="pillar-sub">Full financial transparency — no overhead games</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">Top Rated 2024</div>
+        <div class="pillar-sub">Great Nonprofits — recognized by the community</div>
+      </div>
+    </div>
+    <div class="about-ctas">
+      <a href="https://veteranstransitionsupport.org/about-us/" class="btn-red-solid">Our full story</a>
+      <a href="https://veteranstransitionsupport.org/contact-us/" class="btn-navy-outline">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO WE SERVE ─── -->
+<section class="serve-section">
+  <div class="section-eyebrow">Who qualifies</div>
+  <h2 class="section-title dark">Built for those who served</h2>
+  <div class="serve-inner">
+    <ul class="serve-list">
+      <li>
+        <span class="check-circle"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Veterans — all branches, all eras
+      </li>
+      <li>
+        <span class="check-circle"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Active duty service members
+      </li>
+      <li>
+        <span class="check-circle"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Reservists &amp; National Guard members
+      </li>
+      <li>
+        <span class="check-circle"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Military spouses &amp; dependents
+      </li>
+      <li>
+        <span class="check-circle"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Base staff &amp; VA Work-Study participants
+      </li>
+      <li>
+        <span class="check-circle"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Recently separated — no waiting period
+      </li>
+    </ul>
+    <img class="serve-image" src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/e5b8aef5-e35e-4b31-b284-b0f0bb75ea2d-1024x1024.jpg" alt="VTS LSSYB cohort in San Marcos CA">
+  </div>
+  <div style="margin-top:40px;">
+    <a href="https://veteranstransitionsupport.org/events/" class="btn-red-solid">Register for a free class today →</a>
+  </div>
+</section>
+
+<!-- ─── EVENTS ─── -->
+<section class="events-section">
+  <div class="section-eyebrow">Upcoming</div>
+  <h2 class="section-title light">Next classes &amp; events</h2>
+  <div class="events-layout">
+    <div>
+      <a href="#" class="event-item">
+        <div class="event-date-box"><div class="mo">Jun</div><div class="dy">7</div></div>
+        <div class="event-info">
+          <h4>5-Day Lean Six Sigma Green Belt</h4>
+          <div class="meta"><span class="etag zoom">Zoom</span> 8:00 AM – 5:00 PM PST</div>
+        </div>
+      </a>
+      <a href="#" class="event-item">
+        <div class="event-date-box"><div class="mo">Jun</div><div class="dy">14</div></div>
+        <div class="event-info">
+          <h4>OSHA 10 Safety Training</h4>
+          <div class="meta"><span class="etag free">Free</span> San Marcos, CA</div>
+        </div>
+      </a>
+      <a href="#" class="event-item">
+        <div class="event-date-box"><div class="mo">Jun</div><div class="dy">21</div></div>
+        <div class="event-info">
+          <h4>FREE Coursera Program — Ongoing enrollment</h4>
+          <div class="meta"><span class="etag free">Free</span> Online · Enroll anytime</div>
+        </div>
+      </a>
+      <a href="#" class="event-item">
+        <div class="event-date-box"><div class="mo">Jun</div><div class="dy">28</div></div>
+        <div class="event-info">
+          <h4>OSHA 30 General Industry</h4>
+          <div class="meta"><span class="etag zoom">Zoom</span><span class="etag paid">$250</span> Weekend cohort</div>
+        </div>
+      </a>
+      <div style="margin-top:28px;">
+        <a href="https://veteranstransitionsupport.org/events/" class="btn-red-solid">View full calendar →</a>
+      </div>
+    </div>
+    <div class="event-featured-card">
+      <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/e5b8aef5-e35e-4b31-b284-b0f0bb75ea2d-1024x1024.jpg" alt="VTS LSSGB cohort class">
+      <div class="event-featured-info">
+        <span class="etag feature">Featured program</span>
+        <h3>Lean Six Sigma Green Belt — May/June Cohort</h3>
+        <p>5 days on Zoom with Russell Levy. Earn your LSSGB certification and stand out in any competitive industry. Open to veterans, active duty, reservists, and military spouses.</p>
+        <a href="https://veteranstransitionsupport.org/leansixsigmagreenbelt-for-veterans/" class="btn-red-solid">Register for this cohort</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INSTRUCTORS ─── -->
+<section class="instructors-section">
+  <div class="instructors-header">
+    <div>
+      <div class="section-eyebrow">The team</div>
+      <h2 class="section-title dark">Instructors who served.<br>Teachers who deliver.</h2>
+    </div>
+    <a href="https://veteranstransitionsupport.org/our-instructors/" class="btn-navy-solid">Meet all instructors →</a>
+  </div>
+  <div class="instructors-grid">
+    <div class="instructor-card fade-up">
+      <div class="instructor-img-wrap">
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/204f3ac5-ae24-4497-8935-8ac3d04ffae9-768x1024.jpg" alt="Russell Levy VTS Founder">
+      </div>
+      <h4>Russell Levy J.D.</h4>
+      <div class="role">Founder &amp; Lead Instructor</div>
+      <p>Tulane Law School grad, authorized OSHA instructor, and founder of VTS. Has personally trained thousands of veterans since 2014.</p>
+      <span class="instructor-branch">Veteran · OSHA Authorized</span>
+    </div>
+    <div class="instructor-card fade-up">
+      <div class="instructor-img-wrap">
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/5225da28-c0c4-465c-ab17-c210cae29f5d.jpg" alt="Merlyn Cruz-Feliciano VTS VP">
+      </div>
+      <h4>Merlyn Cruz-Feliciano</h4>
+      <div class="role">Vice President · OSHA Instructor</div>
+      <p>U.S. Army logistics veteran, 14 years of service. Brings personal transition experience to every class she teaches.</p>
+      <span class="instructor-branch">U.S. Army · 2002–2016</span>
+    </div>
+    <div class="instructor-card fade-up">
+      <div class="instructor-img-wrap">
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/9f205131-3e77-4b61-941d-aa4da79a0cc8.jpg" alt="Miguel Huertanicacio VTS Secretary">
+      </div>
+      <h4>Miguel Huertanicacio</h4>
+      <div class="role">Board Secretary · OSHA Instructor</div>
+      <p>Marine Corps veteran, authorized OSHA outreach trainer, and VTS Board Secretary. Dual role: leader and active instructor.</p>
+      <span class="instructor-branch">U.S. Marine Corps</span>
+    </div>
+    <div class="instructor-card fade-up">
+      <div class="instructor-img-wrap">
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/d465fa3e-10f2-4ac2-a636-b323fd211df5-938x1024.jpg" alt="Sean Spinks VTS Board Member">
+      </div>
+      <h4>Sean Spinks</h4>
+      <div class="role">Board Member · OSHA Instructor</div>
+      <p>Retired U.S. Marine and VTS board member. Brings frontline military experience to every safety training he delivers.</p>
+      <span class="instructor-branch">USMC Retired</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials-section">
+  <div class="testimonials-header">
+    <div>
+      <div class="section-eyebrow">Real results</div>
+      <h2 class="section-title dark">Veterans who got hired</h2>
+    </div>
+    <a href="https://veteranstransitionsupport.org/testimonies/" class="btn-red-solid">All success stories →</a>
+  </div>
+  <div class="testimonials-grid">
+    <div class="t-card fade-up">
+      <div class="stars">★★★★★</div>
+      <blockquote>"They offered me a higher rate because of my OSHA 10 card. It was helping me before the card even arrived in the mail."</blockquote>
+      <cite>Chason L.</cite>
+      <div class="branch">U.S. Navy Veteran · Tower Climber, Colorado</div>
+    </div>
+    <div class="t-card fade-up">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I found a great job in Carlsbad as a network engineer. The OSHA class, LEAN class, and professional guidance were invaluable to getting employed."</blockquote>
+      <cite>Cody A.</cite>
+      <div class="branch">USMC Veteran · Network Engineer</div>
+    </div>
+    <div class="t-card fade-up">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The job I have today is through the help of VTS. Even now that I have this job, they followed through to make sure I was on my feet."</blockquote>
+      <cite>Edwin S.</cite>
+      <div class="branch">Army Veteran</div>
+    </div>
+  </div>
+  <div class="trust-bar">
+    <span>Recognized by</span>
+    <div class="trust-pill-item">⭐ Great Nonprofits — Top Rated 2024</div>
+    <div class="trust-pill-item">🏆 Guidestar Platinum Transparency</div>
+    <div class="trust-pill-item">✓ 501(c)(3) Verified Nonprofit</div>
+    <div class="trust-pill-item">🇺🇸 Serving San Diego Since 2014</div>
+  </div>
+</section>
+
+<!-- ─── DONATE / VOLUNTEER ─── -->
+<section class="involved-section">
+  <div class="section-eyebrow">Support the mission</div>
+  <h2 class="section-title dark">Help a veteran change their life</h2>
+  <div class="involved-grid">
+    <div class="donate-card">
+      <h2 class="section-title light">Make a donation</h2>
+      <p>VTS is 100% all-volunteer. Every dollar funds free training, certifications, and resources for veterans — zero overhead. Your donation goes directly to the mission.</p>
+      <div class="amount-row">
+        <button class="amt-btn">$25</button>
+        <button class="amt-btn active">$50</button>
+        <button class="amt-btn">$100</button>
+        <button class="amt-btn">$250</button>
+      </div>
+      <a href="https://veteranstransitionsupport.org/donate/" class="btn-red-solid">Donate $50 →</a>
+    </div>
+    <div class="volunteer-card">
+      <div>
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/barbequecookout-scaled-1024x858.jpeg" alt="VTS volunteers at Camp Pendleton">
+        <h3>Become a volunteer</h3>
+        <p>VTS runs entirely on volunteer energy. Help at events, teach a skill, or support outreach. Join a team that gives back to those who gave everything.</p>
+      </div>
+      <a href="https://veteranstransitionsupport.org/volunteer/" class="btn-navy-solid">Apply to volunteer →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ─── -->
+<div class="newsletter-section">
+  <div class="newsletter-text">
+    <h2>Stay in the loop</h2>
+    <p>New classes, free certifications, and veteran resources — straight to your inbox.</p>
+  </div>
+  <form class="nl-form" onsubmit="return false;">
+    <input type="email" placeholder="Your email address">
+    <button class="btn-red-solid" type="submit">Subscribe</button>
+  </form>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/logo.png" alt="VTS Logo">
+      <p>Veterans Transition Support is a 100% all-volunteer 501(c)(3) nonprofit dedicated to helping veterans, active duty, reservists, and military spouses transition into meaningful civilian careers through free job training and community support.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/veteranstransitionsupport" class="soc-btn">f</a>
+        <a href="https://twitter.com/supportavet" class="soc-btn">𝕏</a>
+        <a href="https://www.instagram.com/veteranstransitionsupport/" class="soc-btn">ig</a>
+        <a href="https://www.linkedin.com/company/veterans-transition-support/" class="soc-btn">in</a>
+        <a href="https://www.youtube.com/channel/UC9_dpSRs9FMZy5eQBemcrEA" class="soc-btn">▶</a>
+      </div>
+      <div class="trust-imgs">
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/Image20250110021434.png" alt="Guidestar Platinum">
+        <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/Image20250110021710-1024x1024.png" alt="Great Nonprofits">
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="https://veteranstransitionsupport.org/no-cost-osha-10-safety-training/">OSHA 10 — Free</a></li>
+        <li><a href="https://veteranstransitionsupport.org/osha-30-training-for-veterans/">OSHA 30</a></li>
+        <li><a href="https://veteranstransitionsupport.org/no-cost-lean-six-sigma-yellow-belt-lssyb/">LSSYB — Free</a></li>
+        <li><a href="https://veteranstransitionsupport.org/leansixsigmagreenbelt-for-veterans/">LSSGB</a></li>
+        <li><a href="https://veteranstransitionsupport.org/no-cost-coursera/">Free Coursera</a></li>
+        <li><a href="https://veteranstransitionsupport.org/career-transition-program/">Career Transition</a></li>
+        <li><a href="https://veteranstransitionsupport.org/va-disability-filing/">VA Disability Filing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="https://veteranstransitionsupport.org/about-us/">About VTS</a></li>
+        <li><a href="https://veteranstransitionsupport.org/board-members/">Board of Directors</a></li>
+        <li><a href="https://veteranstransitionsupport.org/our-instructors/">Instructors</a></li>
+        <li><a href="https://veteranstransitionsupport.org/testimonies/">Success Stories</a></li>
+        <li><a href="https://veteranstransitionsupport.org/financials/">Financials</a></li>
+        <li><a href="https://veteranstransitionsupport.org/volunteer/">Volunteer</a></li>
+        <li><a href="https://veteranstransitionsupport.org/donors-sponsors/">Donors &amp; Sponsors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <span>334 Via Vera Cruz, Suite #203<br>San Marcos, CA 92078</span>
+        <a href="tel:17607980333">1-760-798-0333</a>
+        <a href="mailto:info@veteranstransitionsupport.org">info@veteranstransitionsupport.org</a>
+        <a href="https://veteranstransitionsupport.org/events/" class="hl">→ Upcoming classes</a>
+        <a href="https://veteranstransitionsupport.org/donate/" class="hl">→ Donate to VTS</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Veterans Transition Support — All Rights Reserved</p>
+    <a href="https://veteranstransitionsupport.org/privacy-policy/">Privacy Policy</a>
+  </div>
+</footer>
+
+<div class="mockup-badge">📐 Mockup v2 — for client review</div>
+
+<script>
+// Close popup
+function closePopup() {
+  const p = document.getElementById('social-popup');
+  p.style.opacity = '0';
+  p.style.transition = 'opacity 0.25s ease';
+  setTimeout(() => p.style.display = 'none', 250);
+}
+// Close on backdrop click
+document.getElementById('social-popup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+
+// Stats counter animation
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  if (!target) return;
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    const sup = el.querySelector('.stat-sup');
+    el.childNodes[0].textContent = current >= 1000 ? (current/1000).toFixed(current >= 10000 ? 0 : 0) + 'k' : current;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-num[data-target]').forEach(animateCounter);
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelector('.stats-bar') && statsObs.observe(document.querySelector('.stats-bar'));
+
+// Fade up on scroll
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+// Donate amount buttons
+document.querySelectorAll('.amt-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const donateLink = btn.closest('.donate-card').querySelector('a');
+    if (donateLink) donateLink.textContent = `Donate ${btn.textContent} →`;
+  });
+});
+</script>
+</body>
+</html>

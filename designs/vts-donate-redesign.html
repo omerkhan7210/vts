@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate to Veterans Transition Support — Fund Free Veteran Training in San Diego</title>
+<meta name="description" content="Your tax-deductible donation funds free OSHA, Lean Six Sigma, and career training for veterans in San Diego. 100% all-volunteer nonprofit. Every dollar goes to programs. Donate today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────── */
+:root{
+  --navy:    #0b1d38;
+  --navy-2:  #122248;
+  --navy-3:  #1a2f5e;
+  --gold:    #c8933a;
+  --gold-lt: #e2ab58;
+  --gold-dim:#7a5520;
+  --cream:   #f6f1e9;
+  --off:     #faf8f4;
+  --white:   #ffffff;
+  --text:    #1a2332;
+  --mid:     #637085;
+  --border:  #e4ddd2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--off);color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* ─── NAV ────────────────────────────────────────── */
+.nav{
+  background:var(--navy);
+  padding:14px 52px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  border-bottom:3px solid var(--gold);
+}
+.nav-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:16px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;
+}
+.nav-logo b{color:var(--gold)}
+.nav-link{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  transition:color .15s;
+}
+.nav-link:hover{color:#fff}
+
+/* ─── SPLIT HERO ─────────────────────────────────── */
+.hero{
+  display:grid;grid-template-columns:1fr 480px;
+  min-height:88vh;
+}
+
+/* LEFT — dark motivational side */
+.hero-left{
+  background:var(--navy);
+  padding:80px 56px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+/* star-field dots */
+.hero-left::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1px),
+    radial-gradient(circle,rgba(200,147,58,.18) 1px,transparent 1px);
+  background-size:48px 48px,96px 96px;
+  background-position:0 0,24px 24px;
+  pointer-events:none;
+}
+.hero-left::after{
+  content:'';position:absolute;
+  left:-80px;bottom:-80px;
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,147,58,.14) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(200,147,58,.15);
+  border:1px solid rgba(200,147,58,.3);
+  color:var(--gold-lt);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  padding:5px 15px;margin-bottom:28px;align-self:flex-start;
+  position:relative;z-index:1;
+}
+.hero-eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;
+}
+.hero-left h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,5.5vw,72px);
+  font-weight:900;line-height:1.02;
+  color:#fff;margin-bottom:26px;
+  position:relative;z-index:1;
+}
+.hero-left h1 em{font-style:italic;color:var(--gold)}
+.hero-left p{
+  font-size:15px;font-weight:300;
+  color:rgba(255,255,255,.65);
+  line-height:1.8;max-width:440px;
+  margin-bottom:40px;
+  position:relative;z-index:1;
+}
+/* impact proof row */
+.proof-row{
+  display:flex;gap:28px;flex-wrap:wrap;
+  position:relative;z-index:1;
+}
+.proof-item{
+  border-left:2px solid var(--gold);
+  padding-left:14px;
+}
+.proof-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:28px;font-weight:700;color:var(--gold);line-height:1;
+}
+.proof-lbl{
+  font-size:11px;color:rgba(255,255,255,.5);
+  text-transform:uppercase;letter-spacing:1px;margin-top:3px;
+}
+
+/* RIGHT — donation form side */
+.hero-right{
+  background:var(--white);
+  padding:56px 44px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--border);
+  position:relative;
+}
+.form-kicker{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.hero-right h2{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;color:var(--navy);
+  line-height:1.2;margin-bottom:28px;
+}
+
+/* frequency toggle */
+.freq-toggle{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1.5px solid var(--border);
+  margin-bottom:24px;overflow:hidden;
+}
+.freq-btn{
+  padding:12px;text-align:center;cursor:pointer;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mid);background:transparent;border:none;
+  transition:all .15s;
+}
+.freq-btn.active{background:var(--navy);color:#fff}
+.freq-btn:not(.active):hover{background:var(--cream)}
+
+/* amount pills */
+.amount-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-bottom:10px;
+}
+.amount-pill{
+  padding:14px 8px;text-align:center;cursor:pointer;
+  border:1.5px solid var(--border);background:transparent;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:700;color:var(--text);
+  transition:all .15s;position:relative;
+}
+.amount-pill:hover{border-color:var(--gold);color:var(--gold)}
+.amount-pill.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+.amount-pill .pill-impact{
+  display:block;font-size:9px;font-weight:400;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-top:3px;
+  opacity:0;transition:opacity .15s;
+}
+.amount-pill.selected .pill-impact{opacity:1}
+
+/* custom amount */
+.custom-row{
+  border:1.5px solid var(--border);
+  display:flex;align-items:center;
+  margin-bottom:24px;
+  overflow:hidden;
+  transition:border-color .15s;
+}
+.custom-row:focus-within{border-color:var(--navy)}
+.custom-prefix{
+  padding:12px 16px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:700;color:var(--mid);
+  background:var(--cream);border-right:1.5px solid var(--border);
+  flex-shrink:0;
+}
+.custom-input{
+  flex:1;padding:12px 14px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:600;color:var(--navy);
+  border:none;outline:none;background:transparent;
+}
+.custom-input::placeholder{color:var(--mid);font-weight:400}
+
+/* tribute toggle */
+.tribute-toggle{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:24px;cursor:pointer;
+  padding:12px 16px;
+  border:1.5px solid var(--border);
+  transition:border-color .15s;
+}
+.tribute-toggle:hover{border-color:var(--gold-lt)}
+.toggle-check{
+  width:18px;height:18px;border:2px solid var(--border);
+  flex-shrink:0;transition:all .15s;
+  display:flex;align-items:center;justify-content:center;
+}
+.toggle-check.checked{background:var(--navy);border-color:var(--navy)}
+.toggle-check.checked::after{content:'✓';font-size:11px;color:#fff;font-weight:700}
+.tribute-lbl{font-size:13px;color:var(--text)}
+
+/* donate CTA */
+.donate-cta{
+  background:var(--gold);
+  width:100%;padding:16px;border:none;cursor:pointer;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--navy);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:background .15s;
+  margin-bottom:14px;
+}
+.donate-cta:hover{background:var(--gold-lt)}
+.donate-cta .cta-amount{font-size:18px}
+
+/* payment icons row */
+.payment-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;margin-bottom:16px;
+}
+.pay-badge{
+  background:var(--cream);border:1px solid var(--border);
+  padding:5px 11px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--mid);
+}
+.trust-note{
+  text-align:center;font-size:11px;color:var(--mid);line-height:1.6;
+}
+.trust-note a{color:var(--navy);border-bottom:1px solid var(--border)}
+
+/* ─── IMPACT SECTION ──────────────────────────────── */
+.impact-section{
+  background:var(--cream);
+  border-top:1px solid var(--border);
+  padding:72px 52px;
+}
+.impact-inner{max-width:1160px;margin:0 auto}
+.impact-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:48px;margin-bottom:56px;align-items:end;
+}
+.impact-header-copy .kicker{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.impact-header-copy h2{
+  font-family:'Playfair Display',serif;
+  font-size:36px;font-weight:700;color:var(--navy);
+  line-height:1.15;
+}
+.impact-header-copy h2 em{font-style:italic;color:var(--gold)}
+.impact-header p{
+  font-size:14px;color:var(--mid);line-height:1.8;
+  padding-top:8px;
+}
+
+/* cost cards */
+.cost-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  margin-bottom:52px;
+}
+.cost-card{
+  background:var(--white);
+  padding:28px 24px;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.cost-card:hover{background:var(--navy)}
+.cost-card:hover .cost-amount{color:var(--gold)}
+.cost-card:hover .cost-label{color:#fff}
+.cost-card:hover .cost-desc{color:rgba(255,255,255,.6)}
+.cost-card:hover .cost-icon{color:var(--gold)}
+.cost-icon{font-size:28px;margin-bottom:12px;transition:color .2s}
+.cost-amount{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:32px;font-weight:700;color:var(--navy);
+  line-height:1;margin-bottom:4px;transition:color .2s;
+}
+.cost-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--navy);margin-bottom:8px;transition:color .2s;
+}
+.cost-desc{font-size:12px;color:var(--mid);line-height:1.6;transition:color .2s}
+
+/* testimonial strip */
+.testimony-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.testimony-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:28px;
+  position:relative;
+}
+.testimony-card::before{
+  content:'"';
+  font-family:'Playfair Display',serif;
+  font-size:72px;line-height:1;
+  color:var(--gold);
+  position:absolute;top:16px;right:20px;
+  opacity:.25;
+}
+.testimony-text{
+  font-size:13px;color:var(--text);line-height:1.75;
+  font-style:italic;margin-bottom:18px;
+}
+.testimony-author{display:flex;align-items:center;gap:12px}
+.testimony-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--navy);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:700;color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.testimony-name{font-size:12px;font-weight:500;color:var(--navy)}
+.testimony-branch{font-size:11px;color:var(--mid)}
+
+/* ─── OTHER WAYS TO GIVE ──────────────────────────── */
+.give-section{
+  background:var(--white);
+  border-top:1px solid var(--border);
+  padding:64px 52px;
+}
+.give-inner{max-width:1160px;margin:0 auto}
+.give-inner .kicker{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.give-inner h2{
+  font-family:'Playfair Display',serif;
+  font-size:30px;font-weight:700;color:var(--navy);
+  margin-bottom:36px;
+}
+.give-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.give-card{
+  border:1px solid var(--border);
+  padding:28px 24px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.give-card:hover{
+  border-color:var(--gold);
+  box-shadow:0 4px 20px rgba(13,31,60,.08);
+}
+.give-icon{
+  font-size:24px;
+  width:44px;height:44px;
+  background:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:4px;
+}
+.give-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:16px;font-weight:700;letter-spacing:.5px;
+  color:var(--navy);
+}
+.give-desc{font-size:12px;color:var(--mid);line-height:1.7}
+.give-link{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);border-bottom:1.5px solid var(--gold);
+  padding-bottom:2px;align-self:flex-start;
+  transition:color .15s;margin-top:auto;
+}
+.give-link:hover{color:var(--gold)}
+
+/* ─── BOTTOM CTA BANNER ──────────────────────────── */
+.bottom-banner{
+  background:var(--navy);
+  padding:60px 52px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.bottom-banner::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -48deg,transparent,transparent 24px,
+    rgba(200,147,58,.04) 24px,rgba(200,147,58,.04) 25px
+  );
+  pointer-events:none;
+}
+.bottom-banner h2{
+  font-family:'Playfair Display',serif;
+  font-size:38px;font-weight:900;color:#fff;
+  line-height:1.1;margin-bottom:14px;
+  position:relative;z-index:1;
+}
+.bottom-banner h2 em{font-style:italic;color:var(--gold)}
+.bottom-banner p{
+  font-size:15px;color:rgba(255,255,255,.6);
+  max-width:520px;margin:0 auto 32px;line-height:1.7;
+  position:relative;z-index:1;
+}
+.bb-btn{
+  display:inline-block;
+  background:var(--gold);color:var(--navy);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  padding:15px 36px;
+  transition:background .15s;
+  position:relative;z-index:1;
+}
+.bb-btn:hover{background:var(--gold-lt)}
+
+/* ─── SEO FOOTER CONTENT ─────────────────────────── */
+.seo-foot{
+  background:var(--cream);border-top:1px solid var(--border);
+  padding:48px 52px;
+}
+.seo-foot-inner{
+  max-width:1160px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+}
+.seo-foot-col h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);margin-bottom:10px;
+  padding-bottom:8px;border-bottom:2px solid var(--gold);display:inline-block;
+}
+.seo-foot-col p{font-size:13px;color:#666;line-height:1.8}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:56px 28px;min-height:auto}
+  .hero-right{padding:40px 28px;border-left:none;border-top:1px solid var(--border)}
+  .impact-header{grid-template-columns:1fr}
+  .cost-grid{grid-template-columns:1fr 1fr}
+  .testimony-strip{grid-template-columns:1fr}
+  .give-grid{grid-template-columns:1fr 1fr}
+  .seo-foot-inner{grid-template-columns:1fr}
+  .impact-section,.give-section,.seo-foot,.bottom-banner,.nav{padding-left:24px;padding-right:24px}
+}
+@media(max-width:540px){
+  .amount-grid{grid-template-columns:repeat(2,1fr)}
+  .give-grid{grid-template-columns:1fr}
+  .cost-grid{grid-template-columns:1fr 1fr}
+  .proof-row{gap:18px}
+  .hero-left h1{font-size:40px}
+}
+
+/* animations */
+.fade-up{
+  opacity:0;transform:translateY(18px);
+  animation:fu .5s ease forwards;
+}
+@keyframes fu{to{opacity:1;transform:translateY(0)}}
+.fu1{animation-delay:.05s}.fu2{animation-delay:.13s}
+.fu3{animation-delay:.21s}.fu4{animation-delay:.29s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-logo">Veterans <b>Transition</b> Support</div>
+  <a href="/donors-sponsors/" class="nav-link">Our Sponsors ↗</a>
+</nav>
+
+<!-- ─── SPLIT HERO ────────────────────────────────── -->
+<main id="main">
+<section class="hero" aria-labelledby="donate-heading">
+
+  <!-- LEFT: motivation -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">501(c)(3) · Tax-Deductible Donation</div>
+    <h1 id="donate-heading">Fund a <em>Veteran's</em><br>Next Career</h1>
+    <p>VTS is an all-volunteer nonprofit. Every dollar you donate goes directly to program delivery — OSHA certification fees, Lean Six Sigma training, Coursera enrollments, and career counseling for veterans and military families in San Diego.</p>
+    <div class="proof-row">
+      <div class="proof-item">
+        <div class="proof-num">500+</div>
+        <div class="proof-lbl">Veterans Trained</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">$0</div>
+        <div class="proof-lbl">Cost to Veterans</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">100%</div>
+        <div class="proof-lbl">Volunteer Run</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">2014</div>
+        <div class="proof-lbl">Serving SD Veterans</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: donation form -->
+  <div class="hero-right" aria-label="Donation form">
+    <div class="form-kicker">Make a Donation</div>
+    <h2>Choose Your Impact</h2>
+
+    <!-- Frequency toggle -->
+    <div class="freq-toggle" role="group" aria-label="Donation frequency">
+      <button class="freq-btn active" id="btn-one" onclick="setFreq('one')">One-Time</button>
+      <button class="freq-btn" id="btn-monthly" onclick="setFreq('monthly')">Monthly</button>
+    </div>
+
+    <!-- Amount grid -->
+    <div class="amount-grid" role="group" aria-label="Donation amount selection">
+      <button class="amount-pill" onclick="selectAmount(this,'25')">
+        $25<span class="pill-impact">Covers materials</span>
+      </button>
+      <button class="amount-pill selected" onclick="selectAmount(this,'50')">
+        $50<span class="pill-impact">Funds 1 OSHA seat</span>
+      </button>
+      <button class="amount-pill" onclick="selectAmount(this,'100')">
+        $100<span class="pill-impact">Pays cert fees</span>
+      </button>
+      <button class="amount-pill" onclick="selectAmount(this,'250')">
+        $250<span class="pill-impact">Full class kit</span>
+      </button>
+      <button class="amount-pill" onclick="selectAmount(this,'500')">
+        $500<span class="pill-impact">5 veteran seats</span>
+      </button>
+      <button class="amount-pill" onclick="selectAmount(this,'1000')">
+        $1,000<span class="pill-impact">Full cohort</span>
+      </button>
+    </div>
+
+    <!-- Custom amount -->
+    <div class="custom-row">
+      <div class="custom-prefix">$</div>
+      <input type="number" class="custom-input" id="custom-amt" placeholder="Other amount" min="1" aria-label="Custom donation amount" oninput="updateCTA()">
+    </div>
+
+    <!-- In honor/memory toggle -->
+    <div class="tribute-toggle" onclick="toggleTribute(this)" role="checkbox" aria-checked="false" tabindex="0">
+      <div class="toggle-check" id="tribute-check"></div>
+      <span class="tribute-lbl">Dedicate this donation in honor or memory of someone</span>
+    </div>
+
+    <!-- CTA Button -->
+    <button class="donate-cta" id="donate-btn" onclick="handleDonate()">
+      <span>Donate</span>
+      <span class="cta-amount" id="cta-amount">$50</span>
+      <span>via Stripe or PayPal</span>
+    </button>
+
+    <!-- Payment options -->
+    <div class="payment-row" aria-label="Accepted payment methods">
+      <span class="pay-badge">💳 Credit Card</span>
+      <span class="pay-badge">PayPal</span>
+      <span class="pay-badge">Apple Pay</span>
+      <span class="pay-badge">Google Pay</span>
+    </div>
+
+    <p class="trust-note">
+      Secure &amp; encrypted. VTS is a 501(c)(3) nonprofit — your donation is tax-deductible.<br>
+      EIN available on request. <a href="/financials/">View our financials.</a>
+    </p>
+  </div>
+
+</section>
+
+<!-- ─── IMPACT SECTION ─────────────────────────────── -->
+<section class="impact-section" aria-labelledby="impact-heading">
+  <div class="impact-inner">
+    <div class="impact-header">
+      <div class="impact-header-copy">
+        <div class="kicker">Where Your Money Goes</div>
+        <h2 id="impact-heading">Every Dollar Funds<br><em>Real Programs</em></h2>
+      </div>
+      <p>VTS has no paid staff and no overhead bloat. When you donate, your money covers the direct cost of delivering free programs to veterans — certification fees, training materials, instructor costs, and Zoom licensing. Nothing else.</p>
+    </div>
+
+    <!-- Cost breakdown cards -->
+    <div class="cost-grid" role="list">
+      <div class="cost-card" role="listitem">
+        <div class="cost-icon">🦺</div>
+        <div class="cost-amount">$50</div>
+        <div class="cost-label">One OSHA Seat</div>
+        <div class="cost-desc">Covers the OSHA card processing fee and materials for one veteran to earn their OSHA 10 or OSHA 30 certification.</div>
+      </div>
+      <div class="cost-card" role="listitem">
+        <div class="cost-icon">📊</div>
+        <div class="cost-amount">$100</div>
+        <div class="cost-label">LSS Certification</div>
+        <div class="cost-desc">Covers the full cost of one Lean Six Sigma Yellow Belt or Green Belt certification for a veteran — including materials and exam fees.</div>
+      </div>
+      <div class="cost-card" role="listitem">
+        <div class="cost-icon">💻</div>
+        <div class="cost-amount">$60</div>
+        <div class="cost-label">1 Year Coursera Access</div>
+        <div class="cost-desc">Funds one veteran or military spouse's full-year access to hundreds of Coursera professional certification courses.</div>
+      </div>
+      <div class="cost-card" role="listitem">
+        <div class="cost-icon">🎓</div>
+        <div class="cost-amount">$1,000</div>
+        <div class="cost-label">Fund a Full Cohort</div>
+        <div class="cost-desc">Sponsors an entire class session — instructor coordination, materials, certification processing, and Zoom hosting for a full cohort of veterans.</div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimony-strip" role="list">
+      <article class="testimony-card" role="listitem">
+        <p class="testimony-text">"It was more than just an OSHA class — it was an event that provided information for many things, at many levels, to improve the quality of life for those of us who served."</p>
+        <div class="testimony-author">
+          <div class="testimony-avatar">TK</div>
+          <div>
+            <div class="testimony-name">Toby K.</div>
+            <div class="testimony-branch">USMC Retired — OSHA Graduate</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimony-card" role="listitem">
+        <p class="testimony-text">"I am really thankful to have met you. From the classes, VA rating, and the career help has taken me a long way. It's been life-changing for me."</p>
+        <div class="testimony-author">
+          <div class="testimony-avatar">ES</div>
+          <div>
+            <div class="testimony-name">Eduardo S.</div>
+            <div class="testimony-branch">Army Veteran — Career Graduate</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimony-card" role="listitem">
+        <p class="testimony-text">"You're a true inspiration and shining light in arguably the most tenuous and stressful time for veterans. Your work matters."</p>
+        <div class="testimony-author">
+          <div class="testimony-avatar">RV</div>
+          <div>
+            <div class="testimony-name">Ron V.</div>
+            <div class="testimony-branch">U.S. Navy Veteran</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OTHER WAYS TO GIVE ───────────────────────────── -->
+<section class="give-section" aria-labelledby="give-heading">
+  <div class="give-inner">
+    <div class="kicker">More Ways to Support VTS</div>
+    <h2 id="give-heading">Beyond a One-Time Donation</h2>
+    <div class="give-grid">
+      <div class="give-card">
+        <div class="give-icon">🔁</div>
+        <div class="give-title">Monthly Giving</div>
+        <p class="give-desc">A recurring monthly donation — even $10/month — gives VTS predictable funding to plan and deliver programs consistently throughout the year.</p>
+        <a href="#" class="give-link" onclick="setFreq('monthly');window.scrollTo({top:0,behavior:'smooth'});return false">Set Up Monthly Giving →</a>
+      </div>
+      <div class="give-card">
+        <div class="give-icon">🏢</div>
+        <div class="give-title">Corporate Sponsorship</div>
+        <p class="give-desc">Sponsor a cohort, sponsor a class series, or become a named partner on VTS program materials. Packages are customized for your organization's goals.</p>
+        <a href="/donors-sponsors/#become-sponsor" class="give-link">View Sponsorship Packages →</a>
+      </div>
+      <div class="give-card">
+        <div class="give-icon">🤝</div>
+        <div class="give-title">Volunteer Your Skills</div>
+        <p class="give-desc">VTS is 100% volunteer-run. If you have skills in logistics, social media, fundraising, photography, IT, or nonprofit management — we want to hear from you.</p>
+        <a href="/volunteer-team/" class="give-link">Join the VTS Volunteer Team →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOTTOM BANNER ──────────────────────────────── -->
+<section class="bottom-banner" aria-label="Donation call to action">
+  <h2>A Veteran Served You.<br><em>Now Serve Them Back.</em></h2>
+  <p>Your donation to Veterans Transition Support funds free certifications and career training for veterans in San Diego. It's tax-deductible. It goes 100% to programs. And it changes careers.</p>
+  <a href="#main" class="bb-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Donate Now — It Takes 60 Seconds</a>
+</section>
+
+</main>
+
+<!-- ─── SEO FOOTER CONTENT ────────────────────────── -->
+<section class="seo-foot" aria-label="About VTS donations">
+  <div class="seo-foot-inner">
+    <div class="seo-foot-col">
+      <h3>About VTS</h3>
+      <p>Veterans Transition Support (VTS) is an all-volunteer 501(c)(3) nonprofit founded in 2014 and based in San Marcos, California. We provide free OSHA certifications, Lean Six Sigma training, Coursera access, and career counseling to veterans, transitioning service members, reservists, and military spouses across San Diego and Orange County.</p>
+    </div>
+    <div class="seo-foot-col">
+      <h3>Tax Deductibility</h3>
+      <p>VTS is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent permitted by law. Upon donation you will receive an automatic email receipt for your records. For questions about your donation receipt or our EIN, contact us directly.</p>
+    </div>
+    <div class="seo-foot-col">
+      <h3>Donate to Veterans in San Diego</h3>
+      <p>Every contribution — from a $25 one-time donation to a $1,000 cohort sponsorship — funds programs that help veterans earn industry-recognized certifications and launch careers after military service. VTS has trained 500+ veterans since 2014 at no cost to participants.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+let selectedAmount = 50;
+let isMonthly = false;
+
+function setFreq(type){
+  isMonthly = type === 'monthly';
+  document.getElementById('btn-one').classList.toggle('active', !isMonthly);
+  document.getElementById('btn-monthly').classList.toggle('active', isMonthly);
+  updateCTA();
+}
+
+function selectAmount(el, amount){
+  document.querySelectorAll('.amount-pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedAmount = parseInt(amount);
+  document.getElementById('custom-amt').value = '';
+  updateCTA();
+}
+
+function updateCTA(){
+  const custom = document.getElementById('custom-amt').value;
+  const amt = custom ? parseInt(custom) : selectedAmount;
+  const prefix = isMonthly ? '/mo' : '';
+  document.getElementById('cta-amount').textContent = '$' + (amt || selectedAmount).toLocaleString() + prefix;
+}
+
+function toggleTribute(el){
+  const check = document.getElementById('tribute-check');
+  const isChecked = check.classList.toggle('checked');
+  el.setAttribute('aria-checked', isChecked);
+}
+
+function handleDonate(){
+  const custom = document.getElementById('custom-amt').value;
+  const amt = custom ? parseInt(custom) : selectedAmount;
+  if(!amt || amt < 1){
+    alert('Please enter a donation amount.');
+    return;
+  }
+  // In production: redirect to Stripe/PayPal checkout URL with amount param
+  // e.g. window.location.href = '/checkout/?amount=' + amt + '&recurring=' + isMonthly;
+  alert('Donation flow: $' + amt + (isMonthly ? '/month' : ' one-time') + '\n\nIn production this connects to Stripe or PayPal checkout. Kathy to provide payment processor credentials.');
+}
+
+// keyboard support for tribute toggle
+document.querySelector('.tribute-toggle').addEventListener('keydown', function(e){
+  if(e.key === 'Enter' || e.key === ' '){e.preventDefault();toggleTribute(this)}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tell Us About Your New Job! — VTS Job Landings Board</title>
+<meta name="description" content="Got a new job after VTS training? Share your success story to inspire other veterans. Your landing gets added to the VTS Job Landings Board displayed in our San Diego classrooms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────── */
+:root{
+  --navy:    #0b1d38;
+  --navy-2:  #0f2346;
+  --navy-3:  #172d52;
+  --gold:    #c8933a;
+  --gold-lt: #e2ab58;
+  --gold-bg: #fdf6ea;
+  --green:   #166534;
+  --green-bg:#f0fdf4;
+  --cream:   #f7f2ea;
+  --off:     #faf8f4;
+  --white:   #fff;
+  --text:    #1a2332;
+  --mid:     #637085;
+  --border:  #ddd8ce;
+  --error:   #dc2626;
+  --error-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',sans-serif;
+  background:var(--off);color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* ─── NAV ────────────────────────────────────────── */
+.nav{
+  background:var(--navy);
+  padding:14px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  border-bottom:3px solid var(--gold);
+}
+.nav-logo{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#fff;
+}
+.nav-logo span{color:var(--gold)}
+.nav-board-link{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:500;
+  color:rgba(255,255,255,.6);
+  transition:color .15s;
+}
+.nav-board-link:hover{color:#fff}
+.nav-board-link svg{opacity:.5}
+
+/* ─── PAGE HEADER ────────────────────────────────── */
+.page-header{
+  background:var(--navy-2);
+  padding:64px 48px 56px;
+  position:relative;overflow:hidden;
+}
+/* grid lines texture */
+.page-header::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(200,147,58,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,147,58,.06) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+.page-header::after{
+  content:'';position:absolute;
+  right:-60px;top:-60px;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,147,58,.12) 0%,transparent 65%);
+  pointer-events:none;
+}
+.header-inner{
+  max-width:760px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.header-tag{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(200,147,58,.15);border:1px solid rgba(200,147,58,.3);
+  color:var(--gold-lt);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 14px;margin-bottom:24px;
+}
+.header-tag::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;
+}
+.page-header h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(34px,5vw,56px);
+  font-weight:700;line-height:1.05;color:#fff;
+  margin-bottom:18px;
+}
+.page-header h1 em{font-style:italic;color:var(--gold)}
+.page-header p{
+  font-size:15px;font-weight:300;
+  color:rgba(255,255,255,.65);line-height:1.8;
+  max-width:560px;
+}
+
+/* progress indicator */
+.progress-bar{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  padding:16px 24px;
+  margin-top:32px;
+  display:flex;align-items:center;gap:0;
+  position:relative;z-index:1;
+}
+.prog-step{
+  display:flex;align-items:center;gap:10px;
+  flex:1;
+}
+.prog-step:not(:last-child)::after{
+  content:'';flex:1;height:1px;
+  background:rgba(255,255,255,.12);
+  margin:0 10px;
+}
+.prog-dot{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:600;flex-shrink:0;
+}
+.prog-dot.done{background:var(--gold);color:var(--navy)}
+.prog-dot.active{background:rgba(200,147,58,.25);border:2px solid var(--gold);color:var(--gold)}
+.prog-dot.pending{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.35)}
+.prog-label{
+  font-size:11px;font-weight:500;letter-spacing:.5px;
+  color:rgba(255,255,255,.5);white-space:nowrap;
+}
+.prog-label.active{color:rgba(255,255,255,.9)}
+
+/* ─── FORM LAYOUT ────────────────────────────────── */
+.form-wrap{
+  max-width:760px;margin:0 auto;
+  padding:48px 48px 80px;
+}
+
+/* section card */
+.form-section{
+  background:var(--white);
+  border:1px solid var(--border);
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.section-head{
+  background:var(--navy);
+  padding:18px 28px;
+  display:flex;align-items:center;gap:14px;
+}
+.section-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:600;
+  background:var(--gold);color:var(--navy);
+  width:24px;height:24px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.section-title{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:#fff;
+}
+.section-subtitle{
+  font-size:11px;color:rgba(255,255,255,.45);margin-left:auto;
+}
+.section-body{
+  padding:28px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.section-body.full{grid-template-columns:1fr}
+.section-body.three{grid-template-columns:1fr 1fr 1fr}
+
+/* field */
+.field{display:flex;flex-direction:column;gap:6px}
+.field.span2{grid-column:span 2}
+.field label{
+  font-size:11px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);display:flex;align-items:center;gap:6px;
+}
+.field label .req{color:var(--gold);font-size:14px;line-height:1}
+.field label .opt{
+  font-size:10px;font-weight:400;letter-spacing:1px;
+  color:var(--mid);text-transform:uppercase;
+  background:var(--cream);padding:1px 6px;
+}
+.field .hint{font-size:11px;color:var(--mid);line-height:1.5;margin-top:2px}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=number],
+select,
+textarea{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:14px;font-weight:400;
+  color:var(--text);
+  background:var(--off);
+  border:1.5px solid var(--border);
+  padding:11px 14px;
+  outline:none;
+  transition:border-color .15s,background .15s;
+  width:100%;
+  -webkit-appearance:none;appearance:none;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--navy);background:var(--white);
+}
+input.error,select.error,textarea.error{
+  border-color:var(--error);background:var(--error-bg);
+}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23637085' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:38px;cursor:pointer;
+}
+textarea{resize:vertical;min-height:110px;line-height:1.6}
+
+/* salary field with prefix */
+.salary-wrap{display:flex;border:1.5px solid var(--border);transition:border-color .15s}
+.salary-wrap:focus-within{border-color:var(--navy)}
+.salary-prefix{
+  background:var(--cream);border-right:1.5px solid var(--border);
+  padding:11px 14px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:14px;font-weight:600;color:var(--mid);
+  flex-shrink:0;display:flex;align-items:center;
+}
+.salary-wrap input{border:none;background:transparent;flex:1}
+.salary-wrap input:focus{background:transparent}
+
+/* radio group — branch */
+.radio-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.radio-card{
+  border:1.5px solid var(--border);
+  padding:12px 10px;
+  cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  text-align:center;
+  transition:all .15s;
+  position:relative;
+}
+.radio-card:hover{border-color:var(--gold-lt)}
+.radio-card.selected{border-color:var(--navy);background:var(--navy)}
+.radio-card.selected .radio-branch{color:#fff}
+.radio-card.selected .radio-icon{filter:none}
+.radio-card input{position:absolute;opacity:0;width:0;height:0}
+.radio-icon{font-size:20px;line-height:1}
+.radio-branch{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--navy);
+}
+
+/* checkbox group — program */
+.check-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.check-item{
+  border:1.5px solid var(--border);
+  padding:12px 14px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:10px;
+  transition:all .15s;
+}
+.check-item:hover{border-color:var(--gold-lt)}
+.check-item.selected{border-color:var(--navy);background:var(--navy-2)}
+.check-item.selected .check-box{background:var(--gold);border-color:var(--gold)}
+.check-item.selected .check-label{color:#fff}
+.check-item input{position:absolute;opacity:0;width:0;height:0}
+.check-box{
+  width:16px;height:16px;border:2px solid var(--border);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.check-box.checked::after{content:'✓';font-size:10px;color:var(--navy);font-weight:700}
+.check-label{
+  font-size:12px;font-weight:500;color:var(--text);
+  transition:color .15s;
+}
+
+/* ─── PRIVACY SECTION ────────────────────────────── */
+.privacy-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  margin-bottom:20px;
+}
+.privacy-head{
+  background:var(--gold);
+  padding:16px 28px;
+  display:flex;align-items:center;gap:12px;
+}
+.privacy-head-icon{font-size:18px}
+.privacy-head-text{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);
+}
+.privacy-body{padding:28px;display:flex;flex-direction:column;gap:16px}
+.privacy-note{
+  font-size:13px;color:var(--mid);line-height:1.7;
+  background:var(--cream);padding:14px 16px;
+  border-left:3px solid var(--gold);
+}
+
+/* consent row */
+.consent-row{
+  border:1.5px solid var(--border);
+  padding:16px 18px;
+  display:flex;align-items:flex-start;gap:14px;
+  cursor:pointer;transition:all .15s;
+}
+.consent-row:hover{border-color:var(--gold-lt)}
+.consent-row.checked-row{border-color:var(--navy);background:var(--navy-2)}
+.consent-row.checked-row .consent-text{color:rgba(255,255,255,.85)}
+.consent-row.checked-row .consent-sub{color:rgba(255,255,255,.45)}
+.consent-box{
+  width:20px;height:20px;border:2px solid var(--border);
+  flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.consent-box.checked{background:var(--gold);border-color:var(--gold)}
+.consent-box.checked::after{content:'✓';font-size:12px;color:var(--navy);font-weight:700}
+.consent-text{
+  font-size:13px;font-weight:500;color:var(--text);line-height:1.4;
+  transition:color .15s;
+}
+.consent-sub{font-size:11px;color:var(--mid);margin-top:3px;transition:color .15s}
+
+/* required consent */
+.consent-required{
+  border-color:rgba(200,147,58,.4);
+}
+.consent-req-badge{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  background:var(--gold);color:var(--navy);
+  padding:2px 7px;margin-left:8px;vertical-align:middle;
+}
+
+/* ─── SUBMIT SECTION ─────────────────────────────── */
+.submit-section{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:32px 28px;
+  margin-bottom:20px;
+}
+.submit-note{
+  font-size:13px;color:var(--mid);line-height:1.7;
+  display:flex;align-items:flex-start;gap:10px;
+  margin-bottom:24px;
+}
+.submit-note-icon{
+  width:32px;height:32px;background:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;margin-top:1px;
+}
+.submit-btn{
+  width:100%;padding:18px;border:none;cursor:pointer;
+  background:var(--navy);color:#fff;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  transition:background .15s;
+  margin-bottom:12px;
+}
+.submit-btn:hover{background:var(--gold);color:var(--navy)}
+.submit-btn:disabled{
+  background:var(--border);color:var(--mid);cursor:not-allowed;
+}
+.submit-sub{
+  text-align:center;font-size:11px;color:var(--mid);line-height:1.6;
+}
+
+/* ─── SUCCESS STATE ──────────────────────────────── */
+.success-overlay{
+  display:none;
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:60px 40px;
+  text-align:center;
+  margin-bottom:20px;
+}
+.success-overlay.visible{display:block}
+.success-icon{font-size:52px;margin-bottom:20px}
+.success-overlay h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:28px;font-weight:700;color:var(--navy);
+  margin-bottom:12px;
+}
+.success-overlay h2 em{font-style:italic;color:var(--gold)}
+.success-overlay p{
+  font-size:14px;color:var(--mid);line-height:1.8;
+  max-width:480px;margin:0 auto 28px;
+}
+.success-board-link{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--navy);color:#fff;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  padding:13px 28px;
+  transition:background .15s;
+}
+.success-board-link:hover{background:var(--gold);color:var(--navy)}
+
+/* ─── SIDEBAR INFO (on wider screens wraps the form) */
+.page-layout{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:0;
+  max-width:1060px;
+  margin:0 auto;
+  align-items:start;
+}
+.sidebar-col{
+  padding:48px 0 80px 28px;
+  display:flex;flex-direction:column;gap:20px;
+}
+.side-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:22px;
+}
+.side-card-head{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.side-card p{font-size:12px;color:var(--mid);line-height:1.7}
+
+.side-card.board-preview{
+  background:var(--navy);border-color:var(--navy-3);
+}
+.side-card.board-preview .side-card-head{color:var(--gold)}
+.side-card.board-preview p{color:rgba(255,255,255,.55)}
+
+.board-entry-preview{
+  background:var(--navy-3);
+  border:1px solid rgba(200,147,58,.2);
+  padding:14px;
+  margin-top:12px;
+}
+.bep-name{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;font-weight:600;color:#fff;margin-bottom:2px;
+}
+.bep-detail{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:6px}
+.bep-job{font-size:12px;color:var(--gold-lt);font-weight:500;margin-bottom:4px}
+.bep-note{font-size:11px;color:rgba(255,255,255,.55);line-height:1.5;font-style:italic}
+.bep-program{
+  display:inline-block;margin-top:8px;
+  background:var(--gold);color:var(--navy);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  padding:2px 8px;
+}
+
+.step-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:10px}
+.step-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:12px;color:var(--mid);line-height:1.5;
+}
+.step-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:600;
+  background:var(--cream);color:var(--navy);
+  width:20px;height:20px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:900px){
+  .page-layout{grid-template-columns:1fr}
+  .sidebar-col{padding:0 24px 48px;display:none}/* hide sidebar on mobile — form first */
+  .form-wrap{padding:32px 20px 60px}
+  .page-header{padding:48px 20px 44px}
+  .nav{padding:14px 20px}
+  .section-body{grid-template-columns:1fr}
+  .section-body.three{grid-template-columns:1fr 1fr}
+  .field.span2{grid-column:span 1}
+  .radio-grid{grid-template-columns:repeat(3,1fr)}
+  .progress-bar{display:none}
+}
+@media(max-width:480px){
+  .radio-grid{grid-template-columns:repeat(2,1fr)}
+  .check-grid{grid-template-columns:1fr}
+  .section-body.three{grid-template-columns:1fr}
+}
+
+/* anim */
+.fade-in{opacity:0;transform:translateY(14px);animation:fi .45s ease forwards}
+@keyframes fi{to{opacity:1;transform:translateY(0)}}
+.fi1{animation-delay:.05s}.fi2{animation-delay:.12s}.fi3{animation-delay:.2s}
+.fi4{animation-delay:.28s}.fi5{animation-delay:.36s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-logo">Veterans <span>Transition</span> Support</div>
+  <a href="/job-landings/" class="nav-board-link">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1l1.5 4.5H13L9.5 8l1.5 4.5L7 10l-4 2.5L4.5 8 1 5.5h4.5z"/></svg>
+    View Job Landings Board
+  </a>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header" role="banner">
+  <div class="header-inner">
+    <div class="header-tag">VTS Job Landings Board</div>
+    <h1>Tell Us About<br>Your <em>New Job!</em></h1>
+    <p>You landed. Now inspire the next veteran. Share your job landing with VTS and your story gets added to the board displayed in our San Diego classrooms — and online for every veteran currently in training.</p>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" role="navigation" aria-label="Form sections">
+      <div class="prog-step">
+        <div class="prog-dot active">1</div>
+        <span class="prog-label active">Your Info</span>
+      </div>
+      <div class="prog-step">
+        <div class="prog-dot pending">2</div>
+        <span class="prog-label">Job Details</span>
+      </div>
+      <div class="prog-step">
+        <div class="prog-dot pending">3</div>
+        <span class="prog-label">Your Story</span>
+      </div>
+      <div class="prog-step">
+        <div class="prog-dot pending">4</div>
+        <span class="prog-label">Privacy</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FORM + SIDEBAR -->
+<div class="page-layout">
+
+<!-- ─── FORM ─────────────────────────────────────── -->
+<form id="job-form" novalidate>
+<div class="form-wrap">
+
+  <!-- SUCCESS STATE (hidden by default) -->
+  <div class="success-overlay" id="success-state" role="alert" aria-live="polite">
+    <div class="success-icon">🎖️</div>
+    <h2>Your Landing Is <em>Submitted!</em></h2>
+    <p>Thank you for sharing your success. VTS will review your submission and add it to the Job Landings Board once approved. Your story helps the next veteran believe it's possible.</p>
+    <a href="/job-landings/" class="success-board-link">View the Job Landings Board →</a>
+  </div>
+
+  <!-- ─── SECTION 1: Personal Info ───────────────── -->
+  <div class="form-section fade-in fi1" id="section-1">
+    <div class="section-head">
+      <div class="section-num">1</div>
+      <div class="section-title">Your Information</div>
+      <div class="section-subtitle">Kept private — see Section 4</div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label for="first-name">First Name <span class="req">*</span></label>
+        <input type="text" id="first-name" name="first_name" placeholder="e.g. James" required autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label for="last-name">Last Name <span class="req">*</span></label>
+        <input type="text" id="last-name" name="last_name" placeholder="e.g. Rivera" required autocomplete="family-name">
+        <div class="hint">Your last name can be shown as initial only on the board — you choose in Section 4.</div>
+      </div>
+      <div class="field">
+        <label for="email">Email Address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+        <div class="hint">Used only for submission confirmation. Never shared.</div>
+      </div>
+      <div class="field">
+        <label for="phone">Phone Number <span class="opt">Optional</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="(619) 555-0100" autocomplete="tel">
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 2: Military Background ─────────── -->
+  <div class="form-section fade-in fi2" id="section-2">
+    <div class="section-head">
+      <div class="section-num">2</div>
+      <div class="section-title">Military Background</div>
+      <div class="section-subtitle">Displayed on the board</div>
+    </div>
+    <div class="section-body full">
+
+      <!-- Branch -->
+      <div class="field">
+        <label>Branch of Service <span class="req">*</span></label>
+        <div class="radio-grid" role="radiogroup" aria-required="true" id="branch-group">
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Army" required>
+            <div class="radio-icon">⭐</div>
+            <div class="radio-branch">Army</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Navy">
+            <div class="radio-icon">⚓</div>
+            <div class="radio-branch">Navy</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Marines">
+            <div class="radio-icon">🦅</div>
+            <div class="radio-branch">Marines</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Air Force">
+            <div class="radio-icon">✈️</div>
+            <div class="radio-branch">Air Force</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Coast Guard">
+            <div class="radio-icon">⚓</div>
+            <div class="radio-branch">Coast Guard</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Space Force">
+            <div class="radio-icon">🚀</div>
+            <div class="radio-branch">Space Force</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="National Guard">
+            <div class="radio-icon">🛡️</div>
+            <div class="radio-branch">Nat'l Guard</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Reserves">
+            <div class="radio-icon">🎖️</div>
+            <div class="radio-branch">Reserves</div>
+          </label>
+          <label class="radio-card" onclick="selectRadio(this,'branch-group')">
+            <input type="radio" name="branch" value="Military Spouse">
+            <div class="radio-icon">💛</div>
+            <div class="radio-branch">Mil. Spouse</div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label for="rank">Rank <span class="req">*</span></label>
+        <select id="rank" name="rank" required>
+          <option value="" disabled selected>Select your rank</option>
+          <optgroup label="Enlisted">
+            <option>E-1 / Private / Seaman Recruit</option>
+            <option>E-2 / Private 2nd Class / Seaman Apprentice</option>
+            <option>E-3 / PFC / Seaman</option>
+            <option>E-4 / Specialist / Corporal / Petty Officer 3rd</option>
+            <option>E-5 / Sergeant / Petty Officer 2nd</option>
+            <option>E-6 / Staff Sergeant / Petty Officer 1st</option>
+            <option>E-7 / Sergeant First Class / Chief Petty Officer</option>
+            <option>E-8 / Master Sergeant / Senior Chief</option>
+            <option>E-9 / Sergeant Major / Master Chief</option>
+          </optgroup>
+          <optgroup label="Warrant Officer">
+            <option>W-1 Warrant Officer</option>
+            <option>W-2 Chief Warrant Officer 2</option>
+            <option>W-3 Chief Warrant Officer 3</option>
+            <option>W-4 Chief Warrant Officer 4</option>
+            <option>W-5 Chief Warrant Officer 5</option>
+          </optgroup>
+          <optgroup label="Officer">
+            <option>O-1 / 2nd Lieutenant / Ensign</option>
+            <option>O-2 / 1st Lieutenant / Lt. Junior Grade</option>
+            <option>O-3 / Captain / Lieutenant</option>
+            <option>O-4 / Major / Lieutenant Commander</option>
+            <option>O-5 / Lieutenant Colonel / Commander</option>
+            <option>O-6 / Colonel / Captain (Navy)</option>
+            <option>O-7+ / General / Flag Officer</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option>Military Spouse</option>
+            <option>Veteran (separated)</option>
+            <option>Reservist</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field">
+        <label for="mos">MOS / Rate / AFSC <span class="opt">Optional</span></label>
+        <input type="text" id="mos" name="mos" placeholder="e.g. 11B, GM, 3D0X2">
+        <div class="hint">Military Occupational Specialty, Navy Rate, or Air Force AFSC.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 3: Job Details ──────────────────── -->
+  <div class="form-section fade-in fi3" id="section-3">
+    <div class="section-head">
+      <div class="section-num">3</div>
+      <div class="section-title">Your New Job</div>
+      <div class="section-subtitle">The landing — goes on the board</div>
+    </div>
+    <div class="section-body">
+      <div class="field span2">
+        <label for="job-title">Job Title <span class="req">*</span></label>
+        <input type="text" id="job-title" name="job_title" placeholder="e.g. Safety Supervisor, Project Manager" required>
+      </div>
+      <div class="field">
+        <label for="employer">Employer / Company <span class="opt">Optional</span></label>
+        <input type="text" id="employer" name="employer" placeholder="e.g. Turner Construction, City of Escondido">
+        <div class="hint">Can be left blank if you prefer privacy.</div>
+      </div>
+      <div class="field">
+        <label for="location">Job Location <span class="opt">Optional</span></label>
+        <input type="text" id="location" name="location" placeholder="e.g. San Diego, CA">
+      </div>
+      <div class="field">
+        <label for="salary">Starting Salary / Wage <span class="opt">Optional</span></label>
+        <div class="salary-wrap">
+          <div class="salary-prefix">$</div>
+          <input type="number" id="salary" name="salary" placeholder="e.g. 65000" min="1" max="9999999">
+        </div>
+        <div class="hint">Annual salary or hourly rate. Used for aggregate stats only if you consent below.</div>
+      </div>
+      <div class="field">
+        <label for="start-date">Approximate Start Date <span class="req">*</span></label>
+        <input type="text" id="start-date" name="start_date" placeholder="e.g. May 2026, Spring 2026" required>
+      </div>
+    </div>
+
+    <!-- VTS Program -->
+    <div class="section-body full" style="border-top:1px solid var(--border);padding-top:20px">
+      <div class="field">
+        <label>Which VTS Program(s) Helped You Land This Job? <span class="req">*</span></label>
+        <div class="check-grid" role="group" aria-required="true" id="program-group">
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="OSHA 30">
+            <div class="check-box"></div>
+            <div class="check-label">OSHA 30 Construction Safety</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="OSHA 10">
+            <div class="check-box"></div>
+            <div class="check-label">OSHA 10 Construction Safety</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="LSSGB">
+            <div class="check-box"></div>
+            <div class="check-label">Lean Six Sigma Green Belt</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="LSSYB">
+            <div class="check-box"></div>
+            <div class="check-label">Lean Six Sigma Yellow Belt</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="Coursera">
+            <div class="check-box"></div>
+            <div class="check-label">Coursera Online Certifications</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="Career">
+            <div class="check-box"></div>
+            <div class="check-label">Career Transition Program</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="VA Benefits">
+            <div class="check-box"></div>
+            <div class="check-label">VA Benefits / Disability Guidance</div>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="program[]" value="Mentoring">
+            <div class="check-box"></div>
+            <div class="check-label">1-on-1 Mentoring / Counseling</div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Note -->
+    <div class="section-body full" style="border-top:1px solid var(--border);padding-top:20px">
+      <div class="field">
+        <label for="success-note">How Did VTS Help You? <span class="req">*</span></label>
+        <textarea id="success-note" name="success_note" required
+          placeholder="Tell us your story — what did you learn, how did the training prepare you, and what does this job mean to you? (2–4 sentences is perfect)"></textarea>
+        <div class="hint">This appears on the Job Landings Board if you consent below. Be real — your words help other veterans believe it's possible.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 4: Privacy Consent ─────────────── -->
+  <div class="privacy-card fade-in fi4" id="section-4">
+    <div class="privacy-head">
+      <div class="privacy-head-icon">🔒</div>
+      <div class="privacy-head-text">Your Privacy — You Control What's Shared</div>
+    </div>
+    <div class="privacy-body">
+      <p class="privacy-note">
+        Your submission does not go live automatically. VTS staff reviews every entry before it appears on the board. You control exactly what information is displayed publicly — check only what you're comfortable sharing.
+      </p>
+
+      <!-- Consent 1: post publicly — REQUIRED -->
+      <div class="consent-row consent-required" onclick="toggleConsent(this,'consent-public')" role="checkbox" aria-checked="false" tabindex="0">
+        <input type="checkbox" id="consent-public" name="consent_public" value="yes" style="position:absolute;opacity:0;width:0;height:0">
+        <div class="consent-box" id="cb-public"></div>
+        <div>
+          <div class="consent-text">
+            I give VTS permission to add my job landing to the Job Landings Board
+            <span class="consent-req-badge">Required</span>
+          </div>
+          <div class="consent-sub">VTS will review and approve before posting. Without this consent, your submission is recorded for internal tracking only.</div>
+        </div>
+      </div>
+
+      <!-- Consent 2: use full name -->
+      <div class="consent-row" onclick="toggleConsent(this,'consent-name')" role="checkbox" aria-checked="false" tabindex="0">
+        <input type="checkbox" id="consent-name" name="consent_name" value="yes" style="position:absolute;opacity:0;width:0;height:0">
+        <div class="consent-box" id="cb-name"></div>
+        <div>
+          <div class="consent-text">VTS may display my full name on the board</div>
+          <div class="consent-sub">If unchecked, only your first name and last initial will be shown (e.g. "James R.").</div>
+        </div>
+      </div>
+
+      <!-- Consent 3: salary stats -->
+      <div class="consent-row" onclick="toggleConsent(this,'consent-salary')" role="checkbox" aria-checked="false" tabindex="0">
+        <input type="checkbox" id="consent-salary" name="consent_salary" value="yes" style="position:absolute;opacity:0;width:0;height:0">
+        <div class="consent-box" id="cb-salary"></div>
+        <div>
+          <div class="consent-text">VTS may include my starting salary in public board statistics</div>
+          <div class="consent-sub">Used for the "Average Starting Salary" counter shown on the board. Your individual salary is never displayed — only the aggregate average.</div>
+        </div>
+      </div>
+
+      <!-- Consent 4: success quote -->
+      <div class="consent-row" onclick="toggleConsent(this,'consent-quote')" role="checkbox" aria-checked="false" tabindex="0">
+        <input type="checkbox" id="consent-quote" name="consent_quote" value="yes" style="position:absolute;opacity:0;width:0;height:0">
+        <div class="consent-box" id="cb-quote"></div>
+        <div>
+          <div class="consent-text">VTS may display my success note / story on the board</div>
+          <div class="consent-sub">Your written response to "How did VTS help you?" will appear as a quote with your entry.</div>
+        </div>
+      </div>
+
+      <!-- Consent 5: photo -->
+      <div class="consent-row" onclick="toggleConsent(this,'consent-photo')" role="checkbox" aria-checked="false" tabindex="0">
+        <input type="checkbox" id="consent-photo" name="consent_photo" value="yes" style="position:absolute;opacity:0;width:0;height:0">
+        <div class="consent-box" id="cb-photo"></div>
+        <div>
+          <div class="consent-text">VTS may use my photo alongside my board entry</div>
+          <div class="consent-sub">If checked, a VTS staff member may follow up to request a photo. No photo will be used without your final approval.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SUBMIT ──────────────────────────────────── -->
+  <div class="submit-section fade-in fi5">
+    <div class="submit-note">
+      <div class="submit-note-icon">📋</div>
+      <div>Every submission is reviewed by VTS staff before appearing on the board. This typically takes 1–3 business days. You may receive a brief follow-up if any information needs clarification.</div>
+    </div>
+    <button type="submit" class="submit-btn" id="submit-btn">
+      <span>Submit My Job Landing</span>
+      <span>→</span>
+    </button>
+    <p class="submit-sub">Your data stays inside the VTS WordPress system. It is never sold or shared with third parties.</p>
+  </div>
+
+</div><!-- /form-wrap -->
+</form>
+
+<!-- ─── SIDEBAR ───────────────────────────────────── -->
+<aside class="sidebar-col" aria-label="Form guidance">
+
+  <div class="side-card board-preview">
+    <div class="side-card-head">What Your Entry Looks Like</div>
+    <p>Here's how your job landing appears on the board after approval:</p>
+    <div class="board-entry-preview">
+      <div class="bep-name">James R. · ⭐ Army · E-6</div>
+      <div class="bep-detail">11B · May 2026</div>
+      <div class="bep-job">Safety Supervisor<br>Turner Construction · San Diego</div>
+      <div class="bep-note">"The OSHA 30 card opened every door. I had three offers in two weeks."</div>
+      <div class="bep-program">OSHA 30</div>
+    </div>
+  </div>
+
+  <div class="side-card">
+    <div class="side-card-head">What Happens Next</div>
+    <ul class="step-list">
+      <li><div class="step-num">1</div> You submit this form — takes about 5 minutes.</li>
+      <li><div class="step-num">2</div> VTS staff review your entry (1–3 business days).</li>
+      <li><div class="step-num">3</div> Your landing is approved and added to the board.</li>
+      <li><div class="step-num">4</div> Your entry appears online and on the classroom TV screen at VTS.</li>
+    </ul>
+  </div>
+
+  <div class="side-card">
+    <div class="side-card-head">Questions?</div>
+    <p>Having trouble with this form or want to submit your story by phone? Contact VTS directly and a team member will record your landing manually.</p>
+    <p style="margin-top:10px"><a href="/contact-us/" style="color:var(--navy);font-weight:600;font-size:12px;border-bottom:1.5px solid var(--gold);padding-bottom:1px">Contact VTS →</a></p>
+  </div>
+
+</aside>
+</div><!-- /page-layout -->
+
+<script>
+/* ─── Branch radio select ─────────────────────────── */
+function selectRadio(card, groupId){
+  document.querySelectorAll(`#${groupId} .radio-card`).forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  card.querySelector('input').checked = true;
+}
+
+/* ─── Program checkbox toggle ────────────────────── */
+function toggleCheck(item){
+  item.classList.toggle('selected');
+  const box = item.querySelector('.check-box');
+  const input = item.querySelector('input');
+  const isSelected = item.classList.contains('selected');
+  input.checked = isSelected;
+  if(isSelected) box.classList.add('checked');
+  else box.classList.remove('checked');
+}
+
+/* ─── Consent toggle ─────────────────────────────── */
+function toggleConsent(row, inputId){
+  row.classList.toggle('checked-row');
+  const box = row.querySelector('.consent-box');
+  const input = document.getElementById(inputId);
+  const isChecked = row.classList.contains('checked-row');
+  box.classList.toggle('checked', isChecked);
+  input.checked = isChecked;
+  row.setAttribute('aria-checked', isChecked);
+}
+
+/* keyboard support for consent rows */
+document.querySelectorAll('.consent-row').forEach(row => {
+  row.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      const inputId = row.querySelector('input').id;
+      toggleConsent(row, inputId);
+    }
+  });
+});
+
+/* ─── Form validation + submission ───────────────── */
+document.getElementById('job-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+  let firstError = null;
+
+  // Clear previous errors
+  document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+  // Required text/email/select fields
+  const required = ['first-name','last-name','email','rank','job-title','start-date','success-note'];
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if(!el.value.trim()){
+      el.classList.add('error');
+      if(!firstError) firstError = el;
+      valid = false;
+    }
+  });
+
+  // Branch required
+  const branchSelected = document.querySelector('#branch-group .radio-card.selected');
+  if(!branchSelected){
+    document.getElementById('branch-group').style.outline = '2px solid var(--error)';
+    if(!firstError) firstError = document.getElementById('branch-group');
+    valid = false;
+  } else {
+    document.getElementById('branch-group').style.outline = '';
+  }
+
+  // At least one program
+  const programChecked = document.querySelector('#program-group .check-item.selected');
+  if(!programChecked){
+    document.getElementById('program-group').style.outline = '2px solid var(--error)';
+    if(!firstError) firstError = document.getElementById('program-group');
+    valid = false;
+  } else {
+    document.getElementById('program-group').style.outline = '';
+  }
+
+  // Consent to post publicly required
+  if(!document.getElementById('consent-public').checked){
+    const consentRow = document.querySelector('.consent-required');
+    consentRow.style.borderColor = 'var(--error)';
+    if(!firstError) firstError = consentRow;
+    valid = false;
+  } else {
+    document.querySelector('.consent-required').style.borderColor = '';
+  }
+
+  if(!valid){
+    if(firstError) firstError.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // Success state
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  // Simulate async submit (replace with real WP AJAX / CF7 / Gravity Forms call)
+  setTimeout(() => {
+    document.querySelectorAll('.form-section, .privacy-card, .submit-section').forEach(s => s.style.display = 'none');
+    const success = document.getElementById('success-state');
+    success.classList.add('visible');
+    success.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 800);
+});
+</script>
+</body>
+</html>

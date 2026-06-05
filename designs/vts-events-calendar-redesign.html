@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Veteran Training Classes & Events | VTS San Diego</title>
+<meta name="description" content="Browse upcoming free OSHA, Lean Six Sigma, and career training classes for veterans and military spouses in San Diego. In-person and Zoom. Register free through Veterans Transition Support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ─── TOKENS ─────────────────────────────────────── */
+  :root {
+    --navy:      #0d1f3c;
+    --navy-mid:  #152a50;
+    --gold:      #c8933a;
+    --gold-lt:   #e8b45c;
+    --cream:     #f5f0e8;
+    --off-white: #faf8f4;
+    --mid:       #6b7280;
+    --text:      #1a2332;
+    --border:    #e2ddd5;
+    --zoom-bg:   #eef4ff;
+    --zoom-dot:  #2563eb;
+    --person-bg: #edf7ed;
+    --person-dot:#16a34a;
+    --osha-bg:   #fff4ea;
+    --osha-dot:  #c8933a;
+    --lss-bg:    #fdf2ff;
+    --lss-dot:   #7c3aed;
+    --career-bg: #fff0f0;
+    --career-dot:#dc2626;
+  }
+
+  /* ─── RESET ──────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── NAVBAR (reference only, VTS theme handles this) ── */
+  .demo-nav {
+    background: var(--navy);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .demo-nav .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .demo-nav .logo span { color: var(--gold); }
+  .demo-nav .donate-btn {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 8px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── PAGE HERO ──────────────────────────────────── */
+  .page-hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: 72px 40px 60px;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 18px,
+        rgba(200,147,58,0.06) 18px,
+        rgba(200,147,58,0.06) 19px
+      );
+    pointer-events: none;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,147,58,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,147,58,0.15);
+    border: 1px solid rgba(200,147,58,0.35);
+    color: var(--gold-lt);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .page-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 6vw, 68px);
+    color: #fff;
+    line-height: 1.0;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .page-hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 14px;
+  }
+  .badge .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── FILTER BAR ─────────────────────────────────── */
+  .filter-bar {
+    background: var(--navy-mid);
+    border-bottom: 1px solid rgba(200,147,58,0.25);
+    padding: 0 40px;
+  }
+  .filter-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter-inner::-webkit-scrollbar { display: none; }
+  .filter-tab {
+    flex-shrink: 0;
+    padding: 16px 22px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .filter-tab:hover { color: rgba(255,255,255,0.8); }
+  .filter-tab.active {
+    color: var(--gold-lt);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ─── MAIN LAYOUT ────────────────────────────────── */
+  .page-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* ─── SECTION HEADING ────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── MONTH HEADER ───────────────────────────────── */
+  .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+  .month-nav h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--navy);
+  }
+  .nav-arrows {
+    display: flex;
+    gap: 8px;
+  }
+  .arrow-btn {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mid);
+    font-size: 14px;
+    transition: all 0.15s;
+  }
+  .arrow-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--cream);
+  }
+
+  /* ─── EVENT CARD ─────────────────────────────────── */
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .event-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 0;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .event-card:hover {
+    box-shadow: 0 4px 20px rgba(13,31,60,0.1);
+    transform: translateY(-1px);
+  }
+  .event-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .event-card.zoom::before   { background: var(--zoom-dot); }
+  .event-card.person::before { background: var(--person-dot); }
+  .event-card.osha::before   { background: var(--osha-dot); }
+  .event-card.lss::before    { background: var(--lss-dot); }
+  .event-card.career::before { background: var(--career-dot); }
+
+  .event-date-col {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    flex-shrink: 0;
+  }
+  .event-day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .event-mon {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2px;
+  }
+
+  .event-body {
+    padding: 16px 18px;
+  }
+  .event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 7px;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .tag.zoom   { background: var(--zoom-bg);   color: var(--zoom-dot); }
+  .tag.person { background: var(--person-bg); color: var(--person-dot); }
+  .tag.osha   { background: var(--osha-bg);   color: var(--osha-dot); }
+  .tag.lss    { background: var(--lss-bg);    color: var(--lss-dot); }
+  .tag.free   { background: #f0fdf4; color: var(--person-dot); }
+  .tag.career { background: var(--career-bg); color: var(--career-dot); }
+
+  .event-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .event-meta {
+    font-size: 12px;
+    color: var(--mid);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .event-cta-col {
+    display: flex;
+    align-items: center;
+    padding: 16px 18px 16px 0;
+    flex-shrink: 0;
+  }
+  .register-btn {
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    white-space: nowrap;
+    transition: background 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .register-btn:hover { background: var(--gold); color: var(--navy); }
+
+  /* ─── VIEW MORE ──────────────────────────────────── */
+  .view-more-wrap {
+    margin-top: 28px;
+    text-align: center;
+  }
+  .view-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    transition: all 0.2s;
+    cursor: pointer;
+    background: transparent;
+  }
+  .view-more-btn:hover {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  /* ─── SIDEBAR ────────────────────────────────────── */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sidebar-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .sidebar-card h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .sidebar-card p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  /* legend */
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* quick stats */
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .stat-box {
+    background: var(--cream);
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 10px;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 3px;
+  }
+
+  /* CTA card */
+  .cta-card {
+    background: var(--navy);
+    border: none;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    right: -30px; bottom: -30px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(200,147,58,0.15);
+    pointer-events: none;
+  }
+  .cta-card h3 {
+    color: #fff !important;
+    font-size: 17px !important;
+    margin-bottom: 10px !important;
+  }
+  .cta-card p {
+    color: rgba(255,255,255,0.65) !important;
+    font-size: 13px;
+    margin-bottom: 20px !important;
+  }
+  .cta-btn-gold {
+    display: block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    text-align: center;
+    transition: background 0.15s;
+    position: relative; z-index: 1;
+  }
+  .cta-btn-gold:hover { background: var(--gold-lt); }
+
+  /* ─── SEO CONTENT BLOCK ───────────────────────────── */
+  .seo-section {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    padding: 56px 40px;
+  }
+  .seo-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .seo-col h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+  .seo-col p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.75;
+  }
+  .seo-col ul {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .seo-col ul li {
+    font-size: 13px;
+    color: #555;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .seo-col ul li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────── */
+  @media (max-width: 900px) {
+    .page-body {
+      grid-template-columns: 1fr;
+      padding: 32px 20px 60px;
+    }
+    .page-hero { padding: 48px 20px 44px; }
+    .filter-bar { padding: 0 20px; }
+    .seo-section { padding: 40px 20px; }
+    .seo-inner { grid-template-columns: 1fr; gap: 24px; }
+    .event-card { grid-template-columns: 60px 1fr; }
+    .event-cta-col { display: none; }
+    .demo-nav { padding: 14px 20px; }
+  }
+  @media (max-width: 540px) {
+    .hero-badges { gap: 7px; }
+    .badge { font-size: 11px; }
+    .event-card { grid-template-columns: 56px 1fr; }
+  }
+
+  /* ─── FADE IN ────────────────────────────────────── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up:nth-child(1) { animation-delay: 0.05s; }
+  .fade-up:nth-child(2) { animation-delay: 0.12s; }
+  .fade-up:nth-child(3) { animation-delay: 0.19s; }
+  .fade-up:nth-child(4) { animation-delay: 0.26s; }
+  .fade-up:nth-child(5) { animation-delay: 0.33s; }
+  .fade-up:nth-child(6) { animation-delay: 0.40s; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV (demo reference) ─────────────────────────── -->
+<nav class="demo-nav" aria-label="Site navigation">
+  <div class="logo">Veterans <span>Transition</span> Support</div>
+  <a href="#donate" class="donate-btn">Donate</a>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<header class="page-hero" role="banner">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Free Veteran Training Classes</div>
+    <h1>Upcoming <em>Events</em><br>& Free Classes</h1>
+    <p class="hero-sub">All VTS training programs are free for veterans, transitioning service members, and military spouses. Register for upcoming OSHA, Lean Six Sigma, Coursera, and career classes below.</p>
+    <div class="hero-badges">
+      <span class="badge"><span class="dot" style="background:#2563eb"></span>Zoom / Online</span>
+      <span class="badge"><span class="dot" style="background:#16a34a"></span>In-Person San Diego</span>
+      <span class="badge"><span class="dot" style="background:#c8933a"></span>OSHA Training</span>
+      <span class="badge"><span class="dot" style="background:#7c3aed"></span>Lean Six Sigma</span>
+      <span class="badge"><span class="dot" style="background:#dc2626"></span>Career &amp; Benefits</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── FILTER BAR ────────────────────────────────────── -->
+<nav class="filter-bar" aria-label="Event filters">
+  <div class="filter-inner">
+    <button class="filter-tab active" aria-pressed="true">All Events</button>
+    <button class="filter-tab" aria-pressed="false">OSHA</button>
+    <button class="filter-tab" aria-pressed="false">Lean Six Sigma</button>
+    <button class="filter-tab" aria-pressed="false">Coursera</button>
+    <button class="filter-tab" aria-pressed="false">Career</button>
+    <button class="filter-tab" aria-pressed="false">In-Person</button>
+    <button class="filter-tab" aria-pressed="false">Zoom</button>
+    <button class="filter-tab" aria-pressed="false">Free Only</button>
+  </div>
+</nav>
+
+<!-- ── MAIN BODY ──────────────────────────────────────── -->
+<main class="page-body" id="main">
+
+  <!-- ── EVENT LIST ──────────────────────────────────── -->
+  <section aria-labelledby="events-heading">
+    <div class="section-label">May 2026</div>
+
+    <div class="month-nav">
+      <h2 id="events-heading">Upcoming Classes &amp; Events</h2>
+      <div class="nav-arrows">
+        <button class="arrow-btn" aria-label="Previous month">&#8249;</button>
+        <button class="arrow-btn" aria-label="Next month">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="events-list" role="list">
+
+      <!-- EVENT 1 -->
+      <article class="event-card osha fade-up" role="listitem">
+        <div class="event-date-col" aria-hidden="true">
+          <div class="event-day">27</div>
+          <div class="event-mon">May</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tags">
+            <span class="tag osha">OSHA 30</span>
+            <span class="tag zoom">Zoom</span>
+            <span class="tag free">Free</span>
+          </div>
+          <h3 class="event-title">OSHA 30-Hour Construction Safety Certification</h3>
+          <div class="event-meta">
+            <span>&#128339; Tue &amp; Thu, 6–9 PM PST</span>
+            <span>&#128205; Online via Zoom</span>
+            <span>&#128100; Veterans &amp; Military Spouses</span>
+          </div>
+        </div>
+        <div class="event-cta-col">
+          <button class="register-btn">Register Free</button>
+        </div>
+      </article>
+
+      <!-- EVENT 2 -->
+      <article class="event-card person fade-up" role="listitem">
+        <div class="event-date-col" aria-hidden="true">
+          <div class="event-day">31</div>
+          <div class="event-mon">May</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tags">
+            <span class="tag lss">Lean Six Sigma</span>
+            <span class="tag zoom">Zoom</span>
+            <span class="tag free">Free</span>
+          </div>
+          <h3 class="event-title">Lean Six Sigma Green Belt (LSSGB) — Cohort 14</h3>
+          <div class="event-meta">
+            <span>&#128339; Sat, 8 AM – 4 PM PST</span>
+            <span>&#128205; Zoom</span>
+            <span>&#128100; Veterans &amp; Spouses</span>
+          </div>
+        </div>
+        <div class="event-cta-col">
+          <button class="register-btn">Register Free</button>
+        </div>
+      </article>
+
+      <!-- EVENT 3 -->
+      <article class="event-card lss fade-up" role="listitem">
+        <div class="event-date-col" aria-hidden="true">
+          <div class="event-day">07</div>
+          <div class="event-mon">Jun</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tags">
+            <span class="tag osha">OSHA 10</span>
+            <span class="tag person">In-Person</span>
+            <span class="tag free">Free</span>
+          </div>
+          <h3 class="event-title">OSHA 10-Hour Construction Safety — San Marcos</h3>
+          <div class="event-meta">
+            <span>&#128339; Sat, 8 AM – 3 PM PST</span>
+            <span>&#128205; San Marcos, CA</span>
+            <span>&#128100; Open Enrollment</span>
+          </div>
+        </div>
+        <div class="event-cta-col">
+          <button class="register-btn">Register Free</button>
+        </div>
+      </article>
+
+      <!-- EVENT 4 -->
+      <article class="event-card zoom fade-up" role="listitem">
+        <div class="event-date-col" aria-hidden="true">
+          <div class="event-day">10</div>
+          <div class="event-mon">Jun</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tags">
+            <span class="tag career">Career</span>
+            <span class="tag zoom">Zoom</span>
+            <span class="tag free">Free</span>
+          </div>
+          <h3 class="event-title">VA Disability Claim Filing Workshop</h3>
+          <div class="event-meta">
+            <span>&#128339; Tue, 5–7 PM PST</span>
+            <span>&#128205; Zoom</span>
+            <span>&#128100; Veterans Only</span>
+          </div>
+        </div>
+        <div class="event-cta-col">
+          <button class="register-btn">Register Free</button>
+        </div>
+      </article>
+
+      <!-- EVENT 5 -->
+      <article class="event-card career fade-up" role="listitem">
+        <div class="event-date-col" aria-hidden="true">
+          <div class="event-day">14</div>
+          <div class="event-mon">Jun</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tags">
+            <span class="tag lss">Lean Six Sigma</span>
+            <span class="tag zoom">Zoom</span>
+            <span class="tag free">Free</span>
+          </div>
+          <h3 class="event-title">Lean Six Sigma Yellow Belt (LSSYB) — Cohort 8</h3>
+          <div class="event-meta">
+            <span>&#128339; Sat, 9 AM – 2 PM PST</span>
+            <span>&#128205; Zoom</span>
+            <span>&#128100; Veterans &amp; Spouses</span>
+          </div>
+        </div>
+        <div class="event-cta-col">
+          <button class="register-btn">Register Free</button>
+        </div>
+      </article>
+
+      <!-- EVENT 6 -->
+      <article class="event-card person fade-up" role="listitem">
+        <div class="event-date-col" aria-hidden="true">
+          <div class="event-day">21</div>
+          <div class="event-mon">Jun</div>
+        </div>
+        <div class="event-body">
+          <div class="event-tags">
+            <span class="tag osha">OSHA 30</span>
+            <span class="tag person">In-Person</span>
+            <span class="tag free">Free</span>
+          </div>
+          <h3 class="event-title">OSHA 30-Hour — Camp Pendleton (Wounded Warrior Bn.)</h3>
+          <div class="event-meta">
+            <span>&#128339; Multi-day, Sat–Sun</span>
+            <span>&#128205; Camp Pendleton, CA</span>
+            <span>&#128100; Active Duty Welcome</span>
+          </div>
+        </div>
+        <div class="event-cta-col">
+          <button class="register-btn">Register Free</button>
+        </div>
+      </article>
+
+    </div><!-- /events-list -->
+
+    <div class="view-more-wrap">
+      <button class="view-more-btn">View All Upcoming Classes &#8594;</button>
+    </div>
+
+  </section>
+
+  <!-- ── SIDEBAR ──────────────────────────────────────── -->
+  <aside aria-label="Events sidebar">
+    <div class="sidebar">
+
+      <!-- Stats -->
+      <div class="sidebar-card">
+        <h3>VTS by the Numbers</h3>
+        <p>Serving veterans since 2014 across San Diego, Orange County, and online.</p>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-num">500+</div>
+            <div class="stat-lbl">Veterans Trained</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">35</div>
+            <div class="stat-lbl">Upcoming Events</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">$0</div>
+            <div class="stat-lbl">Cost to Attend</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4</div>
+            <div class="stat-lbl">Certifications</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="sidebar-card">
+        <h3>Event Type Key</h3>
+        <p>Use the color key and filters above to find events that match your schedule and goals.</p>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--osha-dot)"></div> OSHA 10 &amp; OSHA 30</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--lss-dot)"></div> Lean Six Sigma (LSSYB / LSSGB)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--zoom-dot)"></div> Zoom / Online</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--person-dot)"></div> In-Person San Diego</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--career-dot)"></div> Career &amp; VA Benefits</div>
+        </div>
+      </div>
+
+      <!-- Donate CTA -->
+      <div class="sidebar-card cta-card" id="donate">
+        <h3>Keep These Classes Free</h3>
+        <p>VTS is an all-volunteer 501(c)(3) nonprofit. Every class is free because donors like you make it possible.</p>
+        <a href="/donate/" class="cta-btn-gold">Support a Veteran — Donate</a>
+      </div>
+
+      <!-- Not sure card -->
+      <div class="sidebar-card">
+        <h3>Not Sure Which Program?</h3>
+        <p>Our advisors can help you find the right certification for your career goals — at no cost.</p>
+        <a href="/contact-us/" class="cta-btn-gold" style="display:block;background:var(--navy);color:#fff;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:12px 20px;text-align:center;">Talk to a VTS Advisor</a>
+      </div>
+
+    </div>
+  </aside>
+
+</main>
+
+<!-- ── SEO CONTENT BLOCK ──────────────────────────────── -->
+<section class="seo-section" aria-labelledby="about-programs">
+  <div class="seo-inner">
+    <div class="seo-col">
+      <h2 id="about-programs">Free Veteran Training in San Diego</h2>
+      <p>Veterans Transition Support has been providing free career certifications and training to veterans, transitioning service members, and military spouses in San Diego County since 2014. Classes are held at Camp Pendleton, in San Marcos, and online via Zoom — so you can attend from anywhere.</p>
+    </div>
+    <div class="seo-col">
+      <h2>What Certifications Do We Offer?</h2>
+      <ul>
+        <li>OSHA 30-Hour Construction Safety</li>
+        <li>OSHA 10-Hour Construction Safety</li>
+        <li>Lean Six Sigma Yellow Belt (LSSYB)</li>
+        <li>Lean Six Sigma Green Belt (LSSGB)</li>
+        <li>Free Coursera Career Certificates</li>
+        <li>VA Disability &amp; Benefits Workshops</li>
+        <li>Career Development &amp; Resume Classes</li>
+      </ul>
+    </div>
+    <div class="seo-col">
+      <h2>Who Can Attend?</h2>
+      <p>All VTS events are open at no cost to:</p>
+      <ul>
+        <li>Veterans (all branches)</li>
+        <li>Transitioning active duty service members</li>
+        <li>Military spouses</li>
+        <li>Reservists and National Guard members</li>
+        <li>Wounded Warriors at Camp Pendleton</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Filter tab interaction
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-pressed', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
+    });
+  });
+</script>
+</body>
+</html>
