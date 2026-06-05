@@ -491,25 +491,110 @@ nav {
 
 /* ─── DONATE / INVOLVED ─── */
 .involved-section { background: white; padding: 90px 80px; }
-.involved-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px; margin-top: 48px; }
-.donate-card {
-  background: var(--navy-deep); border-radius: 6px; padding: 48px;
-  position: relative; overflow: hidden;
+.involved-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 28px; margin-top: 48px; align-items: start; }
+
+/* Donate wrapper — the branded shell around Zeffy */
+.donate-wrapper {
+  background: var(--navy-deep); border-radius: 6px; overflow: hidden;
+  position: relative;
 }
-.donate-card::before {
+.donate-wrapper::before {
   content: ''; position: absolute; top: -60px; right: -60px;
-  width: 240px; height: 240px;
-  background: radial-gradient(circle, rgba(192,32,42,0.18) 0%, transparent 70%);
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(192,32,42,0.15) 0%, transparent 70%);
+  pointer-events: none;
 }
-.donate-card .section-title.light { font-size: 38px; margin-bottom: 14px; }
-.donate-card p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.62); margin-bottom: 26px; }
-.amount-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-.amt-btn {
-  background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.18);
-  color: white; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px;
-  padding: 10px 18px; border-radius: 3px; cursor: pointer; transition: all 0.2s;
+.donate-header {
+  padding: 36px 40px 28px; position: relative; z-index: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.amt-btn:hover, .amt-btn.active { background: var(--red); border-color: var(--red); color: white; }
+.donate-header h2 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800;
+  text-transform: uppercase; color: white; line-height: 1.05; margin-bottom: 10px;
+}
+.donate-header p {
+  font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.6); margin-bottom: 0;
+}
+/* Giving tier callouts — above the Zeffy iframe */
+.donate-tiers {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  padding: 20px 40px; gap: 12px; position: relative; z-index: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.tier {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 4px; padding: 14px 12px; text-align: center;
+  transition: border-color 0.2s;
+}
+.tier:hover { border-color: rgba(192,32,42,0.5); }
+.tier-amount {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800;
+  color: var(--red); line-height: 1; margin-bottom: 5px;
+}
+.tier-label { font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+/* Zeffy iframe container */
+.zeffy-embed-wrap {
+  padding: 0 20px 24px; position: relative; z-index: 1;
+  background: white; /* Zeffy renders on white */
+}
+/* 
+  REAL IMPLEMENTATION NOTE:
+  Replace the placeholder below with:
+    <iframe src='https://www.zeffy.com/en-US/embed/donation-form/support-veterans-transition-support'
+            allowpaymentrequest
+            style="width:100%;border:none;min-height:500px;"
+            title="Donate to Veterans Transition Support">
+    </iframe>
+  OR use the WordPress shortcode: [zeffy-donate]
+  The iframe renders Zeffy's own UI — amount selector + payment fields only.
+  Description, images, logo are NOT shown in embedded mode — 
+  that's why we put all branding context in donate-header and donate-tiers above.
+*/
+.zeffy-placeholder {
+  background: #f8f9fc;
+  border: 2px dashed var(--border);
+  border-radius: 4px;
+  padding: 48px 24px;
+  text-align: center;
+  margin: 20px 0 0;
+}
+.zeffy-placeholder .zp-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gray-text); margin-bottom: 10px;
+}
+.zeffy-placeholder h4 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 22px;
+  font-weight: 700; color: var(--navy); margin-bottom: 8px;
+}
+.zeffy-placeholder p { font-size: 13px; color: var(--gray-text); margin-bottom: 20px; line-height: 1.5; }
+/* Simulated Zeffy amount row */
+.z-amount-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+.z-amt {
+  background: white; border: 1.5px solid var(--border);
+  color: var(--navy); font-weight: 700; font-size: 15px;
+  padding: 9px 18px; border-radius: 4px; cursor: pointer;
+  transition: all 0.2s; font-family: 'Barlow', sans-serif;
+}
+.z-amt:hover, .z-amt.sel { background: var(--navy-deep); border-color: var(--navy-deep); color: white; }
+.z-recur { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+.z-recur-btn {
+  font-size: 12px; font-weight: 600; padding: 6px 14px;
+  border-radius: 3px; border: 1px solid var(--border);
+  background: white; color: var(--gray-text); cursor: pointer;
+  font-family: 'Barlow', sans-serif; transition: all 0.15s;
+}
+.z-recur-btn.sel { background: var(--navy); color: white; border-color: var(--navy); }
+.z-cta {
+  display: block; width: 100%; max-width: 280px; margin: 0 auto;
+  background: var(--navy-deep); color: white;
+  font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px;
+  padding: 14px 24px; border: none; border-radius: 4px;
+  cursor: pointer; text-align: center; text-decoration: none;
+  transition: background 0.2s;
+}
+.z-cta:hover { background: var(--red); }
+.z-note { font-size: 11px; color: var(--gray-text); margin-top: 10px; }
+
 .volunteer-card {
   background: white; border-radius: 6px; border: 1px solid var(--border);
   padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between;
@@ -993,17 +1078,82 @@ footer { background: var(--navy-deep); padding: 70px 80px 28px; border-top: 3px 
   <div class="section-eyebrow">Support the mission</div>
   <h2 class="section-title dark">Help a veteran change their life</h2>
   <div class="involved-grid">
-    <div class="donate-card">
-      <h2 class="section-title light">Make a donation</h2>
-      <p>VTS is 100% all-volunteer. Every dollar funds free training, certifications, and resources for veterans — zero overhead. Your donation goes directly to the mission.</p>
-      <div class="amount-row">
-        <button class="amt-btn">$25</button>
-        <button class="amt-btn active">$50</button>
-        <button class="amt-btn">$100</button>
-        <button class="amt-btn">$250</button>
+
+    <!-- LEFT: Branded Zeffy wrapper -->
+    <div class="donate-wrapper">
+
+      <!-- Branding header — our design, our copy -->
+      <div class="donate-header">
+        <h2>Make a donation</h2>
+        <p>VTS is 100% all-volunteer. Every dollar funds free training, certifications, and resources — zero overhead. Your donation goes directly to the mission.</p>
       </div>
-      <a href="https://veteranstransitionsupport.org/donate/" class="btn-red-solid">Donate $50 →</a>
-    </div>
+
+      <!-- Giving tier context — shows impact before Zeffy form renders -->
+      <div class="donate-tiers">
+        <div class="tier">
+          <div class="tier-amount">$250</div>
+          <div class="tier-label">Sponsors one OSHA safety credential</div>
+        </div>
+        <div class="tier">
+          <div class="tier-amount">$500</div>
+          <div class="tier-label">Supports full workforce training delivery</div>
+        </div>
+        <div class="tier">
+          <div class="tier-amount">$1,000</div>
+          <div class="tier-label">Corporate-level veteran sponsorship</div>
+        </div>
+      </div>
+
+      <!--
+        ╔══════════════════════════════════════════════════════════╗
+        ║  ZEFFY EMBED ZONE                                        ║
+        ║                                                          ║
+        ║  In production, replace .zeffy-placeholder below with:  ║
+        ║                                                          ║
+        ║  <iframe                                                 ║
+        ║    src="https://www.zeffy.com/en-US/embed/              ║
+        ║         donation-form/support-veterans-transition-support"║
+        ║    allowpaymentrequest                                   ║
+        ║    style="width:100%;border:none;min-height:480px;"     ║
+        ║    title="Donate to VTS">                                ║
+        ║  </iframe>                                               ║
+        ║                                                          ║
+        ║  Or in Elementor: use HTML widget and paste above.      ║
+        ║  Or via WordPress shortcode: [zeffy-donate]             ║
+        ║                                                          ║
+        ║  NOTE: Zeffy embedded form shows amount selector and     ║
+        ║  payment fields only — no logo/images/description.      ║
+        ║  That's intentional — we show all branding above.       ║
+        ╚══════════════════════════════════════════════════════════╝
+      -->
+
+      <div class="zeffy-embed-wrap">
+        <!-- Mockup preview of what Zeffy's embedded form looks like -->
+        <div class="zeffy-placeholder">
+          <div class="zp-label">Zeffy Donation Form — embedded here</div>
+          <h4>Choose an amount</h4>
+          <p>One-time or recurring — 100% of your donation goes to VTS.<br>Tax receipt sent automatically.</p>
+          <div class="z-recur">
+            <button class="z-recur-btn sel">One-time</button>
+            <button class="z-recur-btn">Monthly</button>
+            <button class="z-recur-btn">Quarterly</button>
+            <button class="z-recur-btn">Yearly</button>
+          </div>
+          <div class="z-amount-row">
+            <button class="z-amt">$25</button>
+            <button class="z-amt">$50</button>
+            <button class="z-amt sel">$100</button>
+            <button class="z-amt">$250</button>
+            <button class="z-amt">$500</button>
+          </div>
+          <a href="https://www.zeffy.com/en-US/donation-form/support-veterans-transition-support" class="z-cta">Continue →</a>
+          <div class="z-note">🔒 Secure · Tax-deductible · Powered by Zeffy — 0% platform fees</div>
+        </div>
+      </div>
+
+    </div><!-- end donate-wrapper -->
+
+    <!-- RIGHT: Volunteer card -->
     <div class="volunteer-card">
       <div>
         <img src="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/barbequecookout-scaled-1024x858.jpeg" alt="VTS volunteers at Camp Pendleton">
@@ -1012,6 +1162,7 @@ footer { background: var(--navy-deep); padding: 70px 80px 28px; border-top: 3px 
       </div>
       <a href="https://veteranstransitionsupport.org/volunteer/" class="btn-navy-solid">Apply to volunteer →</a>
     </div>
+
   </div>
 </section>
 
@@ -1134,13 +1285,19 @@ const fadeObs = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
 
-// Donate amount buttons
-document.querySelectorAll('.amt-btn').forEach(btn => {
+// Zeffy mockup — simulated amount selection
+document.querySelectorAll('.z-amt').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const donateLink = btn.closest('.donate-card').querySelector('a');
-    if (donateLink) donateLink.textContent = `Donate ${btn.textContent} →`;
+    document.querySelectorAll('.z-amt').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    const cta = btn.closest('.zeffy-placeholder').querySelector('.z-cta');
+    if (cta) cta.textContent = `Continue with ${btn.textContent} →`;
+  });
+});
+document.querySelectorAll('.z-recur-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.z-recur-btn').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
   });
 });
 </script>
