@@ -462,22 +462,23 @@
 
       .feature-list {
         list-style: none;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px 24px;
-      }
-      @media (max-width: 560px) {
-        .feature-list {
-          grid-template-columns: 1fr;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
       .feature-list li {
         font-size: 14px;
         color: var(--text);
         display: flex;
         align-items: flex-start;
-        gap: 8px;
-        line-height: 1.5;
+        gap: 10px;
+        line-height: 1.55;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      .feature-list li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
       }
       .feature-list li::before {
         content: "→";
@@ -877,15 +878,97 @@
         .cta-section {
           padding: 40px 24px;
         }
-        .feature-list {
-          grid-template-columns: 1fr;
-        }
+      }
+
+      /* ── STICKY NAV ─────────────────────────── */
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--navy);
+        border-bottom: 2px solid var(--red);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.22);
+      }
+      .sticky-nav-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 46px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .sticky-nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+      .snav-brand {
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: 0.5px;
+        padding-right: 16px;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        margin-right: 8px;
+      }
+      .snav-links {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+      }
+      .snav-links a {
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        padding: 5px 11px;
+        border-radius: 6px;
+        white-space: nowrap;
+        transition: color 0.15s, background 0.15s;
+      }
+      .snav-links a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .snav-links a.active {
+        color: var(--gold);
+        background: rgba(243, 156, 18, 0.14);
+      }
+      section[id],
+      div[id="top"],
+      .module-card[id] {
+        scroll-margin-top: 54px;
       }
     </style>
   </head>
   <body>
+    <!-- ══════════ STICKY NAV ══════════ -->
+    <nav class="sticky-nav">
+      <div class="sticky-nav-inner">
+        <a href="#top" class="snav-brand">VTS Phase 2</a>
+        <div class="snav-links">
+          <a href="#phase1">Phase 1</a>
+          <a href="#problem">Problem</a>
+          <a href="#module-a">Mod A</a>
+          <a href="#module-b">Mod B</a>
+          <a href="#module-c">Mod C</a>
+          <a href="#module-d">Mod D</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#payment">Payment</a>
+          <a href="#addons">SEO Retainer</a>
+          <a href="#phase3">Phase 3</a>
+        </div>
+      </div>
+    </nav>
+
     <!-- ══════════ HERO ══════════ -->
-    <div class="hero">
+    <div class="hero" id="top">
       <div class="hero-badge">
         Phase 2 Proposal · Confidential · Board-Ready
       </div>
@@ -956,7 +1039,7 @@
     </section>
 
     <!-- ══════════ PHASE 1 RECAP ══════════ -->
-    <section>
+    <section id="phase1">
       <div class="container">
         <div class="section-label">Where We Are</div>
         <h2>Phase 1: Delivered & Complete</h2>
@@ -988,7 +1071,7 @@
     </section>
 
     <!-- ══════════ THE PROBLEM ══════════ -->
-    <section style="background: var(--white)">
+    <section id="problem" style="background: var(--white)">
       <div class="container">
         <div class="section-label">The Business Case</div>
         <h2>What's Leaking Right Now</h2>
@@ -1038,7 +1121,7 @@
     </section>
 
     <!-- ══════════ MODULES ══════════ -->
-    <section>
+    <section id="modules">
       <div class="container">
         <div class="section-label">The Solution</div>
         <h2>Four Modules. Four Wins.</h2>
@@ -1048,7 +1131,7 @@
         </p>
 
         <!-- MODULE A -->
-        <div class="module-card">
+        <div class="module-card" id="module-a">
           <div class="module-header">
             <div class="module-header-left">
               <span class="module-tag tag-a">Module A · Recommended Start</span>
@@ -1063,8 +1146,8 @@
             </div>
             <div class="module-pricing">
               <div class="market-price">Market rate: $1,200–1,800</div>
-              <div class="actual-price">$500</div>
-              <div class="savings-badge">You save $700–$1,300</div>
+              <div class="actual-price">$600</div>
+              <div class="savings-badge">You save $600–$1,200</div>
             </div>
           </div>
           <div class="module-body">
@@ -1116,7 +1199,7 @@
         </div>
 
         <!-- MODULE B -->
-        <div class="module-card">
+        <div class="module-card" id="module-b">
           <div class="module-header">
             <div class="module-header-left">
               <span class="module-tag tag-b">Module B · Quick Win</span>
@@ -1129,8 +1212,8 @@
             </div>
             <div class="module-pricing">
               <div class="market-price">Market rate: $1,500–2,000</div>
-              <div class="actual-price">$700</div>
-              <div class="savings-badge">You save $800–$1,300</div>
+              <div class="actual-price">$600</div>
+              <div class="savings-badge">You save $900–$1,400</div>
             </div>
           </div>
           <div class="module-body">
@@ -1162,7 +1245,7 @@
         </div>
 
         <!-- MODULE C -->
-        <div class="module-card">
+        <div class="module-card" id="module-c">
           <div class="module-header">
             <div class="module-header-left">
               <span class="module-tag tag-c">Module C · High Impact</span>
@@ -1234,7 +1317,7 @@
         </div>
 
         <!-- MODULE D -->
-        <div class="module-card">
+        <div class="module-card" id="module-d">
           <div class="module-header">
             <div class="module-header-left">
               <span class="module-tag tag-d">Module D · Volunteer Relief</span>
@@ -1289,7 +1372,7 @@
     </section>
 
     <!-- ══════════ PRICING TABLE ══════════ -->
-    <section style="background: var(--white)">
+    <section id="pricing" style="background: var(--white)">
       <div class="container">
         <div class="section-label">Pricing Summary</div>
         <h2>Clear, Board-Presentable Numbers</h2>
@@ -1324,7 +1407,7 @@
                 <td style="color: var(--muted); font-size: 13px">
                   $1,200–1,800
                 </td>
-                <td>$500</td>
+                <td>$600</td>
               </tr>
               <tr>
                 <td><div class="row-module">B — Events Hub</div></td>
@@ -1337,7 +1420,7 @@
                 <td style="color: var(--muted); font-size: 13px">
                   $1,500–2,000
                 </td>
-                <td>$700</td>
+                <td>$600</td>
               </tr>
               <tr>
                 <td>
@@ -1430,9 +1513,9 @@
             <div class="compare-label">✅ Your VTS Proposal Price</div>
             <div class="price">$2,650</div>
             <ul>
-              <li>✅ Homepage rebuild: included in $500</li>
-              <li>✅ Donor CPT system: included in $500</li>
-              <li>✅ Events API integration: $700</li>
+              <li>✅ Homepage rebuild: included in $600</li>
+              <li>✅ Donor CPT system: included in $600</li>
+              <li>✅ Events API integration: $600</li>
               <li>✅ Coursera form + CRM: $900</li>
               <li>✅ Lifecycle automation: $850</li>
               <li>✅ Phase 1 relationship — zero ramp-up time</li>
@@ -1455,7 +1538,7 @@
     </section>
 
     <!-- ══════════ PAYMENT ══════════ -->
-    <section style="background: var(--white)">
+    <section id="payment" style="background: var(--white)">
       <div class="container">
         <div class="section-label">Payment Structure</div>
         <h2>No Surprises. Board-Friendly Milestones.</h2>
@@ -1519,7 +1602,7 @@
     </section>
 
     <!-- ══════════ SEO ADD-ON ══════════ -->
-    <section>
+    <section id="addons">
       <div class="container">
         <div class="section-label">Optional Add-On</div>
         <h2>Ongoing SEO & Organic Traffic Growth</h2>
@@ -1678,7 +1761,7 @@
     </section>
 
     <!-- ══════════ PHASE 3 PREVIEW ══════════ -->
-    <section style="background: var(--white)">
+    <section id="phase3" style="background: var(--white)">
       <div class="container">
         <div class="section-label">Looking Further Ahead</div>
         <h2>Phase 3 Concept: VTS Learning Hub</h2>
@@ -2069,5 +2152,28 @@
         and not for public distribution</span
       >
     </div>
+    <script>
+      const navLinks = document.querySelectorAll(".snav-links a");
+      const targets = Array.from(navLinks)
+        .map((a) => document.querySelector(a.getAttribute("href")))
+        .filter(Boolean);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((l) => l.classList.remove("active"));
+              const active = document.querySelector(
+                `.snav-links a[href="#${entry.target.id}"]`
+              );
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-10% 0px -80% 0px" }
+      );
+
+      targets.forEach((t) => observer.observe(t));
+    </script>
   </body>
 </html>
