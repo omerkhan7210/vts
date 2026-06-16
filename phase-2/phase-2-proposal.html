@@ -1,1113 +1,1815 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VTS Phase 2 Proposal — Muhammad Umer Khan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/VTS-150x150.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      href="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/VTS-300x300.png"
+      sizes="192x192"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/VTS-300x300.png"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Military To Civilian Career Transition &amp; Job Training"
+    />
+    <meta
+      property="og:description"
+      content="Veterans Transition Support VTS provides free job training, certifications, and career transition support for veterans and active duty in San Diego."
+    />
+    <meta property="og:url" content="https://veteranstransitionsupport.org/" />
+    <meta property="og:site_name" content="Veterans Transition Support" />
+    <meta property="og:updated_time" content="2026-06-02T23:58:44-07:00" />
+    <meta
+      property="og:image"
+      content="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/logo-lightback-jpg-01600x400-1.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/logo-lightback-jpg-01600x400-1.jpg"
+    />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="454" />
+    <meta property="og:image:alt" content="VTS Logo" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+      property="article:published_time"
+      content="2025-01-17T19:08:59-08:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2026-06-02T23:58:44-07:00"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Military To Civilian Career Transition &amp; Job Training"
+    />
+    <meta
+      name="twitter:description"
+      content="Veterans Transition Support VTS provides free job training, certifications, and career transition support for veterans and active duty in San Diego."
+    />
+    <meta name="twitter:site" content="@supportavet" />
+    <meta name="twitter:creator" content="@supportavet" />
+    <meta
+      name="twitter:image"
+      content="https://veteranstransitionsupport.org/wp-content/uploads/2025/01/logo-lightback-jpg-01600x400-1.jpg"
+    />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="kathy@veteranstransitionsupport.org" />
+    <meta name="twitter:label2" content="Time to read" />
+    <meta name="twitter:data2" content="2 minutes" />
+    <title>VTS Phase 2 Proposal — Muhammad Umer Khan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    :root {
-      --navy:      #0D1F3C;
-      --navy-mid:  #1A3260;
-      --red:       #C0392B;
-      --red-light: #E74C3C;
-      --gold:      #F39C12;
-      --green:     #27AE60;
-      --off-white: #F4F6FA;
-      --white:     #FFFFFF;
-      --text:      #1C2B3A;
-      --muted:     #5A6E82;
-      --border:    #D8E2EE;
-    }
+      :root {
+        --navy: #0d1f3c;
+        --navy-mid: #1a3260;
+        --red: #c0392b;
+        --red-light: #e74c3c;
+        --gold: #f39c12;
+        --green: #27ae60;
+        --off-white: #f4f6fa;
+        --white: #ffffff;
+        --text: #1c2b3a;
+        --muted: #5a6e82;
+        --border: #d8e2ee;
+      }
 
-    html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--off-white);
-      color: var(--text);
-      line-height: 1.65;
-    }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--off-white);
+        color: var(--text);
+        line-height: 1.65;
+      }
 
-    /* ── HEADER ──────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e4080 100%);
-      color: var(--white);
-      padding: 64px 32px 56px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(192,57,43,0.85);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 20px;
-      margin-bottom: 22px;
-    }
-    .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
-    }
-    .hero h1 span { color: #F39C12; }
-    .hero .subtitle {
-      font-size: 16px;
-      color: rgba(255,255,255,0.78);
-      max-width: 620px;
-      margin: 0 auto 32px;
-    }
-    .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-    .hero-meta-item { text-align: center; }
-    .hero-meta-item .val {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-      color: #F39C12;
-      display: block;
-    }
-    .hero-meta-item .lbl {
-      font-size: 12px;
-      color: rgba(255,255,255,0.6);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .divider-line {
-      width: 60px;
-      height: 3px;
-      background: var(--red);
-      margin: 0 auto 12px;
-      border-radius: 2px;
-    }
+      /* ── HEADER ──────────────────────────────── */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 60%,
+          #1e4080 100%
+        );
+        color: var(--white);
+        padding: 64px 32px 56px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .hero-badge {
+        display: inline-block;
+        background: rgba(192, 57, 43, 0.85);
+        color: #fff;
+        font-family: "Montserrat", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 6px 18px;
+        border-radius: 20px;
+        margin-bottom: 22px;
+      }
+      .hero h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 900;
+        line-height: 1.15;
+        margin-bottom: 16px;
+        letter-spacing: -0.5px;
+      }
+      .hero h1 span {
+        color: #f39c12;
+      }
+      .hero .subtitle {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.78);
+        max-width: 620px;
+        margin: 0 auto 32px;
+      }
+      .hero-meta {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+      .hero-meta-item {
+        text-align: center;
+      }
+      .hero-meta-item .val {
+        font-family: "Montserrat", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: #f39c12;
+        display: block;
+      }
+      .hero-meta-item .lbl {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .divider-line {
+        width: 60px;
+        height: 3px;
+        background: var(--red);
+        margin: 0 auto 12px;
+        border-radius: 2px;
+      }
 
-    /* ── LAYOUT ──────────────────────────────── */
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+      /* ── LAYOUT ──────────────────────────────── */
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
 
-    section { padding: 64px 0; }
-    section + section { border-top: 1px solid var(--border); }
+      section {
+        padding: 64px 0;
+      }
+      section + section {
+        border-top: 1px solid var(--border);
+      }
 
-    h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      color: var(--navy);
-    }
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-    .section-intro {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 640px;
-      margin-bottom: 40px;
-    }
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 8px;
+      }
+      .section-intro {
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 640px;
+        margin-bottom: 40px;
+      }
 
-    /* ── PERSONAL NOTE ──────────────────────── */
-    .personal-note {
-      background: var(--white);
-      border-left: 4px solid var(--gold);
-      border-radius: 0 12px 12px 0;
-      padding: 28px 32px;
-      margin-bottom: 0;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-    }
-    .personal-note .note-from {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .personal-note p {
-      font-size: 15.5px;
-      line-height: 1.75;
-      color: var(--text);
-    }
-    .personal-note .sig {
-      margin-top: 20px;
-      font-weight: 600;
-      color: var(--navy);
-    }
+      /* ── PERSONAL NOTE ──────────────────────── */
+      .personal-note {
+        background: var(--white);
+        border-left: 4px solid var(--gold);
+        border-radius: 0 12px 12px 0;
+        padding: 28px 32px;
+        margin-bottom: 0;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      }
+      .personal-note .note-from {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .personal-note p {
+        font-size: 15.5px;
+        line-height: 1.75;
+        color: var(--text);
+      }
+      .personal-note .sig {
+        margin-top: 20px;
+        font-weight: 600;
+        color: var(--navy);
+      }
 
-    /* ── PHASE 1 RECAP ──────────────────────── */
-    .phase1-strip {
-      background: linear-gradient(90deg, #0D1F3C, #1A3260);
-      border-radius: 16px;
-      padding: 36px 40px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .phase1-strip .check-list { flex: 1; min-width: 200px; }
-    .phase1-strip .check-list li {
-      list-style: none;
-      padding: 6px 0;
-      font-size: 14.5px;
-      color: rgba(255,255,255,0.88);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .phase1-strip .check-list li::before {
-      content: '✓';
-      background: var(--green);
-      color: #fff;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .phase1-strip .phase1-right {
-      text-align: center;
-      flex-shrink: 0;
-    }
-    .phase1-strip .phase1-right .big {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .phase1-strip .phase1-right .small {
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
+      /* ── PHASE 1 RECAP ──────────────────────── */
+      .phase1-strip {
+        background: linear-gradient(90deg, #0d1f3c, #1a3260);
+        border-radius: 16px;
+        padding: 36px 40px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .phase1-strip .check-list {
+        flex: 1;
+        min-width: 200px;
+      }
+      .phase1-strip .check-list li {
+        list-style: none;
+        padding: 6px 0;
+        font-size: 14.5px;
+        color: rgba(255, 255, 255, 0.88);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .phase1-strip .check-list li::before {
+        content: "✓";
+        background: var(--green);
+        color: #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .phase1-strip .phase1-right {
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .phase1-strip .phase1-right .big {
+        font-family: "Montserrat", sans-serif;
+        font-size: 42px;
+        font-weight: 900;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .phase1-strip .phase1-right .small {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 4px;
+      }
 
-    /* ── PROBLEM SECTION ────────────────────── */
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 20px;
-    }
-    .problem-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 24px;
-      border-top: 3px solid var(--red);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    .problem-card .icon { font-size: 28px; margin-bottom: 12px; }
-    .problem-card h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-    .problem-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+      /* ── PROBLEM SECTION ────────────────────── */
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 20px;
+      }
+      .problem-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 24px;
+        border-top: 3px solid var(--red);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      }
+      .problem-card .icon {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+      .problem-card h4 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 8px;
+      }
+      .problem-card p {
+        font-size: 13.5px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
 
-    /* ── MODULE CARDS ───────────────────────── */
-    .module-card {
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      margin-bottom: 32px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .module-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 36px rgba(0,0,0,0.11);
-    }
-    .module-header {
-      padding: 28px 32px 24px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-    }
-    .module-header-left {}
-    .module-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 3px 12px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    .tag-a { background: #EBF5FB; color: #2980B9; }
-    .tag-b { background: #EAFAF1; color: #1E8449; }
-    .tag-c { background: #FEF9E7; color: #9A7D0A; }
-    .tag-d { background: #FDFEFE; color: #717D7E; border: 1px solid #D5D8DC; }
+      /* ── MODULE CARDS ───────────────────────── */
+      .module-card {
+        background: var(--white);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        margin-bottom: 32px;
+        border: 1px solid var(--border);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .module-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 36px rgba(0, 0, 0, 0.11);
+      }
+      .module-header {
+        padding: 28px 32px 24px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--border);
+      }
+      .module-header-left {
+      }
+      .module-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 3px 12px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+      }
+      .tag-a {
+        background: #ebf5fb;
+        color: #2980b9;
+      }
+      .tag-b {
+        background: #eafaf1;
+        color: #1e8449;
+      }
+      .tag-c {
+        background: #fef9e7;
+        color: #9a7d0a;
+      }
+      .tag-d {
+        background: #fdfefe;
+        color: #717d7e;
+        border: 1px solid #d5d8dc;
+      }
 
-    .module-header h3 { font-size: 20px; margin-bottom: 6px; }
-    .module-header .module-sub {
-      font-size: 13.5px;
-      color: var(--muted);
-    }
-    .module-pricing {
-      text-align: right;
-      flex-shrink: 0;
-    }
-    .market-price {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-    .actual-price {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 32px;
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1;
-    }
-    .savings-badge {
-      display: inline-block;
-      background: #EAFAF1;
-      color: var(--green);
-      border: 1px solid #A9DFBF;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-top: 6px;
-    }
-    .timeline-pill {
-      display: inline-block;
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--muted);
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-top: 8px;
-    }
+      .module-header h3 {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+      .module-header .module-sub {
+        font-size: 13.5px;
+        color: var(--muted);
+      }
+      .module-pricing {
+        text-align: right;
+        flex-shrink: 0;
+      }
+      .market-price {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: line-through;
+      }
+      .actual-price {
+        font-family: "Montserrat", sans-serif;
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--navy);
+        line-height: 1;
+      }
+      .savings-badge {
+        display: inline-block;
+        background: #eafaf1;
+        color: var(--green);
+        border: 1px solid #a9dfbf;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-top: 6px;
+      }
+      .timeline-pill {
+        display: inline-block;
+        background: var(--off-white);
+        border: 1px solid var(--border);
+        font-size: 12px;
+        color: var(--muted);
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-top: 8px;
+      }
 
-    .module-body { padding: 28px 32px; }
-    .module-body .why-it-matters {
-      background: linear-gradient(90deg, #EBF5FB, #F4F6FA);
-      border-left: 3px solid #2980B9;
-      border-radius: 0 8px 8px 0;
-      padding: 14px 18px;
-      font-size: 14px;
-      color: var(--navy);
-      margin-top: 24px;
-      font-style: italic;
-    }
-    .module-body .why-it-matters strong { color: var(--red); font-style: normal; }
+      .module-body {
+        padding: 28px 32px;
+      }
+      .module-body .why-it-matters {
+        background: linear-gradient(90deg, #ebf5fb, #f4f6fa);
+        border-left: 3px solid #2980b9;
+        border-radius: 0 8px 8px 0;
+        padding: 14px 18px;
+        font-size: 14px;
+        color: var(--navy);
+        margin-top: 24px;
+        font-style: italic;
+      }
+      .module-body .why-it-matters strong {
+        color: var(--red);
+        font-style: normal;
+      }
 
-    .feature-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
-    @media (max-width: 560px) { .feature-list { grid-template-columns: 1fr; } }
-    .feature-list li {
-      font-size: 14px;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      line-height: 1.5;
-    }
-    .feature-list li::before {
-      content: '→';
-      color: var(--red);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+      .feature-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 24px;
+      }
+      @media (max-width: 560px) {
+        .feature-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      .feature-list li {
+        font-size: 14px;
+        color: var(--text);
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        line-height: 1.5;
+      }
+      .feature-list li::before {
+        content: "→";
+        color: var(--red);
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
 
-    .pair-banner {
-      background: linear-gradient(90deg, #FEF9E7, #FEF5E4);
-      border: 1px solid #F9E79F;
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-size: 14px;
-      color: #7D6608;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 24px;
-    }
-    .pair-banner .icon { font-size: 20px; flex-shrink: 0; }
+      .pair-banner {
+        background: linear-gradient(90deg, #fef9e7, #fef5e4);
+        border: 1px solid #f9e79f;
+        border-radius: 10px;
+        padding: 16px 20px;
+        font-size: 14px;
+        color: #7d6608;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .pair-banner .icon {
+        font-size: 20px;
+        flex-shrink: 0;
+      }
 
-    /* ── PRICING TABLE ──────────────────────── */
-    .pricing-table-wrap {
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      border: 1px solid var(--border);
-    }
-    table { width: 100%; border-collapse: collapse; }
-    thead { background: var(--navy); color: #fff; }
-    thead th {
-      padding: 16px 24px;
-      text-align: left;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    thead th:last-child { text-align: right; }
-    tbody tr { border-bottom: 1px solid var(--border); }
-    tbody tr:last-child { border-bottom: none; }
-    tbody td {
-      padding: 18px 24px;
-      font-size: 14.5px;
-      vertical-align: top;
-    }
-    tbody td:last-child { text-align: right; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--navy); }
-    .row-module { font-weight: 700; color: var(--navy); }
-    .row-desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
-    .market-cross { font-size: 12px; color: #BDC3C7; text-decoration: line-through; display: block; margin-bottom: 2px; }
+      /* ── PRICING TABLE ──────────────────────── */
+      .pricing-table-wrap {
+        background: var(--white);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        border: 1px solid var(--border);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead {
+        background: var(--navy);
+        color: #fff;
+      }
+      thead th {
+        padding: 16px 24px;
+        text-align: left;
+        font-family: "Montserrat", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      thead th:last-child {
+        text-align: right;
+      }
+      tbody tr {
+        border-bottom: 1px solid var(--border);
+      }
+      tbody tr:last-child {
+        border-bottom: none;
+      }
+      tbody td {
+        padding: 18px 24px;
+        font-size: 14.5px;
+        vertical-align: top;
+      }
+      tbody td:last-child {
+        text-align: right;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .row-module {
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .row-desc {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+      .market-cross {
+        font-size: 12px;
+        color: #bdc3c7;
+        text-decoration: line-through;
+        display: block;
+        margin-bottom: 2px;
+      }
 
-    tfoot tr { background: linear-gradient(90deg, var(--navy), var(--navy-mid)); }
-    tfoot td {
-      padding: 20px 24px;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 16px;
-    }
-    tfoot td:last-child { text-align: right; font-size: 28px; color: var(--gold); }
-    .strikethrough-row td { opacity: 0.55; }
-    .strikethrough-row td:last-child { text-decoration: line-through; }
+      tfoot tr {
+        background: linear-gradient(90deg, var(--navy), var(--navy-mid));
+      }
+      tfoot td {
+        padding: 20px 24px;
+        color: #fff;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+      }
+      tfoot td:last-child {
+        text-align: right;
+        font-size: 28px;
+        color: var(--gold);
+      }
+      .strikethrough-row td {
+        opacity: 0.55;
+      }
+      .strikethrough-row td:last-child {
+        text-decoration: line-through;
+      }
 
-    .savings-call-out {
-      background: linear-gradient(135deg, #EAFAF1, #D5F5E3);
-      border: 1px solid #A9DFBF;
-      border-radius: 12px;
-      padding: 24px 28px;
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .savings-call-out .big-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 48px;
-      font-weight: 900;
-      color: var(--green);
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .savings-call-out .text h4 { font-size: 16px; color: var(--navy); margin-bottom: 6px; }
-    .savings-call-out .text p { font-size: 13.5px; color: #1E8449; }
+      .savings-call-out {
+        background: linear-gradient(135deg, #eafaf1, #d5f5e3);
+        border: 1px solid #a9dfbf;
+        border-radius: 12px;
+        padding: 24px 28px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .savings-call-out .big-num {
+        font-family: "Montserrat", sans-serif;
+        font-size: 48px;
+        font-weight: 900;
+        color: var(--green);
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .savings-call-out .text h4 {
+        font-size: 16px;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+      .savings-call-out .text p {
+        font-size: 13.5px;
+        color: #1e8449;
+      }
 
-    /* ── MARKET COMPARISON ──────────────────── */
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    @media (max-width: 580px) { .compare-grid { grid-template-columns: 1fr; } }
-    .compare-card {
-      border-radius: 14px;
-      padding: 28px;
-    }
-    .compare-card.market {
-      background: #FEF2F2;
-      border: 1px solid #FECACA;
-    }
-    .compare-card.ours {
-      background: linear-gradient(135deg, #EBF5FB, #EAFAF1);
-      border: 1px solid #A9DFBF;
-    }
-    .compare-card .compare-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-    .compare-card.market .compare-label { color: var(--red); }
-    .compare-card.ours .compare-label { color: var(--green); }
-    .compare-card .price {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 36px;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-    .compare-card.market .price { color: var(--red); }
-    .compare-card.ours .price { color: var(--green); }
-    .compare-card ul { list-style: none; }
-    .compare-card ul li {
-      font-size: 13.5px;
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      display: flex;
-      gap: 8px;
-    }
-    .compare-card ul li:last-child { border-bottom: none; }
+      /* ── MARKET COMPARISON ──────────────────── */
+      .compare-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 580px) {
+        .compare-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .compare-card {
+        border-radius: 14px;
+        padding: 28px;
+      }
+      .compare-card.market {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+      }
+      .compare-card.ours {
+        background: linear-gradient(135deg, #ebf5fb, #eafaf1);
+        border: 1px solid #a9dfbf;
+      }
+      .compare-card .compare-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+      }
+      .compare-card.market .compare-label {
+        color: var(--red);
+      }
+      .compare-card.ours .compare-label {
+        color: var(--green);
+      }
+      .compare-card .price {
+        font-family: "Montserrat", sans-serif;
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 12px;
+      }
+      .compare-card.market .price {
+        color: var(--red);
+      }
+      .compare-card.ours .price {
+        color: var(--green);
+      }
+      .compare-card ul {
+        list-style: none;
+      }
+      .compare-card ul li {
+        font-size: 13.5px;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        display: flex;
+        gap: 8px;
+      }
+      .compare-card ul li:last-child {
+        border-bottom: none;
+      }
 
-    /* ── PAYMENT SECTION ────────────────────── */
-    .payment-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .payment-step {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 24px;
-      text-align: center;
-      border: 1px solid var(--border);
-      position: relative;
-    }
-    .step-num {
-      width: 40px;
-      height: 40px;
-      background: var(--navy);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 16px;
-      margin: 0 auto 16px;
-    }
-    .payment-step h4 { font-size: 14px; margin-bottom: 6px; }
-    .payment-step p { font-size: 13px; color: var(--muted); }
+      /* ── PAYMENT SECTION ────────────────────── */
+      .payment-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+      .payment-step {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        border: 1px solid var(--border);
+        position: relative;
+      }
+      .step-num {
+        width: 40px;
+        height: 40px;
+        background: var(--navy);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        margin: 0 auto 16px;
+      }
+      .payment-step h4 {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      .payment-step p {
+        font-size: 13px;
+        color: var(--muted);
+      }
 
-    /* ── SEO ADDON ──────────────────────────── */
-    .addon-card {
-      background: linear-gradient(135deg, var(--navy) 0%, #1A3260 100%);
-      border-radius: 16px;
-      padding: 40px;
-      color: #fff;
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .addon-card .addon-left { flex: 1; min-width: 240px; }
-    .addon-card .addon-left h3 {
-      color: #fff;
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-    .addon-card .addon-left p { color: rgba(255,255,255,0.72); font-size: 14.5px; line-height: 1.7; }
-    .addon-card .addon-right { text-align: center; flex-shrink: 0; }
-    .addon-card .addon-right .per-month {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .addon-card .addon-right .per-month span { font-size: 18px; }
-    .addon-card .addon-right p { color: rgba(255,255,255,0.55); font-size: 12px; margin-top: 4px; }
-    .addon-list { margin-top: 20px; list-style: none; }
-    .addon-list li {
-      font-size: 13.5px;
-      color: rgba(255,255,255,0.8);
-      padding: 5px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .addon-list li::before { content: '✦'; color: var(--gold); font-size: 10px; }
+      /* ── SEO ADDON ──────────────────────────── */
+      .addon-card {
+        background: linear-gradient(135deg, var(--navy) 0%, #1a3260 100%);
+        border-radius: 16px;
+        padding: 40px;
+        color: #fff;
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .addon-card .addon-left {
+        flex: 1;
+        min-width: 240px;
+      }
+      .addon-card .addon-left h3 {
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+      .addon-card .addon-left p {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+      .addon-card .addon-right {
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .addon-card .addon-right .per-month {
+        font-family: "Montserrat", sans-serif;
+        font-size: 42px;
+        font-weight: 900;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .addon-card .addon-right .per-month span {
+        font-size: 18px;
+      }
+      .addon-card .addon-right p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+      .addon-list {
+        margin-top: 20px;
+        list-style: none;
+      }
+      .addon-list li {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .addon-list li::before {
+        content: "✦";
+        color: var(--gold);
+        font-size: 10px;
+      }
 
-    /* ── CTA ────────────────────────────────── */
-    .cta-section {
-      background: linear-gradient(135deg, var(--red) 0%, #A93226 100%);
-      border-radius: 16px;
-      padding: 52px 40px;
-      text-align: center;
-      color: #fff;
-    }
-    .cta-section h2 { color: #fff; font-size: clamp(22px, 4vw, 34px); margin-bottom: 12px; }
-    .cta-section p { color: rgba(255,255,255,0.82); font-size: 15.5px; max-width: 560px; margin: 0 auto 32px; }
-    .cta-options {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-block;
-      padding: 14px 30px;
-      border-radius: 8px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
-    .btn-white { background: #fff; color: var(--red); }
-    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); }
+      /* ── CTA ────────────────────────────────── */
+      .cta-section {
+        background: linear-gradient(135deg, var(--red) 0%, #a93226 100%);
+        border-radius: 16px;
+        padding: 52px 40px;
+        text-align: center;
+        color: #fff;
+      }
+      .cta-section h2 {
+        color: #fff;
+        font-size: clamp(22px, 4vw, 34px);
+        margin-bottom: 12px;
+      }
+      .cta-section p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 15.5px;
+        max-width: 560px;
+        margin: 0 auto 32px;
+      }
+      .cta-options {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 30px;
+        border-radius: 8px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      }
+      .btn-white {
+        background: #fff;
+        color: var(--red);
+      }
+      .btn-outline {
+        background: transparent;
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
 
-    /* ── FOOTER ─────────────────────────────── */
-    .footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.55);
-      text-align: center;
-      padding: 32px;
-      font-size: 13px;
-    }
-    .footer strong { color: rgba(255,255,255,0.85); }
+      /* ── FOOTER ─────────────────────────────── */
+      .footer {
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.55);
+        text-align: center;
+        padding: 32px;
+        font-size: 13px;
+      }
+      .footer strong {
+        color: rgba(255, 255, 255, 0.85);
+      }
 
-    /* ── UTILITY ────────────────────────────── */
-    .mt-8  { margin-top: 8px;  }
-    .mt-16 { margin-top: 16px; }
-    .mt-24 { margin-top: 24px; }
-    .mb-32 { margin-bottom: 32px; }
+      /* ── UTILITY ────────────────────────────── */
+      .mt-8 {
+        margin-top: 8px;
+      }
+      .mt-16 {
+        margin-top: 16px;
+      }
+      .mt-24 {
+        margin-top: 24px;
+      }
+      .mb-32 {
+        margin-bottom: 32px;
+      }
 
-    @media (max-width: 640px) {
-      .hero { padding: 44px 20px 40px; }
-      .hero-meta { gap: 24px; }
-      .phase1-strip { padding: 24px; }
-      .module-header { padding: 20px 20px 18px; }
-      .module-body { padding: 20px; }
-      .addon-card { padding: 28px 24px; }
-      .cta-section { padding: 40px 24px; }
-      .feature-list { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- ══════════ HERO ══════════ -->
-<div class="hero">
-  <div class="hero-badge">Phase 2 Proposal · Confidential · Board-Ready</div>
-  <h1>Veterans Transition Support<br><span>Website Growth — Phase 2</span></h1>
-  <p class="subtitle">
-    Homepage rebuild, Donor Spotlight system, Events Hub, Coursera registration automation, and lifecycle management — priced specifically for a nonprofit budget.
-  </p>
-  <div class="hero-meta">
-    <div class="hero-meta-item">
-      <span class="val">$2,650</span>
-      <span class="lbl">Full Package</span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="val">4–6 wks</span>
-      <span class="lbl">Timeline</span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="val">4</span>
-      <span class="lbl">Independent Modules</span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="val">30 days</span>
-      <span class="lbl">Post-Launch Support</span>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════ PERSONAL NOTE ══════════ -->
-<section style="background: var(--white);">
-  <div class="container">
-    <div class="section-label">A Note from Umer</div>
-    <div class="personal-note">
-      <div class="note-from">To: Kathy Burnam, Treasurer / Operations Lead · Veterans Transition Support</div>
-      <p>
-        Kathy — Phase 1 is wrapping up clean, and I'm proud of what we delivered together. You trusted me with a project that genuinely matters, and I don't take that lightly.
-        <br /><br />
-        This is the separate proposal you asked me to prepare for the board. It covers exactly the four things we set aside — the homepage rebuild, the donor system, keeping event traffic on your site, and the Coursera registration automation that your volunteers are drowning in.
-        <br /><br />
-        I've structured every module so the board can approve one piece at a time. No surprise invoices, no bundled commitments. And because you're a nonprofit doing critical work for veterans, I've priced every module <strong>significantly below standard market rates</strong> — the kind of rates a corporate client would pay. You deserve a partner who prices fairly, not one who charges what the contract can bear.
-        <br /><br />
-        I've been transparent from day one, and this proposal is no different.
+      @media (max-width: 640px) {
+        .hero {
+          padding: 44px 20px 40px;
+        }
+        .hero-meta {
+          gap: 24px;
+        }
+        .phase1-strip {
+          padding: 24px;
+        }
+        .module-header {
+          padding: 20px 20px 18px;
+        }
+        .module-body {
+          padding: 20px;
+        }
+        .addon-card {
+          padding: 28px 24px;
+        }
+        .cta-section {
+          padding: 40px 24px;
+        }
+        .feature-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════ HERO ══════════ -->
+    <div class="hero">
+      <div class="hero-badge">
+        Phase 2 Proposal · Confidential · Board-Ready
+      </div>
+      <h1>
+        Veterans Transition Support<br /><span>Website Growth — Phase 2</span>
+      </h1>
+      <p class="subtitle">
+        Homepage rebuild, Donor Spotlight system, Events Hub, Coursera
+        registration automation, and lifecycle management — priced specifically
+        for a nonprofit budget.
       </p>
-      <div class="sig">— Muhammad Umer Khan · WordPress Developer & Project Lead</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ PHASE 1 RECAP ══════════ -->
-<section>
-  <div class="container">
-    <div class="section-label">Where We Are</div>
-    <h2>Phase 1: Delivered & Complete</h2>
-    <p class="section-intro">Before asking for more, let me show you what your $1,200 contract already accomplished.</p>
-    <div class="phase1-strip">
-      <div class="phase1-right">
-        <div class="big">$1,200</div>
-        <div class="small">Phase 1 Contract<br>Completed ✓</div>
-      </div>
-      <div class="check-list">
-        <ul>
-          <li>Technical SEO cleanup — site health restored</li>
-          <li>Events page — fully rebuilt and functional</li>
-          <li>Donate page — clean, trust-building flow</li>
-          <li>Donors & Sponsors page — organized and live</li>
-          <li>Job Landings Board — new feature, delivered on time</li>
-        </ul>
-      </div>
-    </div>
-    <p style="margin-top: 20px; font-size: 14px; color: var(--muted);">
-      Phase 1 fixed what was broken. Phase 2 fixes what's <em>leaking</em> — traffic, donor contacts, and volunteer hours the current site loses every single day.
-    </p>
-  </div>
-</section>
-
-<!-- ══════════ THE PROBLEM ══════════ -->
-<section style="background: var(--white);">
-  <div class="container">
-    <div class="section-label">The Business Case</div>
-    <h2>What's Leaking Right Now</h2>
-    <p class="section-intro">Four specific problems. Four specific solutions. Each one has a measurable cost to VTS every day it goes unfixed.</p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="icon">🏠</div>
-        <h4>Homepage: First Impression Failing</h4>
-        <p>No impact counters. No Coursera feature. No clear path from landing to registering. Every visitor who bounces is a veteran you didn't reach.</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">📤</div>
-        <h4>Events: Traffic Handed to Eventbrite</h4>
-        <p>"Register for Classes" sends every visitor to a third-party platform. VTS loses the traffic, the analytics, and the brand authority — every single day.</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">📧</div>
-        <h4>Coursera: 100–200 Emails / Day, Manually</h4>
-        <p>Four volunteers processing every inquiry by hand. No CRM record. No automated follow-up. No lifecycle tracking. This is not sustainable.</p>
-      </div>
-      <div class="problem-card">
-        <div class="icon">🏆</div>
-        <h4>Donors: A Static Logo Wall</h4>
-        <p>Your Donors page is a frozen snapshot. No stories, no spotlights, nothing that makes a new business want to give. Donors deserve recognition that moves.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ MODULES ══════════ -->
-<section>
-  <div class="container">
-    <div class="section-label">The Solution</div>
-    <h2>Four Modules. Four Wins.</h2>
-    <p class="section-intro">Approve any one independently. The board doesn't have to commit to the full package — every module delivers a standalone result.</p>
-
-    <!-- MODULE A -->
-    <div class="module-card">
-      <div class="module-header">
-        <div class="module-header-left">
-          <span class="module-tag tag-a">Module A · Recommended Start</span>
-          <h3>Homepage + Donor Spotlight System + Newsletter Popup & CRM</h3>
-          <div class="module-sub">The foundation every other module builds on. Your front door, your donor recognition, and your contact capture — all rebuilt.</div>
-          <div class="timeline-pill">⏱ Timeline: 1–2 weeks</div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="val">$2,650</span>
+          <span class="lbl">Full Package</span>
         </div>
-        <div class="module-pricing">
-          <div class="market-price">Market rate: $1,200–1,800</div>
-          <div class="actual-price">$500</div>
-          <div class="savings-badge">You save $700–$1,300</div>
+        <div class="hero-meta-item">
+          <span class="val">4–6 wks</span>
+          <span class="lbl">Timeline</span>
         </div>
-      </div>
-      <div class="module-body">
-        <ul class="feature-list">
-          <li>Full homepage rebuild in Elementor Pro — hero, counters, Coursera section, programs, events, donors preview, footer</li>
-          <li>Coursera impact stats featured: 193,780 all-time enrollments · 60,639 in 2025</li>
-          <li>Donors & Community Partners custom post type — staff add spotlights without a developer, ever again</li>
-          <li>Featured Donor Spotlight at top, sponsor tier/logo wall retained below</li>
-          <li>Searchable archive — every donor keeps recognition permanently</li>
-          <li>Dedicated donor detail page: photo, logo, story, donation context</li>
-          <li>"Honor a Donor" submission form with admin approval workflow</li>
-          <li>Privacy/consent controls per entry</li>
-          <li>Non-intrusive newsletter popup (scroll-triggered) → FluentCRM</li>
-          <li>Welcome email sequence for every new subscriber</li>
-          <li>Navy/red/off-white color system + Montserrat/Inter typography applied globally</li>
-          <li>Full desktop, tablet & mobile build</li>
-        </ul>
-        <div class="why-it-matters">
-          <strong>Why it matters to the board:</strong> The homepage is where every donor, veteran, and volunteer forms their first impression of VTS. A static logo wall doesn't move anyone to give. A living donor spotlight does.
+        <div class="hero-meta-item">
+          <span class="val">4</span>
+          <span class="lbl">Independent Modules</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="val">30 days</span>
+          <span class="lbl">Post-Launch Support</span>
         </div>
       </div>
     </div>
 
-    <!-- MODULE B -->
-    <div class="module-card">
-      <div class="module-header">
-        <div class="module-header-left">
-          <span class="module-tag tag-b">Module B · Quick Win</span>
-          <h3>Events Hub — Hybrid Eventbrite API Feed</h3>
-          <div class="module-sub">Eventbrite stays your management backend. Events display on VTS's own site with your branding. No retraining. No disruption.</div>
-          <div class="timeline-pill">⏱ Timeline: 1 week</div>
-        </div>
-        <div class="module-pricing">
-          <div class="market-price">Market rate: $1,500–2,000</div>
-          <div class="actual-price">$700</div>
-          <div class="savings-badge">You save $800–$1,300</div>
-        </div>
-      </div>
-      <div class="module-body">
-        <ul class="feature-list">
-          <li>Eventbrite API integration — live events pulled into VTS branding automatically</li>
-          <li>Ends the current Eventbrite + Eventzilla split — one clean experience</li>
-          <li>Filtering by event type, Zoom vs. in-person, free vs. low-cost</li>
-          <li>Auto-updating — nothing goes stale, no manual date entry ever</li>
-          <li>Homepage events feed wired to the same live source</li>
-          <li>Mobile-optimized display</li>
-        </ul>
-        <div class="why-it-matters">
-          <strong>Why it matters to the board:</strong> Traffic, analytics, and brand authority stay with VTS — not a third-party platform that could change its pricing or policies at any time. Veterans who find your events find <em>you</em>.
-        </div>
-      </div>
-    </div>
-
-    <!-- MODULE C -->
-    <div class="module-card">
-      <div class="module-header">
-        <div class="module-header-left">
-          <span class="module-tag tag-c">Module C · High Impact</span>
-          <h3>Coursera Registration + FluentCRM Capture + Verification Queue</h3>
-          <div class="module-sub">Replaces Eventbrite as your Coursera intake point and turns every registrant into a VTS-owned contact with a clean verification workflow.</div>
-          <div class="timeline-pill">⏱ Timeline: 1–2 weeks</div>
-        </div>
-        <div class="module-pricing">
-          <div class="market-price">Market rate: $2,000–3,000</div>
-          <div class="actual-price">$900</div>
-          <div class="savings-badge">You save $1,100–$2,100</div>
+    <!-- ══════════ PERSONAL NOTE ══════════ -->
+    <section style="background: var(--white)">
+      <div class="container">
+        <div class="section-label">A Note from Umer</div>
+        <div class="personal-note">
+          <div class="note-from">
+            To: Kathy Burnam, Treasurer / Operations Lead · Veterans Transition
+            Support
+          </div>
+          <p>
+            Kathy — Phase 1 is wrapping up clean, and I'm proud of what we
+            delivered together. You trusted me with a project that genuinely
+            matters, and I don't take that lightly.
+            <br /><br />
+            This is the separate proposal you asked me to prepare for the board.
+            It covers exactly the four things we set aside — the homepage
+            rebuild, the donor system, keeping event traffic on your site, and
+            the Coursera registration automation that your volunteers are
+            drowning in.
+            <br /><br />
+            I've structured every module so the board can approve one piece at a
+            time. No surprise invoices, no bundled commitments. And because
+            you're a nonprofit doing critical work for veterans, I've priced
+            every module
+            <strong>significantly below standard market rates</strong> — the
+            kind of rates a corporate client would pay. You deserve a partner
+            who prices fairly, not one who charges what the contract can bear.
+            <br /><br />
+            I've been transparent from day one, and this proposal is no
+            different.
+          </p>
+          <div class="sig">
+            — Muhammad Umer Khan · WordPress Developer & Project Lead
+          </div>
         </div>
       </div>
-      <div class="module-body">
-        <ul class="feature-list">
-          <li>On-site Coursera registration form replaces Eventbrite as intake point</li>
-          <li>FluentCRM integration — every registrant captured and tagged "Coursera"</li>
-          <li>Separated from regular 12k program contacts — clean lists, always</li>
-          <li>Military-verification queue: pending / verified / declined workflow</li>
-          <li>Nothing falls through the cracks — no shared inbox, no manual tracking</li>
-          <li>Confirmation email on submission; approval email on verification</li>
-          <li>Live contact list with verification status visible to your team</li>
-          <li>Private information moves out of WordPress into proper CRM records</li>
-        </ul>
-        <div class="pair-banner">
-          <span class="icon">🔗</span>
-          <span><strong>Best paired with Module D.</strong> C captures and verifies registrants. D automates the 12-month license lifecycle that follows. C launches as an immediate standalone win — D brings the full operational relief your volunteers need.</span>
+    </section>
+
+    <!-- ══════════ PHASE 1 RECAP ══════════ -->
+    <section>
+      <div class="container">
+        <div class="section-label">Where We Are</div>
+        <h2>Phase 1: Delivered & Complete</h2>
+        <p class="section-intro">
+          Before asking for more, let me show you what your $1,200 contract
+          already accomplished.
+        </p>
+        <div class="phase1-strip">
+          <div class="phase1-right">
+            <div class="big">$1,200</div>
+            <div class="small">Phase 1 Contract<br />Completed ✓</div>
+          </div>
+          <div class="check-list">
+            <ul>
+              <li>Technical SEO cleanup — site health restored</li>
+              <li>Events page — fully rebuilt and functional</li>
+              <li>Donate page — clean, trust-building flow</li>
+              <li>Donors & Sponsors page — organized and live</li>
+              <li>Job Landings Board — new feature, delivered on time</li>
+            </ul>
+          </div>
         </div>
-        <div class="why-it-matters">
-          <strong>Why it matters to the board:</strong> 100–200 contacts a day currently go to Eventbrite and are processed by hand. This system captures every one of them as a VTS-owned contact, with a workflow your team already understands.
+        <p style="margin-top: 20px; font-size: 14px; color: var(--muted)">
+          Phase 1 fixed what was broken. Phase 2 fixes what's <em>leaking</em> —
+          traffic, donor contacts, and volunteer hours the current site loses
+          every single day.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════ THE PROBLEM ══════════ -->
+    <section style="background: var(--white)">
+      <div class="container">
+        <div class="section-label">The Business Case</div>
+        <h2>What's Leaking Right Now</h2>
+        <p class="section-intro">
+          Four specific problems. Four specific solutions. Each one has a
+          measurable cost to VTS every day it goes unfixed.
+        </p>
+        <div class="problem-grid">
+          <div class="problem-card">
+            <div class="icon">🏠</div>
+            <h4>Homepage: First Impression Failing</h4>
+            <p>
+              No impact counters. No Coursera feature. No clear path from
+              landing to registering. Every visitor who bounces is a veteran you
+              didn't reach.
+            </p>
+          </div>
+          <div class="problem-card">
+            <div class="icon">📤</div>
+            <h4>Events: Traffic Handed to Eventbrite</h4>
+            <p>
+              "Register for Classes" sends every visitor to a third-party
+              platform. VTS loses the traffic, the analytics, and the brand
+              authority — every single day.
+            </p>
+          </div>
+          <div class="problem-card">
+            <div class="icon">📧</div>
+            <h4>Coursera: 100–200 Emails / Day, Manually</h4>
+            <p>
+              Four volunteers processing every inquiry by hand. No CRM record.
+              No automated follow-up. No lifecycle tracking. This is not
+              sustainable.
+            </p>
+          </div>
+          <div class="problem-card">
+            <div class="icon">🏆</div>
+            <h4>Donors: A Static Logo Wall</h4>
+            <p>
+              Your Donors page is a frozen snapshot. No stories, no spotlights,
+              nothing that makes a new business want to give. Donors deserve
+              recognition that moves.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- MODULE D -->
-    <div class="module-card">
-      <div class="module-header">
-        <div class="module-header-left">
-          <span class="module-tag tag-d">Module D · Volunteer Relief</span>
-          <h3>License Lifecycle Automation — Emails, Rotation & Make/n8n</h3>
-          <div class="module-sub">The automation that removes weekend calls and makes 20,000 license rotations per year run without a single manual step.</div>
-          <div class="timeline-pill">⏱ Timeline: 1–2 weeks</div>
+    <!-- ══════════ MODULES ══════════ -->
+    <section>
+      <div class="container">
+        <div class="section-label">The Solution</div>
+        <h2>Four Modules. Four Wins.</h2>
+        <p class="section-intro">
+          Approve any one independently. The board doesn't have to commit to the
+          full package — every module delivers a standalone result.
+        </p>
+
+        <!-- MODULE A -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-header-left">
+              <span class="module-tag tag-a">Module A · Recommended Start</span>
+              <h3>
+                Homepage + Donor Spotlight System + Newsletter Popup & CRM
+              </h3>
+              <div class="module-sub">
+                The foundation every other module builds on. Your front door,
+                your donor recognition, and your contact capture — all rebuilt.
+              </div>
+              <div class="timeline-pill">⏱ Timeline: 1–2 weeks</div>
+            </div>
+            <div class="module-pricing">
+              <div class="market-price">Market rate: $1,200–1,800</div>
+              <div class="actual-price">$500</div>
+              <div class="savings-badge">You save $700–$1,300</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <ul class="feature-list">
+              <li>
+                Full homepage rebuild in Elementor Pro — hero, counters,
+                Coursera section, programs, events, donors preview, footer
+              </li>
+              <li>
+                Coursera impact stats featured: 193,780 all-time enrollments ·
+                60,639 in 2025
+              </li>
+              <li>
+                Donors & Community Partners custom post type — staff add
+                spotlights without a developer, ever again
+              </li>
+              <li>
+                Featured Donor Spotlight at top, sponsor tier/logo wall retained
+                below
+              </li>
+              <li>
+                Searchable archive — every donor keeps recognition permanently
+              </li>
+              <li>
+                Dedicated donor detail page: photo, logo, story, donation
+                context
+              </li>
+              <li>
+                "Honor a Donor" submission form with admin approval workflow
+              </li>
+              <li>Privacy/consent controls per entry</li>
+              <li>
+                Non-intrusive newsletter popup (scroll-triggered) → FluentCRM
+              </li>
+              <li>Welcome email sequence for every new subscriber</li>
+              <li>
+                Navy/red/off-white color system + Montserrat/Inter typography
+                applied globally
+              </li>
+              <li>Full desktop, tablet & mobile build</li>
+            </ul>
+            <div class="why-it-matters">
+              <strong>Why it matters to the board:</strong> The homepage is
+              where every donor, veteran, and volunteer forms their first
+              impression of VTS. A static logo wall doesn't move anyone to give.
+              A living donor spotlight does.
+            </div>
+          </div>
         </div>
-        <div class="module-pricing">
-          <div class="market-price">Market rate: $2,500–4,000</div>
-          <div class="actual-price">$850</div>
-          <div class="savings-badge">You save $1,650–$3,150</div>
+
+        <!-- MODULE B -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-header-left">
+              <span class="module-tag tag-b">Module B · Quick Win</span>
+              <h3>Events Hub — Hybrid Eventbrite API Feed</h3>
+              <div class="module-sub">
+                Eventbrite stays your management backend. Events display on
+                VTS's own site with your branding. No retraining. No disruption.
+              </div>
+              <div class="timeline-pill">⏱ Timeline: 1 week</div>
+            </div>
+            <div class="module-pricing">
+              <div class="market-price">Market rate: $1,500–2,000</div>
+              <div class="actual-price">$700</div>
+              <div class="savings-badge">You save $800–$1,300</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <ul class="feature-list">
+              <li>
+                Eventbrite API integration — live events pulled into VTS
+                branding automatically
+              </li>
+              <li>
+                Ends the current Eventbrite + Eventzilla split — one clean
+                experience
+              </li>
+              <li>
+                Filtering by event type, Zoom vs. in-person, free vs. low-cost
+              </li>
+              <li>
+                Auto-updating — nothing goes stale, no manual date entry ever
+              </li>
+              <li>Homepage events feed wired to the same live source</li>
+              <li>Mobile-optimized display</li>
+            </ul>
+            <div class="why-it-matters">
+              <strong>Why it matters to the board:</strong> Traffic, analytics,
+              and brand authority stay with VTS — not a third-party platform
+              that could change its pricing or policies at any time. Veterans
+              who find your events find <em>you</em>.
+            </div>
+          </div>
+        </div>
+
+        <!-- MODULE C -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-header-left">
+              <span class="module-tag tag-c">Module C · High Impact</span>
+              <h3>
+                Coursera Registration + FluentCRM Capture + Verification Queue
+              </h3>
+              <div class="module-sub">
+                Replaces Eventbrite as your Coursera intake point and turns
+                every registrant into a VTS-owned contact with a clean
+                verification workflow.
+              </div>
+              <div class="timeline-pill">⏱ Timeline: 1–2 weeks</div>
+            </div>
+            <div class="module-pricing">
+              <div class="market-price">Market rate: $2,000–3,000</div>
+              <div class="actual-price">$900</div>
+              <div class="savings-badge">You save $1,100–$2,100</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <ul class="feature-list">
+              <li>
+                On-site Coursera registration form replaces Eventbrite as intake
+                point
+              </li>
+              <li>
+                FluentCRM integration — every registrant captured and tagged
+                "Coursera"
+              </li>
+              <li>
+                Separated from regular 12k program contacts — clean lists,
+                always
+              </li>
+              <li>
+                Military-verification queue: pending / verified / declined
+                workflow
+              </li>
+              <li>
+                Nothing falls through the cracks — no shared inbox, no manual
+                tracking
+              </li>
+              <li>
+                Confirmation email on submission; approval email on verification
+              </li>
+              <li>
+                Live contact list with verification status visible to your team
+              </li>
+              <li>
+                Private information moves out of WordPress into proper CRM
+                records
+              </li>
+            </ul>
+            <div class="pair-banner">
+              <span class="icon">🔗</span>
+              <span
+                ><strong>Best paired with Module D.</strong> C captures and
+                verifies registrants. D automates the 12-month license lifecycle
+                that follows. C launches as an immediate standalone win — D
+                brings the full operational relief your volunteers need.</span
+              >
+            </div>
+            <div class="why-it-matters">
+              <strong>Why it matters to the board:</strong> 100–200 contacts a
+              day currently go to Eventbrite and are processed by hand. This
+              system captures every one of them as a VTS-owned contact, with a
+              workflow your team already understands.
+            </div>
+          </div>
+        </div>
+
+        <!-- MODULE D -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-header-left">
+              <span class="module-tag tag-d">Module D · Volunteer Relief</span>
+              <h3>
+                License Lifecycle Automation — Emails, Rotation & Make/n8n
+              </h3>
+              <div class="module-sub">
+                The automation that removes weekend calls and makes 20,000
+                license rotations per year run without a single manual step.
+              </div>
+              <div class="timeline-pill">⏱ Timeline: 1–2 weeks</div>
+            </div>
+            <div class="module-pricing">
+              <div class="market-price">Market rate: $2,500–4,000</div>
+              <div class="actual-price">$850</div>
+              <div class="savings-badge">You save $1,650–$3,150</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <ul class="feature-list">
+              <li>
+                Automated email lifecycle per participant: welcome → 60-day →
+                30-day → 15-day → expiration
+              </li>
+              <li>
+                License-rotation tracking in FluentCRM — live view of active,
+                expiring, due-for-removal
+              </li>
+              <li>
+                Every seat automatically queued for the next veteran — no manual
+                rotation
+              </li>
+              <li>
+                Make.com or n8n automation: registration → verification → CRM →
+                email, 24/7
+              </li>
+              <li>Auto-replies for the most common routine questions</li>
+              <li>Volunteers handle only what genuinely needs a human touch</li>
+              <li>
+                Staff documentation + full walkthrough delivered on handoff
+              </li>
+            </ul>
+            <div class="why-it-matters">
+              <strong>Why it matters to the board:</strong> 20,000 license
+              rotations per year, currently managed by hand. This system runs in
+              the background every single day — weekends, holidays, all of it —
+              so your volunteers can focus on veterans, not email queues.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="module-body">
-        <ul class="feature-list">
-          <li>Automated email lifecycle per participant: welcome → 60-day → 30-day → 15-day → expiration</li>
-          <li>License-rotation tracking in FluentCRM — live view of active, expiring, due-for-removal</li>
-          <li>Every seat automatically queued for the next veteran — no manual rotation</li>
-          <li>Make.com or n8n automation: registration → verification → CRM → email, 24/7</li>
-          <li>Auto-replies for the most common routine questions</li>
-          <li>Volunteers handle only what genuinely needs a human touch</li>
-          <li>Staff documentation + full walkthrough delivered on handoff</li>
-        </ul>
-        <div class="why-it-matters">
-          <strong>Why it matters to the board:</strong> 20,000 license rotations per year, currently managed by hand. This system runs in the background every single day — weekends, holidays, all of it — so your volunteers can focus on veterans, not email queues.
+    </section>
+
+    <!-- ══════════ PRICING TABLE ══════════ -->
+    <section style="background: var(--white)">
+      <div class="container">
+        <div class="section-label">Pricing Summary</div>
+        <h2>Clear, Board-Presentable Numbers</h2>
+        <p class="section-intro">
+          Every module is priced to stand alone. Approve all four together and
+          save $300 off the à la carte total.
+        </p>
+
+        <div class="pricing-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>What It Delivers</th>
+                <th>Market Rate</th>
+                <th>Your Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="row-module">
+                    A — Homepage + Donor System + CRM
+                  </div>
+                </td>
+                <td>
+                  <div class="row-desc">
+                    Full homepage rebuild, living donor spotlight CPT,
+                    newsletter popup & FluentCRM welcome sequence
+                  </div>
+                </td>
+                <td style="color: var(--muted); font-size: 13px">
+                  $1,200–1,800
+                </td>
+                <td>$500</td>
+              </tr>
+              <tr>
+                <td><div class="row-module">B — Events Hub</div></td>
+                <td>
+                  <div class="row-desc">
+                    Eventbrite API integration, branded events display on VTS
+                    domain, live auto-updating
+                  </div>
+                </td>
+                <td style="color: var(--muted); font-size: 13px">
+                  $1,500–2,000
+                </td>
+                <td>$700</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="row-module">
+                    C — Coursera Registration + FluentCRM
+                  </div>
+                </td>
+                <td>
+                  <div class="row-desc">
+                    On-site intake form, CRM capture, military-verification
+                    queue, confirmation emails
+                  </div>
+                </td>
+                <td style="color: var(--muted); font-size: 13px">
+                  $2,000–3,000
+                </td>
+                <td>$900</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="row-module">D — License Lifecycle Automation</div>
+                </td>
+                <td>
+                  <div class="row-desc">
+                    Automated email sequences, license rotation tracking,
+                    Make/n8n integration, 24/7 operation
+                  </div>
+                </td>
+                <td style="color: var(--muted); font-size: 13px">
+                  $2,500–4,000
+                </td>
+                <td>$850</td>
+              </tr>
+              <tr class="strikethrough-row">
+                <td colspan="3" style="font-size: 14px; color: var(--muted)">
+                  À la carte total (all four, separately)
+                </td>
+                <td>$2,950</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">
+                  ✦ Complete Package — All Four Modules, Approved Together
+                </td>
+                <td>$2,650</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="savings-call-out mt-24">
+          <div class="big-num">$300</div>
+          <div class="text">
+            <h4>Bundled package discount — $300 off the à la carte total</h4>
+            <p>
+              And compared to standard agency market rates for the same scope,
+              VTS saves between <strong>$4,850 and $9,550</strong> on this
+              phase. That's donor money staying in the mission, not going to
+              overhead.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- ══════════ MARKET COMPARISON ══════════ -->
+    <section>
+      <div class="container">
+        <div class="section-label">Why This Pricing Is Different</div>
+        <h2>What the Market Charges vs. What You're Paying</h2>
+        <p class="section-intro">
+          These are real agency rates for equivalent scope. I'm not a big
+          agency, and VTS shouldn't pay like it is one.
+        </p>
+        <div class="compare-grid">
+          <div class="compare-card market">
+            <div class="compare-label">❌ Standard Agency / Market Rate</div>
+            <div class="price">$7,500–$12,800</div>
+            <ul>
+              <li>❌ Homepage rebuild: $2,500–4,000</li>
+              <li>❌ Donor CPT system: $1,200–2,000</li>
+              <li>❌ Events API integration: $1,500–2,000</li>
+              <li>❌ Coursera form + CRM: $2,000–3,000</li>
+              <li>❌ Lifecycle automation: $2,500–4,000</li>
+              <li>❌ No relationship, no context, no trust</li>
+            </ul>
+          </div>
+          <div class="compare-card ours">
+            <div class="compare-label">✅ Your VTS Proposal Price</div>
+            <div class="price">$2,650</div>
+            <ul>
+              <li>✅ Homepage rebuild: included in $500</li>
+              <li>✅ Donor CPT system: included in $500</li>
+              <li>✅ Events API integration: $700</li>
+              <li>✅ Coursera form + CRM: $900</li>
+              <li>✅ Lifecycle automation: $850</li>
+              <li>✅ Phase 1 relationship — zero ramp-up time</li>
+            </ul>
+          </div>
+        </div>
+        <p
+          style="
+            margin-top: 20px;
+            font-size: 13.5px;
+            color: var(--muted);
+            text-align: center;
+          "
+        >
+          This pricing reflects a deliberate choice to support a nonprofit
+          mission. It is not a lowball rate that hides surprises — every module
+          is scoped in full detail above.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════ PAYMENT ══════════ -->
+    <section style="background: var(--white)">
+      <div class="container">
+        <div class="section-label">Payment Structure</div>
+        <h2>No Surprises. Board-Friendly Milestones.</h2>
+        <p class="section-intro">
+          Every payment is tied to something the board can see and approve. No
+          money moves until work is reviewed.
+        </p>
+        <div class="payment-steps">
+          <div class="payment-step">
+            <div class="step-num">1</div>
+            <h4>30% Deposit to Begin</h4>
+            <p>
+              Paid on approval of the scope. Covers setup, planning, and kickoff
+              — nothing more.
+            </p>
+          </div>
+          <div class="payment-step">
+            <div class="step-num">2</div>
+            <h4>Per-Module Milestone Payments</h4>
+            <p>
+              Each module is approved in writing before the next payment. The
+              board controls every release.
+            </p>
+          </div>
+          <div class="payment-step">
+            <div class="step-num">3</div>
+            <h4>30 Days Post-Launch Support</h4>
+            <p>
+              Included on every module. No charge for fixes, tweaks, or training
+              within the first 30 days.
+            </p>
+          </div>
+          <div class="payment-step">
+            <div class="step-num">4</div>
+            <h4>Changes → Written Change Order</h4>
+            <p>
+              Any scope addition after approval requires a written change order
+              first. No surprise invoices, ever.
+            </p>
+          </div>
+        </div>
+        <div
+          style="
+            margin-top: 28px;
+            background: var(--off-white);
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-size: 14px;
+            color: var(--muted);
+          "
+        >
+          <strong style="color: var(--navy)"
+            >Suggested approval sequence:</strong
+          >
+          Module A → B → C → D. The homepage and events hub are visible,
+          low-risk front-end wins the board can see immediately. The Coursera
+          system (C + D) runs best once the FluentCRM foundation from Module A
+          is already in place.
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ SEO ADD-ON ══════════ -->
+    <section>
+      <div class="container">
+        <div class="section-label">Optional Add-On</div>
+        <h2>Ongoing SEO & Organic Traffic Growth</h2>
+        <p class="section-intro">
+          Phase 1 created the clean technical foundation. This retainer turns it
+          into consistent, compounding traffic — more veterans finding VTS
+          through Google, every month.
+        </p>
+        <div class="addon-card">
+          <div class="addon-left">
+            <h3>Monthly SEO Retainer</h3>
+            <p>
+              The Coursera page is already your highest-traffic page — entirely
+              because it's optimized for what veterans actually search. That's
+              the proof. The same approach applied to OSHA training, Lean Six
+              Sigma, VA disability, and career coaching means more veterans
+              finding VTS without a single dollar in paid ads.
+            </p>
+            <ul class="addon-list">
+              <li>
+                Keyword research targeting veteran career-training searches
+              </li>
+              <li>
+                2–4 SEO-optimized content updates or new program pages per month
+              </li>
+              <li>
+                Google Search Console monitoring — catch issues before they
+                compound
+              </li>
+              <li>
+                Internal linking improvements across programs, events, and
+                resources
+              </li>
+              <li>
+                Monthly report: rankings, traffic changes, next month's
+                priorities
+              </li>
+            </ul>
+          </div>
+          <div class="addon-right">
+            <div class="per-month">$400<span>/mo</span></div>
+            <p>Cancel anytime<br />No long-term commitment</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ WHAT'S NOT INCLUDED ══════════ -->
+    <section style="background: var(--white)">
+      <div class="container">
+        <div class="section-label">Full Transparency</div>
+        <h2>What's Not Included</h2>
+        <p class="section-intro">
+          No hidden exclusions, no gotchas discovered mid-project. Here's
+          exactly what sits outside this scope.
+        </p>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+          "
+        >
+          <div
+            style="
+              background: var(--off-white);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-size: 14px;
+              color: var(--muted);
+              border-left: 3px solid var(--border);
+            "
+          >
+            <strong
+              style="color: var(--text); display: block; margin-bottom: 6px"
+              >Copywriting</strong
+            >
+            Structure and prompts provided. VTS supplies final body copy and
+            verified facts.
+          </div>
+          <div
+            style="
+              background: var(--off-white);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-size: 14px;
+              color: var(--muted);
+              border-left: 3px solid var(--border);
+            "
+          >
+            <strong
+              style="color: var(--text); display: block; margin-bottom: 6px"
+              >Photography / Video</strong
+            >
+            VTS supplies program photos. Sizing and placement are handled on my
+            end.
+          </div>
+          <div
+            style="
+              background: var(--off-white);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-size: 14px;
+              color: var(--muted);
+              border-left: 3px solid var(--border);
+            "
+          >
+            <strong
+              style="color: var(--text); display: block; margin-bottom: 6px"
+              >Platform Fees</strong
+            >
+            Eventbrite, Zeffy, payment processor fees — these are platform
+            costs, not development costs.
+          </div>
+          <div
+            style="
+              background: var(--off-white);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-size: 14px;
+              color: var(--muted);
+              border-left: 3px solid var(--border);
+            "
+          >
+            <strong
+              style="color: var(--text); display: block; margin-bottom: 6px"
+              >Paid Advertising</strong
+            >
+            Google or Meta Ads setup is outside this scope. The SEO retainer
+            covers organic growth.
+          </div>
+          <div
+            style="
+              background: var(--off-white);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-size: 14px;
+              color: var(--muted);
+              border-left: 3px solid var(--border);
+            "
+          >
+            <strong
+              style="color: var(--text); display: block; margin-bottom: 6px"
+              >Scope Additions</strong
+            >
+            Anything added after approval requires a written change order before
+            work proceeds.
+          </div>
+          <div
+            style="
+              background: var(--off-white);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-size: 14px;
+              color: var(--muted);
+              border-left: 3px solid var(--border);
+            "
+          >
+            <strong
+              style="color: var(--text); display: block; margin-bottom: 6px"
+              >Military Verification Decisions</strong
+            >
+            Automated intake only. Verification approval remains a human VTS
+            team decision — always.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ OWNERSHIP ══════════ -->
+    <section>
+      <div class="container">
+        <div class="section-label">Your Data. Your Code. Your Site.</div>
+        <h2>Full Ownership — No Lock-In</h2>
+        <p class="section-intro">
+          Everything built in Phase 2 belongs to VTS, unconditionally.
+        </p>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+          "
+        >
+          <div
+            style="
+              background: var(--white);
+              border-radius: 12px;
+              padding: 24px;
+              border: 1px solid var(--border);
+              text-align: center;
+            "
+          >
+            <div style="font-size: 32px; margin-bottom: 12px">🔐</div>
+            <h4 style="font-size: 14px; margin-bottom: 8px">
+              Contact & Donor Data
+            </h4>
+            <p style="font-size: 13px; color: var(--muted)">
+              All FluentCRM contacts belong to VTS. No third party holds your
+              community's data.
+            </p>
+          </div>
+          <div
+            style="
+              background: var(--white);
+              border-radius: 12px;
+              padding: 24px;
+              border: 1px solid var(--border);
+              text-align: center;
+            "
+          >
+            <div style="font-size: 32px; margin-bottom: 12px">⚙️</div>
+            <h4 style="font-size: 14px; margin-bottom: 8px">
+              All Custom Code & Automations
+            </h4>
+            <p style="font-size: 13px; color: var(--muted)">
+              Every CPT, template, and Make/n8n automation is independently
+              maintainable by any future developer.
+            </p>
+          </div>
+          <div
+            style="
+              background: var(--white);
+              border-radius: 12px;
+              padding: 24px;
+              border: 1px solid var(--border);
+              text-align: center;
+            "
+          >
+            <div style="font-size: 32px; margin-bottom: 12px">📋</div>
+            <h4 style="font-size: 14px; margin-bottom: 8px">
+              Written Documentation
+            </h4>
+            <p style="font-size: 13px; color: var(--muted)">
+              Clean handoff docs and walkthroughs delivered on every module — no
+              institutional knowledge held hostage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ CTA ══════════ -->
+    <section style="background: var(--off-white); padding: 64px 0">
+      <div class="container">
+        <div class="cta-section">
+          <h2>Ready to Take This to the Board?</h2>
+          <p>
+            Tell me which modules you'd like to present — all four, or a
+            starting subset — and I'll prepare a clean one-page version
+            formatted specifically for your board's review and approval. Once
+            approved and the deposit is confirmed, I can begin within 24 hours.
+          </p>
+          <div class="cta-options">
+            <a
+              href="mailto:omerfarooqkhan7210@gmail.com?subject=VTS Phase 2 — Board Approval"
+              class="btn btn-white"
+              >📩 Email Me to Move Forward</a
+            >
+            <a href="#" class="btn btn-outline">Download PDF Version</a>
+          </div>
+          <p
+            style="
+              margin-top: 24px;
+              font-size: 13px;
+              color: rgba(255, 255, 255, 0.6);
+            "
+          >
+            Proposal prepared by Muhammad Umer Khan · WordPress Developer &
+            Project Lead<br />
+            Valid for 30 days from date of receipt · Pricing is nonprofit-rate
+            and non-transferable
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <div class="footer">
+      <strong
+        >Veterans Transition Support — Phase 2 Website Growth Proposal</strong
+      ><br />
+      Prepared by Muhammad Umer Khan · For Kathy Burnam & the VTS Board<br />
+      <span style="margin-top: 6px; display: inline-block; opacity: 0.6"
+        >Confidential · Board-presentable · All pricing is nonprofit-specific
+        and not for public distribution</span
+      >
     </div>
-
-  </div>
-</section>
-
-<!-- ══════════ PRICING TABLE ══════════ -->
-<section style="background: var(--white);">
-  <div class="container">
-    <div class="section-label">Pricing Summary</div>
-    <h2>Clear, Board-Presentable Numbers</h2>
-    <p class="section-intro">Every module is priced to stand alone. Approve all four together and save $300 off the à la carte total.</p>
-
-    <div class="pricing-table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Module</th>
-            <th>What It Delivers</th>
-            <th>Market Rate</th>
-            <th>Your Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><div class="row-module">A — Homepage + Donor System + CRM</div></td>
-            <td><div class="row-desc">Full homepage rebuild, living donor spotlight CPT, newsletter popup & FluentCRM welcome sequence</div></td>
-            <td style="color: var(--muted); font-size: 13px;">$1,200–1,800</td>
-            <td>$500</td>
-          </tr>
-          <tr>
-            <td><div class="row-module">B — Events Hub</div></td>
-            <td><div class="row-desc">Eventbrite API integration, branded events display on VTS domain, live auto-updating</div></td>
-            <td style="color: var(--muted); font-size: 13px;">$1,500–2,000</td>
-            <td>$700</td>
-          </tr>
-          <tr>
-            <td><div class="row-module">C — Coursera Registration + FluentCRM</div></td>
-            <td><div class="row-desc">On-site intake form, CRM capture, military-verification queue, confirmation emails</div></td>
-            <td style="color: var(--muted); font-size: 13px;">$2,000–3,000</td>
-            <td>$900</td>
-          </tr>
-          <tr>
-            <td><div class="row-module">D — License Lifecycle Automation</div></td>
-            <td><div class="row-desc">Automated email sequences, license rotation tracking, Make/n8n integration, 24/7 operation</div></td>
-            <td style="color: var(--muted); font-size: 13px;">$2,500–4,000</td>
-            <td>$850</td>
-          </tr>
-          <tr class="strikethrough-row">
-            <td colspan="3" style="font-size: 14px; color: var(--muted);">À la carte total (all four, separately)</td>
-            <td>$2,950</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3">✦ Complete Package — All Four Modules, Approved Together</td>
-            <td>$2,650</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-
-    <div class="savings-call-out mt-24">
-      <div class="big-num">$300</div>
-      <div class="text">
-        <h4>Bundled package discount — $300 off the à la carte total</h4>
-        <p>And compared to standard agency market rates for the same scope, VTS saves between <strong>$4,850 and $9,550</strong> on this phase. That's donor money staying in the mission, not going to overhead.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ MARKET COMPARISON ══════════ -->
-<section>
-  <div class="container">
-    <div class="section-label">Why This Pricing Is Different</div>
-    <h2>What the Market Charges vs. What You're Paying</h2>
-    <p class="section-intro">These are real agency rates for equivalent scope. I'm not a big agency, and VTS shouldn't pay like it is one.</p>
-    <div class="compare-grid">
-      <div class="compare-card market">
-        <div class="compare-label">❌ Standard Agency / Market Rate</div>
-        <div class="price">$7,500–$12,800</div>
-        <ul>
-          <li>❌ Homepage rebuild: $2,500–4,000</li>
-          <li>❌ Donor CPT system: $1,200–2,000</li>
-          <li>❌ Events API integration: $1,500–2,000</li>
-          <li>❌ Coursera form + CRM: $2,000–3,000</li>
-          <li>❌ Lifecycle automation: $2,500–4,000</li>
-          <li>❌ No relationship, no context, no trust</li>
-        </ul>
-      </div>
-      <div class="compare-card ours">
-        <div class="compare-label">✅ Your VTS Proposal Price</div>
-        <div class="price">$2,650</div>
-        <ul>
-          <li>✅ Homepage rebuild: included in $500</li>
-          <li>✅ Donor CPT system: included in $500</li>
-          <li>✅ Events API integration: $700</li>
-          <li>✅ Coursera form + CRM: $900</li>
-          <li>✅ Lifecycle automation: $850</li>
-          <li>✅ Phase 1 relationship — zero ramp-up time</li>
-        </ul>
-      </div>
-    </div>
-    <p style="margin-top: 20px; font-size: 13.5px; color: var(--muted); text-align: center;">
-      This pricing reflects a deliberate choice to support a nonprofit mission. It is not a lowball rate that hides surprises — every module is scoped in full detail above.
-    </p>
-  </div>
-</section>
-
-<!-- ══════════ PAYMENT ══════════ -->
-<section style="background: var(--white);">
-  <div class="container">
-    <div class="section-label">Payment Structure</div>
-    <h2>No Surprises. Board-Friendly Milestones.</h2>
-    <p class="section-intro">Every payment is tied to something the board can see and approve. No money moves until work is reviewed.</p>
-    <div class="payment-steps">
-      <div class="payment-step">
-        <div class="step-num">1</div>
-        <h4>30% Deposit to Begin</h4>
-        <p>Paid on approval of the scope. Covers setup, planning, and kickoff — nothing more.</p>
-      </div>
-      <div class="payment-step">
-        <div class="step-num">2</div>
-        <h4>Per-Module Milestone Payments</h4>
-        <p>Each module is approved in writing before the next payment. The board controls every release.</p>
-      </div>
-      <div class="payment-step">
-        <div class="step-num">3</div>
-        <h4>30 Days Post-Launch Support</h4>
-        <p>Included on every module. No charge for fixes, tweaks, or training within the first 30 days.</p>
-      </div>
-      <div class="payment-step">
-        <div class="step-num">4</div>
-        <h4>Changes → Written Change Order</h4>
-        <p>Any scope addition after approval requires a written change order first. No surprise invoices, ever.</p>
-      </div>
-    </div>
-    <div style="margin-top: 28px; background: var(--off-white); border-radius: 12px; padding: 20px 24px; font-size: 14px; color: var(--muted);">
-      <strong style="color: var(--navy);">Suggested approval sequence:</strong> Module A → B → C → D. The homepage and events hub are visible, low-risk front-end wins the board can see immediately. The Coursera system (C + D) runs best once the FluentCRM foundation from Module A is already in place.
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SEO ADD-ON ══════════ -->
-<section>
-  <div class="container">
-    <div class="section-label">Optional Add-On</div>
-    <h2>Ongoing SEO & Organic Traffic Growth</h2>
-    <p class="section-intro">Phase 1 created the clean technical foundation. This retainer turns it into consistent, compounding traffic — more veterans finding VTS through Google, every month.</p>
-    <div class="addon-card">
-      <div class="addon-left">
-        <h3>Monthly SEO Retainer</h3>
-        <p>The Coursera page is already your highest-traffic page — entirely because it's optimized for what veterans actually search. That's the proof. The same approach applied to OSHA training, Lean Six Sigma, VA disability, and career coaching means more veterans finding VTS without a single dollar in paid ads.</p>
-        <ul class="addon-list">
-          <li>Keyword research targeting veteran career-training searches</li>
-          <li>2–4 SEO-optimized content updates or new program pages per month</li>
-          <li>Google Search Console monitoring — catch issues before they compound</li>
-          <li>Internal linking improvements across programs, events, and resources</li>
-          <li>Monthly report: rankings, traffic changes, next month's priorities</li>
-        </ul>
-      </div>
-      <div class="addon-right">
-        <div class="per-month">$400<span>/mo</span></div>
-        <p>Cancel anytime<br>No long-term commitment</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ WHAT'S NOT INCLUDED ══════════ -->
-<section style="background: var(--white);">
-  <div class="container">
-    <div class="section-label">Full Transparency</div>
-    <h2>What's Not Included</h2>
-    <p class="section-intro">No hidden exclusions, no gotchas discovered mid-project. Here's exactly what sits outside this scope.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-      <div style="background: var(--off-white); border-radius: 10px; padding: 18px 20px; font-size: 14px; color: var(--muted); border-left: 3px solid var(--border);">
-        <strong style="color: var(--text); display: block; margin-bottom: 6px;">Copywriting</strong>
-        Structure and prompts provided. VTS supplies final body copy and verified facts.
-      </div>
-      <div style="background: var(--off-white); border-radius: 10px; padding: 18px 20px; font-size: 14px; color: var(--muted); border-left: 3px solid var(--border);">
-        <strong style="color: var(--text); display: block; margin-bottom: 6px;">Photography / Video</strong>
-        VTS supplies program photos. Sizing and placement are handled on my end.
-      </div>
-      <div style="background: var(--off-white); border-radius: 10px; padding: 18px 20px; font-size: 14px; color: var(--muted); border-left: 3px solid var(--border);">
-        <strong style="color: var(--text); display: block; margin-bottom: 6px;">Platform Fees</strong>
-        Eventbrite, Zeffy, payment processor fees — these are platform costs, not development costs.
-      </div>
-      <div style="background: var(--off-white); border-radius: 10px; padding: 18px 20px; font-size: 14px; color: var(--muted); border-left: 3px solid var(--border);">
-        <strong style="color: var(--text); display: block; margin-bottom: 6px;">Paid Advertising</strong>
-        Google or Meta Ads setup is outside this scope. The SEO retainer covers organic growth.
-      </div>
-      <div style="background: var(--off-white); border-radius: 10px; padding: 18px 20px; font-size: 14px; color: var(--muted); border-left: 3px solid var(--border);">
-        <strong style="color: var(--text); display: block; margin-bottom: 6px;">Scope Additions</strong>
-        Anything added after approval requires a written change order before work proceeds.
-      </div>
-      <div style="background: var(--off-white); border-radius: 10px; padding: 18px 20px; font-size: 14px; color: var(--muted); border-left: 3px solid var(--border);">
-        <strong style="color: var(--text); display: block; margin-bottom: 6px;">Military Verification Decisions</strong>
-        Automated intake only. Verification approval remains a human VTS team decision — always.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ OWNERSHIP ══════════ -->
-<section>
-  <div class="container">
-    <div class="section-label">Your Data. Your Code. Your Site.</div>
-    <h2>Full Ownership — No Lock-In</h2>
-    <p class="section-intro">Everything built in Phase 2 belongs to VTS, unconditionally.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-      <div style="background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid var(--border); text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 12px;">🔐</div>
-        <h4 style="font-size: 14px; margin-bottom: 8px;">Contact & Donor Data</h4>
-        <p style="font-size: 13px; color: var(--muted);">All FluentCRM contacts belong to VTS. No third party holds your community's data.</p>
-      </div>
-      <div style="background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid var(--border); text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 12px;">⚙️</div>
-        <h4 style="font-size: 14px; margin-bottom: 8px;">All Custom Code & Automations</h4>
-        <p style="font-size: 13px; color: var(--muted);">Every CPT, template, and Make/n8n automation is independently maintainable by any future developer.</p>
-      </div>
-      <div style="background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid var(--border); text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 12px;">📋</div>
-        <h4 style="font-size: 14px; margin-bottom: 8px;">Written Documentation</h4>
-        <p style="font-size: 13px; color: var(--muted);">Clean handoff docs and walkthroughs delivered on every module — no institutional knowledge held hostage.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CTA ══════════ -->
-<section style="background: var(--off-white); padding: 64px 0;">
-  <div class="container">
-    <div class="cta-section">
-      <h2>Ready to Take This to the Board?</h2>
-      <p>
-        Tell me which modules you'd like to present — all four, or a starting subset — and I'll prepare a clean one-page version formatted specifically for your board's review and approval. Once approved and the deposit is confirmed, I can begin within 24 hours.
-      </p>
-      <div class="cta-options">
-        <a href="mailto:omerfarooqkhan7210@gmail.com?subject=VTS Phase 2 — Board Approval" class="btn btn-white">📩 Email Me to Move Forward</a>
-        <a href="#" class="btn btn-outline">Download PDF Version</a>
-      </div>
-      <p style="margin-top: 24px; font-size: 13px; color: rgba(255,255,255,0.6);">
-        Proposal prepared by Muhammad Umer Khan · WordPress Developer & Project Lead<br>
-        Valid for 30 days from date of receipt · Pricing is nonprofit-rate and non-transferable
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ FOOTER ══════════ -->
-<div class="footer">
-  <strong>Veterans Transition Support — Phase 2 Website Growth Proposal</strong><br>
-  Prepared by Muhammad Umer Khan · For Kathy Burnam & the VTS Board<br>
-  <span style="margin-top: 6px; display: inline-block; opacity: 0.6;">Confidential · Board-presentable · All pricing is nonprofit-specific and not for public distribution</span>
-</div>
-
-</body>
+  </body>
 </html>
